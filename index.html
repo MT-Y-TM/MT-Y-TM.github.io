@@ -157,6 +157,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%BC%80%E5%8F%91python%E7%A8%8B%E5%BA%8F%E6%9C%89%E6%84%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnoTokyo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E5%BC%80%E5%8F%91python%E7%A8%8B%E5%BA%8F%E6%9C%89%E6%84%9F/" class="post-title-link" itemprop="url">开发python程序有感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-11-26 12:05:15 / 修改时间：13:01:15" itemprop="dateCreated datePublished" datetime="2024-11-26T12:05:15+08:00">2024-11-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>我在做自己的年度总结的图片之后，做完发现图片实在是太大了，有<code>79MB</code>之大，于是为了能在某不知名的<code>绿白色</code>和<code>白黑红色</code>社交平台上发出来，我寻找有没有能切九宫格的本地工具<br>结果当然是没有，<del>不然也不会有正在写这这篇文章的我了</del><br>我找到的基本都是<code>在线</code> <code>收费</code> 这种东西， <strong>拥有一定动手能力的我（存疑）</strong> 当然不会向这种东西低头，于是我开始查（问）文（A）档（I）</p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>最开始我就只是开发一个单纯的就我自己用的程序<br>↑其实就是单纯的停留在调试的阶段，能用就行的程度</p>
+<p>过了几天之后，我突然想起来我为什么要做这个东西的契机，想到可能会有其他人和我一样需要这种<code>纯本地的、离线的运行</code>的工具，于是我就开始动手完善这个程序</p>
+<p>思考的内容：</p>
+<ol>
+<li>给别人用，总要给别人处理吧，于是我把初版的程序稍微改了一下，输入文件还是 <code>input.png</code> 输出是 <code>output.png</code> ，起码能有人简单用一下</li>
+<li>进一步我发现这样貌似对于使用者还是太麻烦了，并且上一个阶段还是一个脚本文件的状态，并不符合普通人使用程序的习惯，于是我开始问AI，做 UI 出来，给别人用</li>
+<li>其实到上一步我本来就要结束了，但是我又想到了，既然做了，为什么只能处理单个的特定文件？还不能自定义输出路径？不如让它在处理上更加强大，于是我增加了多文件处理与输出文件路径自定义</li>
+<li>加了多文件处理之后，我想到了图片文件常用类型还是挺多的，那我就做多点覆盖吧。于是我把原本的 <code>png</code> 拓展到了 <code>png</code> <code>jpg</code> <code>jpeg</code> <code>bmp</code> 四种比较常用的图片类型</li>
+<li>到此我的程序框架基本完成了，我就修改一下程序的UI配色，我在 <a target="_blank" rel="noopener" href="https://peisebiao.com/">配色表</a> 进行的配色参考，并增加Tips，让使用者知道应该如何使用、谁开发的以及作者对这份程序持什么样的态度（因为Aria2的事情）</li>
+<li>原本我就想要打包了的，但是我<strong>突发奇想</strong>，“欸！我们来搞个多线程的特性吧！不止！我还要用显卡加速工作！”，结果当然是失败了，不清楚为什么处理到我最初要处理的那张 <code>79MB</code> 的图片的时候程序稳定的崩溃了，于是被迫放弃了</li>
+<li>经过上面的一条，算了，我们来增加结算页面吧（ ， 于是我<strong>稍微多用了一点</strong>性能来计算本次处理用时，还要精确到毫秒级别，<del>给别人好好进行跑分排名</del></li>
+<li>既然都有用时计算了，我们再来统计一下本次的处理文件数量吧</li>
+<li>到了第8点我又想到了“对哦，我们没注意到过，既然我都支持多文件数量、类型的处理了。一会别人处理完出来，要是文件命名又不规范，一会岂不是要在一堆像垃圾堆一样的文件夹里面找哪个是哪个”，于是我多加了一个判断，判断是否需要帮他们来分类一下每种图片类型存放在我指定的分类文件夹中</li>
+</ol>
+<p>好了，以上就是我在做这个程序的时候的思考</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/%E5%85%B3%E4%BA%8E%E4%B8%80%E6%99%9A%E4%B8%8A%E5%AF%B9%E7%9D%80VMWare%E9%87%8CUbuntu%E5%80%92%E8%85%BE%E7%9A%84%E5%BF%83%E5%BE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -182,7 +269,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-11-17 10:38:21 / 修改时间：14:27:09" itemprop="dateCreated datePublished" datetime="2024-11-17T10:38:21+08:00">2024-11-17</time>
+              <time title="创建时间：2024-11-17 10:38:21 / 修改时间：14:50:56" itemprop="dateCreated datePublished" datetime="2024-11-17T10:38:21+08:00">2024-11-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -722,19 +809,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
