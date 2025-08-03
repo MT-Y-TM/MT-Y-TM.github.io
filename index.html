@@ -157,6 +157,158 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnoTokyo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/" class="post-title-link" itemprop="url">Windows终端美化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-08-03 17:22:32 / 修改时间：17:24:14" itemprop="dateCreated datePublished" datetime="2025-08-03T17:22:32+08:00">2025-08-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Widnows/" itemprop="url" rel="index"><span itemprop="name">Widnows</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Widnows/Terminal/" itemprop="url" rel="index"><span itemprop="name">Terminal</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Widnows/Terminal/PowerShell/" itemprop="url" rel="index"><span itemprop="name">PowerShell</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>这次是因为想着没事找事干 <del><code>经典没事找事干</code></del> 来做一个终端美化的东西，并且扩展像 Linux 终端一样的自动补全和命令提示，于是有了本次的行动</p>
+<h1 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=zh-cn&gl=cn">PowerShell</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/">oh-my-posh</a></li>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.nerdfonts.com/">Nerd Fonts</a></li>
+<li>PowerShellGet</li>
+<li>PSReadLine</li>
+</ul>
+<h1 id="操作步骤复述"><a href="#操作步骤复述" class="headerlink" title="操作步骤复述"></a>操作步骤复述</h1><ol>
+<li><p>去 <a target="_blank" rel="noopener" href="https://apps.microsoft.com/home?hl=zh-cn&gl=cn">微软商店</a> 下载一个额外的 <a target="_blank" rel="noopener" href="https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=zh-cn&gl=cn">PowerShell</a></p>
+<blockquote>
+<p>为了隔离环境，保证不会把终端搞炸</p>
+</blockquote>
+</li>
+<li><p>再去下载 <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a> 一个 Windows 应用管理器，方便对这些内容进行管理</p>
+</li>
+<li><p>再使用 <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a> 安装 <a target="_blank" rel="noopener" href="https://www.nerdfonts.com/">Nerd Fonts</a></p>
+<blockquote>
+<p>这个的字体作用是为了能够支持 oh-my-posh 的特殊图标。推荐使用 <strong>CodeNewRoman Nerd Font Mono</strong> ，还有个而外发现的 <strong>ComicShannsMono Nerd Font</strong> ，但是这个只支持 [A-Za-z0-9~!@#$%^&amp;*()_+{}|[]\;:’”,.&lt;&gt;?&#x2F;] ，稍微有点可惜</p>
+</blockquote>
+</li>
+<li><p>在 Windows Terminal 里面把 PowerShell 更改为 <code>默认启动</code> 的选项，在 <code>命令行</code> 参数的最后面加上 <code>-nologo</code> 加快载入速度，在 <code>字体</code> 选择 <code>CodeNewRoman Nerd Font Mono</code></p>
+</li>
+<li><p>使用 <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a> 安装 <a target="_blank" rel="noopener" href="https://ohmyposh.dev/">oh-my-posh</a></p>
+</li>
+<li><p>为 <a target="_blank" rel="noopener" href="https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=zh-cn&gl=cn">PowerShell</a> 复制以下创建配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建配置文件</span></span><br><span class="line"><span class="keyword">if</span> (!(Test-Path -Path <span class="variable">$PROFILE</span> )) &#123; New-Item -Type File -Path <span class="variable">$PROFILE</span> -Force &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开配置文件</span></span><br><span class="line">notepad <span class="variable">$PROFILE</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入 PowerShell 的打开默认打开行为</span></span><br><span class="line">oh-my-posh init pwsh --config ~/.omp.theme.json | Invoke-Expression</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <a target="_blank" rel="noopener" href="https://ohmyposh.dev/">oh-my-posh</a> 的主题中找到自己喜欢的配色，把配置文件 json 内容复制进自己用户目录下的需要手动创建的文件 <code>.omp.theme.json</code> 中</p>
+</li>
+<li><p>更新 PowerShellGet 到最新版本</p>
+<blockquote>
+<p>PowerShellGet 是 PowerShell 自带的包管理器与 npm pip 类似</p>
+</blockquote>
+</li>
+<li><p>使用 PowerShellGet 安装 PSReadLine</p>
+</li>
+<li><p>再回到刚才 <code>notepad $PROFILE</code> 的 .ps1 文件中，添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Tab 键会出现自动补全菜单</span></span><br><span class="line">Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete</span><br><span class="line"><span class="comment"># 上下方向键箭头，搜索历史中进行自动补全</span></span><br><span class="line">Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward</span><br><span class="line">Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><ul>
+<li><code>set-ExecutionPolicy RemoteSigned</code> ：ExecutionPolicy 是 PowerShell 中用于设置脚本执行权限的命令，下面是对它的详细解析：<table>
+<thead>
+<tr>
+<th>策略类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Restricted</code></td>
+<td>默认，<strong>禁止所有脚本运行</strong>（只允许交互命令）</td>
+</tr>
+<tr>
+<td><code>AllSigned</code></td>
+<td>所有脚本（本地或远程）都必须有<strong>受信任签名</strong></td>
+</tr>
+<tr>
+<td><code>RemoteSigned</code></td>
+<td>本地脚本 ✅，远程脚本必须有签名 ✅</td>
+</tr>
+<tr>
+<td><code>Unrestricted</code></td>
+<td>所有脚本都能运行（运行远程脚本会有提示）</td>
+</tr>
+<tr>
+<td><code>Bypass</code></td>
+<td>完全不检查，通常用于自动化或 CI 场景</td>
+</tr>
+<tr>
+<td><code>Undefined</code></td>
+<td>没有设置，继承系统默认策略</td>
+</tr>
+</tbody></table>
+</li>
+<li>本次实践的指导为这篇文章 <a target="_blank" rel="noopener" href="https://healwrap.cn/post/3">Windows终端美化</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/%E5%BC%80%E5%8F%91python%E7%A8%8B%E5%BA%8F%E6%9C%89%E6%84%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,19 +962,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -849,7 +1001,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
