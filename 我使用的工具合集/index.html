@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言本文章编写的目的是为了以后的自己方便在换了设备之后，能看回这篇文章后快速恢复自己的实用软件，不影响自己的工作。有的时候也可以直接把本文章发给别人，让别人在这里找我整理好的 repo 算半个包管理器了如果有其他网友发现的话，说不定也会发现我存起来的宝箱罢 2025.08.03  索引目录 windows 浏览器插件 桌面应用 浏览器 ide 开发网页前后端辅助工具 vscode插件 各种小工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我使用的工具合集">
+<meta property="og:url" content="http://example.com/%E6%88%91%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/index.html">
+<meta property="og:site_name" content="AnoTokyo">
+<meta property="og:description" content="前言本文章编写的目的是为了以后的自己方便在换了设备之后，能看回这篇文章后快速恢复自己的实用软件，不影响自己的工作。有的时候也可以直接把本文章发给别人，让别人在这里找我整理好的 repo 算半个包管理器了如果有其他网友发现的话，说不定也会发现我存起来的宝箱罢 2025.08.03  索引目录 windows 浏览器插件 桌面应用 浏览器 ide 开发网页前后端辅助工具 vscode插件 各种小工具">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-03T12:30:48.000Z">
+<meta property="article:modified_time" content="2025-08-07T09:38:22.524Z">
+<meta property="article:author" content="Ann">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E6%88%91%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>我使用的工具合集 | AnoTokyo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AnoTokyo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%88%91%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnoTokyo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我使用的工具合集
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-08-03 20:30:48" itemprop="dateCreated datePublished" datetime="2025-08-03T20:30:48+08:00">2025-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-08-07 17:38:22" itemprop="dateModified" datetime="2025-08-07T17:38:22+08:00">2025-08-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文章编写的目的是为了以后的自己方便在换了设备之后，能看回这篇文章后快速恢复自己的实用软件，不影响自己的工作。<br>有的时候也可以直接把本文章发给别人，让别人在这里找我整理好的 repo <del>算半个包管理器了</del><br>如果有其他网友发现的话，说不定也会发现我存起来的宝箱罢 <code>2025.08.03</code></p>
+<hr>
+<h2 id="索引目录"><a href="#索引目录" class="headerlink" title="索引目录"></a>索引目录</h2><ul>
+<li><a href="#windows">windows</a><ul>
+<li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6">浏览器插件</a></li>
+<li><a href="#%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8">桌面应用</a><ul>
+<li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+<li><a href="#ide">ide</a></li>
+<li><a href="#%E5%BC%80%E5%8F%91%E7%BD%91%E9%A1%B5%E5%89%8D%E5%90%8E%E7%AB%AF%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7">开发网页前后端辅助工具</a></li>
+<li><a href="#vscode%E6%8F%92%E4%BB%B6">vscode插件</a></li>
+<li><a href="#%E5%90%84%E7%A7%8D%E5%B0%8F%E5%B7%A5%E5%85%B7">各种小工具</a></li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7">网络代理工具</a></li>
+<li><a href="#%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A1">平面设计</a></li>
+<li><a href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7">版本控制工具</a></li>
+<li><a href="#3d%E6%A8%A1%E5%9E%8B%E9%A2%86%E5%9F%9F">3D模型领域</a></li>
+<li><a href="#%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%88%B6%E4%BD%9C">音频处理及制作</a></li>
+<li><a href="#%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91">视频剪辑</a></li>
+<li><a href="#ai%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%85%E5%AE%B9">ai生成式内容</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#android">android</a><ul>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7">自动化小工具</a></li>
+<li><a href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E5%B7%A5%E5%85%B7">多媒体工具</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7">学习工具</a></li>
+<li><a href="#%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7">实用小工具</a></li>
+<li><a href="#%E6%9E%81%E5%AE%A2%E4%B8%8E%E8%BF%9B%E9%98%B6%E5%B7%A5%E5%85%B7">极客与进阶工具</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>本篇文章列举格式为：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 操作平台（硬件/系统软件）</span><br><span class="line"></span><br><span class="line">## 一级分类</span><br><span class="line">`功能、用途、领域`</span><br><span class="line">### 二级分类</span><br><span class="line">`可选，细分子功能模块`</span><br><span class="line">1. [软件名称(链接)]（推荐度） : 简要说明（支持平台/是否开源/推荐等级等）</span><br><span class="line"></span><br><span class="line">    - [子功能/插件/模块名](链接) : 描述该子工具作用或用途 **`补充说明（可选，需加粗反引号包裹）`**</span><br><span class="line"></span><br><span class="line">ps：英文单词为全小写</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>标题级别</th>
+<th>用途</th>
+<th>格式示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>#</code></td>
+<td>操作平台（硬件或系统）</td>
+<td><code># Windows</code></td>
+</tr>
+<tr>
+<td><code>##</code></td>
+<td>一级分类（功能、领域、用途）</td>
+<td><code>## 桌面应用</code></td>
+</tr>
+<tr>
+<td><code>###</code></td>
+<td>二级分类（功能模块细分，非必需）</td>
+<td><code>### 浏览器（✅）</code></td>
+</tr>
+<tr>
+<td>有序列表</td>
+<td>具体软件及推荐度说明</td>
+<td><code>1. Edge（✅）: 微软浏览器</code></td>
+</tr>
+<tr>
+<td>无序列表</td>
+<td>软件子功能&#x2F;插件&#x2F;模块及说明</td>
+<td><code>- [Stylus](链接): 自定义样式</code></td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>推荐度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅</td>
+<td>强烈推荐（主力工具）</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>可用（次选或功能有限）</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>已弃用（保留记录）</td>
+</tr>
+<tr>
+<td>🧪</td>
+<td>实验性&#x2F;小众&#x2F;极客向</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h1><h2 id="浏览器插件"><a href="#浏览器插件" class="headerlink" title="浏览器插件"></a>浏览器插件</h2><p><code>优化浏览器体验</code></p>
+<ol>
+<li><p>网页浏览体验</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/%E7%AF%A1%E6%94%B9%E7%8C%B4/iikmkjmpaadaobahmlepeloendndfphd">Tampermonkey</a>（✅） ： 搭配各种脚本使用，对浏览器的浏览体验只能说百利而无一害 <code>但要主动辨别脚本是否是安全的，以及排查浏览某些网站的时候可能会被脚本的运行而破坏正常的浏览体验</code></li>
+<li><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/pdffkfellgipmhklpdmokmckkkfcopbh">AdGuard</a>（✅） : 广告屏蔽插件，支持自定义规则，但配置不当的话会导致浏览器的浏览性能严重下降</li>
+<li><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/ifoakfbpdcdoeenechcleahebpibofpc">Dark Reader</a>（✅） : 黑暗模式插件，夜间阅读友好</li>
+<li><a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>（⚠️） : 用于自定义网页样式，推荐搭配 userstyles.org 使用 <strong><code>我会用在网易云的网页修改上</code></strong></li>
+</ul>
+</li>
+<li><p>下载网页资源</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/efnbkdcfmcmnhlkaijjjmhjjgladedno">SingleFile</a>（✅） : 将网页保存为单个 HTML 文件，适合网页归档</li>
+</ul>
+</li>
+<li><p>网页翻译</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/amkbmndfnliijdhojkpoglbnaaahippg">沉浸式翻译</a>（✅） : 页面段落翻译、双语对照、PDF 支持（这个需要高级会员） <code>支持自定义大模型 API 接口</code></li>
+<li><a target="_blank" rel="noopener" href="https://saladict.crimx.com/">沙拉查词</a>（✅） : 一款完全开源免费的多词典支持、划词翻译，适合英语学习者 <code>唯一缺点是目前不支持大模型 API 翻译，但在我认识的传统浏览器翻译插件里面，这个是最好用的。[Github仓库](https://github.com/crimx/ext-saladict)</code></li>
+<li><a target="_blank" rel="noopener" href="https://microsoftedge.microsoft.com/addons/detail/hbfhdcdeikaehendoojplfpjcfifnlme">通义</a>（⚠️） : 阿里出品的翻译工具，语音识别和字幕生成 <strong><code>支持日语</code></strong></li>
+</ul>
+</li>
+<li><p>其他功能性</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/fpnmgdkabkmnadcjpehmlllkndpkmiak">Wayback Machine</a>（✅） : 访问网页历史快照，适合信息回溯 <code>给 Wayback Machine 手动提交自己特别喜欢的网站，方便以后找回</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="桌面应用"><a href="#桌面应用" class="headerlink" title="桌面应用"></a>桌面应用</h2><p><code>开发给 Windows 操作系统使用的应用</code></p>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p><code>上网工具</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/edge">Edge</a>（✅） : 微软出品，不挂梯子的话同步账号密码好用</li>
+<li><a target="_blank" rel="noopener" href="https://www.google.com/intl/zh-CN/chrome/">Chrome</a>（✅） : 谷歌出品，和 Edge 不相上下 <strong><code>对我来说这是 Edge 的下替位</code></strong></li>
+<li><a target="_blank" rel="noopener" href="https://www.firefox.com/">Firefox</a>（✅） : Mozilla 出品，开源浏览器</li>
+</ol>
+<h3 id="ide"><a href="#ide" class="headerlink" title="ide"></a>ide</h3><p><code>集成式开发环境</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a>（✅） : 微软出品的开源 IDE ，神中神 <code>配置有点繁琐</code></li>
+<li><a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/">Visual Studio</a>（✅） : 微软出品的宇宙级爆炸 C&#x2F;C++&#x2F;C# 方面最好用的 IDE。可以说它大块，但是不能说它支持性差</li>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/">IDEA</a>（✅） : Jetbrain 出品的超神 IDE ，多用于 JAVA ,Kotlin 语言内容的开发，基本可以开箱即用 <code>Jetbrain 的 IDE 全家桶对电脑性能要求较高，但如果电脑性能好的话，体验绝对是最好的那一个</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/">Pycharm</a>（✅） : Jetbrain 出品的在 Python 开发中很好用的 IDE <code>对我来说是体验最舒服的一款给 Python 的 IDE</code></li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/studio?hl=zh-cn">Android Studio</a>（✅） : 谷歌出品的专为 Android 开发原生应用的 IDE 。<code>由 IDEA 的基础之上改版而来</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.eclipse.org/">eclipse</a>（❌） : 界面不好看，没有 IDEA 顺手。但性能要求比 IDEA 低</li>
+<li><a target="_blank" rel="noopener" href="https://bloodshed.net/">Dev C++</a>（❌） : 老旧的 C&#x2F;C++ IDE，多在竞赛和上课的时候使用，但开箱即用和性能要求低是它的优点</li>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信开发者工具</a>（⚠️） : 如果不是为了开发微信小程序，这将会是屎中屎的 IDE 和屎中屎一样的开发体验<code>张小龙的🐎再给我飞一遍</code></li>
+<li><a target="_blank" rel="noopener" href="https://dcloud.io/hbuilderx.html">HBuilder</a>（⚠️） : 一款非常轻量的国内开发的 IDE ，主要用于网页前端项目的开发</li>
+<li><a target="_blank" rel="noopener" href="https://cursor.com/cn">Cursor</a>（✅） : 一款目前市面上最好用的以内嵌 AI Agent 为卖点的 IDE</li>
+<li><a target="_blank" rel="noopener" href="https://www.trae.ai/">Trace</a>（✅） : 一款由字节跳动开发的对标 Cursor 的 IDE ，目前也算是国内这方向第一的 IDE</li>
+</ol>
+<h3 id="开发网页前后端辅助工具"><a href="#开发网页前后端辅助工具" class="headerlink" title="开发网页前后端辅助工具"></a>开发网页前后端辅助工具</h3><p><code>开发网页前后端时提供更人性化的辅助工具</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.postman.com/">Postman</a>（❌） : 一个 API 测试工具。功能上不错，但是网络原因导致的非常不稳定</li>
+<li><a target="_blank" rel="noopener" href="https://apifox.com/">ApiFox</a>（✅） : 一个由国人开发的 API 测试工具。功能上和  Postman 差不多，但胜在网络非常稳定</li>
+</ol>
+<h3 id="vscode插件"><a href="#vscode插件" class="headerlink" title="vscode插件"></a>vscode插件</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack">C&#x2F;C++ Extension Pack</a>（⚠️） :微软官方 C&#x2F;C++ 核心支持包，提供智能提示、调试和代码浏览</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=twxs.cmake">CMake</a>（⚠️） : 用于支持基于 CMake 构建系统的 C&#x2F;C++ 项目，帮助管理和编译复杂工程</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools</a>（⚠️） : 用于支持基于 CMake 构建系统的 C&#x2F;C++ 项目，帮助管理和编译复杂工程</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> （✅） : 为 VS Code 扩展能够支持运行几乎一般人能学的语言的支持</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a>（✅） : 一个为 VS Code 扩展 Markdown 支持的插件 <code>我会用它的快捷键支持</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhance</a>（✅） : 一个为 VS Code 扩展的 Markdown 支持的插件 <code>我会使用这个的预览和导出功能</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=holmescn.vscode-wordcount-cjk&ssr=false">Word Count CJK</a>（✅） : 一个帮你像 Word 那样统计你的 Markdown 文件中写了多少字符的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=golang.Go">Go</a>（⚠️） : 一个 Go 官方为 VS Code 扩展支持运行 Go 语言的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Vue.volar">Vue (Official)</a>（⚠️） : 一个由 Vue 开发的为 VS Code 扩展支持 Vue 语法的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=znck.vue">Vue</a>（⚠️） : 一个由 Vue 开发的为 VS Code 扩展支持 Vue <strong>语法高亮</strong>的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser">open in browser</a>（⚠️） : 为 VS Code 使用右键快速在默认浏览器打开 HTML 文件提供支持，节省一点点翻文件夹的时间</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense">Path Intellisense</a>（✅） : 为文件的路劲补全功能提供增加支持，<strong>无论是否开发工程项目都值得装</strong></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">EditorConfig for VS Code</a>（✅） : 让自己本地浏览代码时可以以自己喜欢的代码风格来展示，并确保团队合作的效率工具</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>（✅） : 代码拼写检查的插件。伟大，无需多言！ <code>当有人把 true 写成了 ture 就老实了</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=HybridTalentComputing.cline-chinese">Cline Chinese</a>（✅） : 一款由国人汉化的 Cline 插件。用于支持 VS Code 的智能代码编写的插件 <code>支持主流大模型的 API 接入</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter</a>（✅） : 语法格式化的神器，无论是代码还是笔记的 Markdown 都好用</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>（⚠️） : 一个用来支持静态检查 JavaScript&#x2F;TypeScript&#x2F;React 的插件 <code>虽然我给的是 ⚠️ 标签，但 JavaScript 的适用领域这么广泛，应该都装一个好点</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=FittenTech.Fitten-Code">Fitten Code: Faster and Better AI Assistant</a>（✅） : 一个辅助式的输入 AI 工具 <code>我用于代码补全来节省重复打字的，有的时候自动补全内容需要自己把控</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager">Project Manager</a>（✅） : 一个项目管理的插件，为 VS Code 集成快速切换不同项目的插件 <code>其实就是快速打开收藏的文件夹</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a>（✅） : 一个为 VS Code 提供 Python 支持的插件 <code>应该不会有人完全不用 Python 吧，只要摸了一点点代码之后</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a>（✅） : 一个为 VS Code 增强 Python 输入体验的插件。如代码补全提示，上下文的静态检查，输入参数提示</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy">Python Debugger</a>（✅） : 一个为 VS Code 中使用 Python 提供 debug 模式的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs">Python Environments</a>（✅） : 一个为 VS Code 提供虚拟环境管理的插件，保证每个项目的环境不会背干扰或破坏</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a>（⚠️） : 一个为 VS Code 提供远程访问计算机作为开发环境支持的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit">Remote - SSH: Editing Configuration Files</a>（⚠️） : 一个为 VS Code 增强远程开发体验的插件。允许自己配置文件，自定义语法着色</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer">Remote Explorer</a>（⚠️） : 一个用于管理 VS Code 中需要连接多个不同远程计算机的插件 <code>和 Project Manager 一个性质</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder Client</a>（⚠️） : 一个用于在 VS Code 内测试后端 API 的插件 <code>和 Postman 一样</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">WSL</a>（🧪） : 一个为 VS Code 提供支持连接 WSL 并支持使用 WSL 上的工具链的插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">TODO Highlight</a>（⚠️） : 一个用于提示代码哪部分 TODO 的插件 <code>当然拿来当作自己的 TODO 类软件也不是不行，但真的会有人拿着个来当自己的主用 TODO 吗</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=jianmofeng.BocchiTheRock">Bocchi The Rock</a>（⚠️） : 一个好用的插件合集推荐的插件 <code>我上面有相当一部分都是在这里知道的</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Kinstar.genshin">Genshin Impact Theme</a>（✅） : 一款为 VS Code 开发的原神主题 <code>VS Code 中主用这个主题</code></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme">One Dark Pro</a>（✅） : 一款超高人气的暗紫色主图 <code>我在其他地方如果能设置这个为主题的话，我首选这个作为配色方案</code></li>
+</ol>
+<h3 id="各种小工具"><a href="#各种小工具" class="headerlink" title="各种小工具"></a>各种小工具</h3><p><code>用于提升电脑使用体验的各种可折腾的小工具，没有特别指出的话默认支持中文</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.tbtool.cn/">图吧工具箱</a>（✅） : 装机必备工具，包含电脑上各种硬件检测的的实用工具和一些使用的软件工具</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/localsend/localsend">LocalSend</a>（✅） : 一款开源的局域网内传输文件的工具，支持 Android、Windows、Linux、Mac OS 多平台之间的传输 <code>可满足日常琐碎的小文件传输需求，如果需要大文件传输，还是不要用这个了</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.internetdownloadmanager.com/">Internet Download Manager</a>（✅） : 一款超好用的可多线程下载的下载器，美中不足的是不支持磁力链方式的下载。其他时候使用体验很好 <strong><code>盗版遍地跑，但有能力还是支持正版</code></strong></li>
+<li><a target="_blank" rel="noopener" href="https://calibre-ebook.com/zh_CN">Calibre</a>（✅） : 一款好用的电子书阅读器，主流的常用电子书格式基本都会支持。可开启本地服务器，通过浏览器访问服务器上的所有电子书内容 <code>除了界面有点丑就没什么缺点了，但也支持自己使用 CSS 来修改软件的样式</code></li>
+<li><a target="_blank" rel="noopener" href="https://obsidian.md/">Obsidian</a>（✅） : 一款 Markdown 笔记软件。启动速度很快、社区的第三方插件数量超多、界面好看、支持把本地的知识库部署到网页上、支持使用官方或自定义的笔记备份方案 <code>可探索程度非常高</code></li>
+<li><a target="_blank" rel="noopener" href="https://winmoes.com/tools/12948.html">MTool Box</a>（✅） : 一款简易的 Windows 美化工具，支持自定义白天与黑夜的不同主题样式</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/henrypp/memreduct">Mem Reduct</a>（✅） : 一款开源的内存清理工具，当你使用<strong>运行内存</strong>不太够用的机器时，不妨来使用这个由 C 语言编写的小工具。及时清理掉在后台的无用垃圾</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">Windows Auto Dark Mode</a>（✅） : 一款开源的可自动&#x2F;手动切换 Windows 白天&#x2F;黑夜模式的软件，主要由 C# 语言开发</li>
+<li><a target="_blank" rel="noopener" href="https://www.bitcomet.com/">BitComet</a>（✅） : 一款磁力链接&#x2F;种子 下载上传好用的工具，可支持的第三方工具较少 <code>建议直接找破解版提升体验</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.qbittorrent.org/">qBittorrent</a>（✅） : 一款磁力链接&#x2F;种子 下载上传好用的工具，可支持的第三方工具多</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PBH-BTN/PeerBanHelper">PeerBanHelper</a>（✅） : 一款设计给磁力工具的开源的免费防火墙工具 <code>抵制 PCDN ，人人有责。维护良好的磁力环境</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SubtitleEdit/subtitleedit">Subtitle Edit</a>（✅） : 一款开源免费的字幕处理工具，主要由 C# 开发</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/babalae/better-genshin-impact">BetterGI</a>（✅） : 一款开源的设计给《原神》自动化的脚本软件 <code>通过模拟键鼠输入+实时图像识别，不会有封号风险</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/moonlight-stream/moonlight-qt">MoonLight</a>（✅） : 一款开源免费的视频串流工具，只要作为服务器的一方机器性能好，服务器方和客户端方的网络情况好的情况下，该软件就是串流的最好工具。支持 Android、Windows、Linux、Mac OS 多平台</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/LizardByte/Sunshine">Sunshin</a>（✅） : 作为 MoonLight 官方指定的开源免费服务器端部署工具，支持 Android、Windows、Linux、Mac OS 多平台</li>
+<li><a target="_blank" rel="noopener" href="https://www.zerotier.com/">ZeroTier</a>（✅） : 一款用于实现内网穿透的工具，支持 Android、Windows、Linux、Mac OS 等多平台</li>
+<li><a target="_blank" rel="noopener" href="https://potplayer.info/">PotPlayer</a>（✅） : 一款多媒体播放器，内置了很多功能，支持外挂字幕、录制视频、截图、观看网络流视频 <code>但需要自己手动去找配置教程才能有更好的体验，默认设置不太好，高版本也有内置广告，但可以找方法干掉</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.videolan.org/">VLC media player</a>（✅） : 一款很好用的开源免费跨平台的多媒体播放器 <code>可以去找懒人包，一步到位。但听说对 HDR 的支持不太完整</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kaedei/dandanplay">弹弹Play</a>（✅） : 一款免费的支持本地&#x2F;网络弹幕的多媒体播放器。主要用于动画的观看。支持自动获取并刮削视频封面、开启服务器模式在其它设备观看</li>
+<li><a target="_blank" rel="noopener" href="https://ffmpeg.org/">FFmpeg</a>（✅） : 一款开源免费的超神命令行音视频处理工具，很多音视频播放器、处理工具都是基于这个项目搭建起来的</li>
+<li><a target="_blank" rel="noopener" href="https://www.mediacoderhq.com/">MediaCoder</a>（✅） : 一款强大的图形化音视频处理的软件 <code>翻译：界面化封装的 FFmpeg</code></li>
+<li><a target="_blank" rel="noopener" href="https://maruko.appinn.me/">小丸工具箱</a>（✅） : 一款免费的的基于 FFmpeg 开发的音视频处理图形化界面的软件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/PowerToys">Power Toys</a>（✅） : 一款开源免费的效率提升工具，支持第三方插件扩展 <code>搭配 Everything 食用更佳</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.voidtools.com/zh-cn/">Everything</a>（✅） : 一款免费的强大的本地文件搜索工具，支持正则表达式搜索</li>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/power-platform/products/power-automate">Power Automate</a>（⚠️） : 微软出品的可图形化&#x2F;命令化的自动流工具 <code>软件对性能要求有点高，比较高级的功能要收费。但是都用自动化了，为什么不去学一下 Python（</code></li>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a>（✅） : 一款专为 Windows 设计的包管理器，让你能有和使用 Linux 一样的使用体验</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jandedobbeleer/oh-my-posh">oh my posh</a>（✅） : 一款开源免费的 Shell 主题修改工具。让你的 Shell 变得更好看，支持 Windows、Linux、Mac OS</li>
+<li><a target="_blank" rel="noopener" href="https://getsharex.com/">ShareX</a>（✅） : 一款开源免费的超级强大的截图工具。支持长截图、GIF、录制视频、截图时的画图工具、自动分享至网站&#x2F;网页、OCR、命令行控制</li>
+<li><a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a>（✅） : 一个容器化领域的开山鼻祖，拥有超强大的第三方社区插件支持。容器化的方案出现直接干掉了机器环境配置不相同的问题 <code>不能商用，不然给钱</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/n8n-io/n8n">n8n</a>（✅） : 一个开源免费的可视化低代码工作流工具。拥有超强大的第三方社区插件支持，可以实现很多各种定时任务效果</li>
+<li><a target="_blank" rel="noopener" href="https://www.wireshark.org/">WireShark</a>（🧪） : 一款开源免费的强大的网络抓包分析工具。支持正则式表达的过滤器查看、图形化显示数据流</li>
+<li><a target="_blank" rel="noopener" href="https://miui-toolbox.github.io/">MIUIToolbox</a>（🧪） : 一款免费的专为 MIUI 手机开发的 Windows 工具</li>
+<li><a target="_blank" rel="noopener" href="https://jamcz.com/gjgjx/">搞机工具箱</a>（✅） : 一款由 B站 著名 UP主 晨钟酱开发的完全免费的给安卓手机搞机的工具</li>
+<li><a target="_blank" rel="noopener" href="https://www.msi.com/Landing/afterburner/graphics-cards">MSI Afterburner</a>（🧪） : 一款微星出品的显卡超频工具。小白不要乱动 <code>图吧工具箱有</code></li>
+<li><a target="_blank" rel="noopener" href="https://jupyter.org/">Jupyter</a>（✅） : 一款设计成“笔记本式”的编程工具。多用于机器学习和编程教学 <code>好用，爱用。但是我还是更喜欢纯粹的 Markdown</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.pdf-xchange.com/product/pdf-xchange-editor">PDF-XChange Editor</a>（✅） : 一款好用的 PDF 编辑软件 <code>记得去找破解版</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.edrawsoft.cn/mindmaster/">MindMaster</a>（✅） : 一款国内开发的好用的思维导图工具，由万兴科技开发。支持 Windows、Linux、Mac OS <code>我用的祖传下来的 7.3.1 破解版（</code></li>
+<li><a target="_blank" rel="noopener" href="https://xmind.com/">XMind</a>（✅） : 国外开发的一款好用的思维导图工具 <code>记得去找破解版（</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg">Aria Ng</a>（✅） : 基于 Aria2 改版开发而来的开源免费的支持 磁力&#x2F;RPC&#x2F;HTTP&#x2F;FTP 下载软件</li>
+<li><a target="_blank" rel="noopener" href="https://www.spacedesk.net/">space desk</a>（✅） : 一款实用的投屏软件。支持使用 USB、WIFI&#x2F;LAN 进行视频传输，支持 Windows、Android、Mac OS <code>只支持使用 Windows 作为被投屏的方式</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.rarlab.com/">WinRar</a>（✅） : 一款好用的解压缩工具 <code>我主用这个，找绿色版，可以不用看广告</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.7-zip.org/">7-Zip</a>（✅） : 一款完全免费开源的解压缩工具 </li>
+<li><a target="_blank" rel="noopener" href="https://www.bandisoft.com/bandizip/">Bandizip</a>（✅） : 一款好用的解压缩工具</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/peazip/PeaZip/">PeaZip</a>（✅） : 一款跨平台的开源免费的解压缩工具。支持 Windows、Linux、Mac OS</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Genymobile/scrcpy">SCRCPY</a>（✅） : 一款开源免费的安卓投屏工具</li>
+<li><a target="_blank" rel="noopener" href="https://www.navicat.com/en/">Navicat</a>（✅） : 一款好用的图形化数据库管理软件，支持自动根据数据库结构绘制 ER图 的一些实用功能，界面也挺好看</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/webyog/sqlyog-community">SQLyog community</a>（⚠️） : 一款图形化的数据库管理软件。界面很简陋，功能也没多少，也没有 Navicat 支持的数据库多，但很轻量</li>
+</ol>
+<h3 id="网络代理工具"><a href="#网络代理工具" class="headerlink" title="网络代理工具"></a>网络代理工具</h3><p><code>网络代理工具，说给不会的人听就是 VPN</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN">V2rayN</a>（✅） : 一款开源免费的网络代理工具，支持 Windows、Linux、Mac OS <code>界面感觉不太好看，但实用</code></li>
+<li><a href="404">Clash</a>（❌） : 删库跑路了，跳过（</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Clash-Verge-rev/clash-verge-rev">Clash Verge</a>（✅） : 一款开源免费的强大图形化的网络代理工具，基于原 Clash 项目上搭建而来，<del>虽然现在内核已经换成 mihomo 的了</del></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mihomo-party-org/mihomo-party">Mihomo Party</a>（✅） : 一款开源免费的网络代理工具，界面也很好看 <code>博主用的觉得很趁手，主用这个</code></li>
+<li><a target="_blank" rel="noopener" href="https://steampp.net/">Watt Toolkit</a>（✅） : 一个半公益性的免费网络代理工具，有很多在游戏方面使用的网络代理加速功能 <code>包含 Github 加速</code></li>
+</ol>
+<h3 id="平面设计"><a href="#平面设计" class="headerlink" title="平面设计"></a>平面设计</h3><p><code>处理图像的高级软件放这里了</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a>（✅） : 一款由 Adobe 开发的地球上我觉得最好用的图像处理工具，超级强大的图片修改和样式修改，美区支持 AI 生成式内容。软件的使用体验和自己的电脑性能呈正相关 <code>非商用内容直接找破解版，不用思考任何风险（</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop-lightroom.html">LightingRoom</a>（✅） : 一款由 Adobe 开发的，从 PhotoShop 中分离出来的调色模块为单独的软件，对批处理大量图片有一定的优化</li>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/illustrator.html">Illustrator</a>（⚠️） : 一款由 Adobe 开发的专门用于制作矢量图的软件，通常用于制作产品 Logo 和简单的、具有设计感的各种图标图案 <code>要是硬说PS也可以做，所以这个对一般人来说仅仅做一个介绍</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.systemax.jp/ja/">SAI2</a>（✅） : 一款超级轻量的绘画软件，空间占用小，性能要求低。但如果工程项目真的大起来的话，对内存要求和PS一样高，CPU 也是。但这个软件并没有 GPU 加速，所以如果工程大的话还是推荐实用 PhotoShop <code>博主画画最喜欢用这个，更顺手，如果可以请支持正版，但正版并没有中文，需要自己再去找有中文的免费盗版</code></li>
+</ol>
+<h3 id="版本控制工具"><a href="#版本控制工具" class="headerlink" title="版本控制工具"></a>版本控制工具</h3><p><code>就是控制一个工程项目的版本的工具</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>（✅） : 一款流行的免费开源版本管理工具，多用于小文件居多，且项目体积不大的项目中</li>
+<li><a target="_blank" rel="noopener" href="https://tortoisesvn.subversion.org.cn/">SVN</a>（✅） : 一款流行的免费的版本管理工具 <code>据了解多用于游戏行业的版本管理和美术行业的版本管理</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/">Github</a>（✅） : 地球上最流行的在线代码托管平台 <code>好用爱用，还有很多可以白嫖的好用功能，如 Github Action</code></li>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/">Gitee</a>（⚠️） : 一个对 Github 拙劣模仿的国内的代码托管平台（ ，如果不是 Github 网络连接不太稳定，我相信很多个人是不会选择这个用作分发平台的</li>
+</ol>
+<h3 id="3D模型领域"><a href="#3D模型领域" class="headerlink" title="3D模型领域"></a>3D模型领域</h3><p><code>和3D模型有关的一切</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.blender.org/">Blender</a>（✅） : 一款开源免费的超级强大的 CG 软件，拥有超强大的第三方社区插件支持。一款仅仅 500MB 不到的软件，可以实现高效的模型建造、雕刻、动画制作、骨骼绑定、物理模拟、特效制作等等几乎 CG 领域需要做的所有画面工作都能胜任 <code>如果你不会那就是你的问题（ ，社区总会有解决方案的出现，社区活跃也是它非常强大的一个原因。但是硬伤是对超多面的大场景处理应不从心</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.autodesk.com/products/3ds-max/overview">3D MAX</a>（✅） : 一个科班队的来自 Autodesk 开发的专注于建模的 CG 软件，要钱，但商业支持好 <code>但有人吐槽说这几年 Autodesk 吃相太难看，年年挤牙膏，订阅费还涨了不少</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.autodesk.com/products/maya/overview">Maya</a>（✅） : 一款来自 Autodesk 开发的专注于动画领域的 CG 软件，Blender 可能会出问题，但 Maya 绝对不能出问题，因为它也是收费的</li>
+<li><a target="_blank" rel="noopener" href="https://www.sidefx.com/">Houdini</a>（🧪） : 一款地表最强大的特效领域软件，非常多的工业特效电影都会采用这个软件作为解决方案，但同时也对设备性能提出了极其高的要求</li>
+</ol>
+<h3 id="音频处理及制作"><a href="#音频处理及制作" class="headerlink" title="音频处理及制作"></a>音频处理及制作</h3><p><code>音乐人吃饭用的和处理音频时会使用的</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.image-line.com/">FL Studio</a>（✅） : 一款强大的音频处理工具，很多的音乐人都会使用这款软件。社区活跃，插件丰富，就是软件定价有点贵 <code>但是对于有钱音乐人来说这点软件费用，对比他们在硬件上的支出应该只是九牛一毛罢</code></li>
+<li><a target="_blank" rel="noopener" href="https://dreamtonics.com/synthesizerv/">Synthesizer V</a>（✅） : 一款由华人在日本开发的以 AI 合成为卖点的虚拟歌姬软件。软件本身有一点点贵，但是如果找好想要用哪个声库再买捆绑销售的方式性价比就比较高 <code>AI 的加成下让软件非常强大，但是声库稍微有点少。我是夢ノ結唱的粉丝啊！×</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.vocaloid.com/en/">Vocaloid</a>（✅） : 一款由雅马哈出品的虚拟歌姬软件。特点是非常强大的声库支持，但是体验过 Synthesizer V 的人应该不会想再用这个了罢（</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stakira/OpenUtau">Open Utau</a>（✅） : 一款开源免费的虚拟歌姬软件，如果需要制作一首歌内多个歌姬的歌唱可能用起来会比较痛苦。但优点就是他的开源免费和稍微算是活跃的社区了 <code>自从 Synthesizer V 推出之后，这个的光辉在逐渐减淡了</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.celemony.com/en/start">Melodyne</a>（⚠️） : 一款专门用于调音的软件 <code>博主认识这个的时候还是因为想学做鬼畜来着， B站UP主 @还有一天就放假了 当时还有个课程就是介绍了这个和 Utau 我才认识的，现在传统派的调音也没有多少人做了，做的好多也是抽象向的鬼畜东西了。又是令人怀念的那一段时间，但科技的发展就是会这样</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/products/audition.html">Adobe Audition</a>（✅） : 一款由 Adobe 开发的专注于音频处理的软件，据了解多用于进行音频的提取、降噪、音效合成方面的工作 <code>但现在来说个人感觉有很多的开源工具都能快速做到除了音效合成方面都能有很不错的效果</code></li>
+</ol>
+<h3 id="视频剪辑"><a href="#视频剪辑" class="headerlink" title="视频剪辑"></a>视频剪辑</h3><p><code>剪辑蒙太奇的魅力时刻</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/products/premiere.html">Adobe Premier Pro</a>（✅） : 一款由 Adobe 开发的作为生产力多人合作的没有多少替代品的剪辑软件，可以对接 Adobe 自家的其他产品 如 Adobe Effect</li>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/products/aftereffects/free-trial-download.html">Adobe Effect</a>（✅） : 一款由 Adobe 开发的专为视频领域做特效合成的软件，主要搭配 Adobe Premier Pro 使用</li>
+<li><a target="_blank" rel="noopener" href="https://www.adobe.com/products/media-encoder.html">Adobe Media Encoder</a>（⚠️） : 一款由 Adobe 开发的专注于给自家产品用于素材管理编码的软件，主要解决不同设备不同录制规格之间的兼容问题</li>
+<li><a target="_blank" rel="noopener" href="https://www.vegascreativesoftware.com/us/vegas-pro/">Sony Vegas Pro</a>（⚠️） : 一款由 Sony 推出的剪辑软件。软件性能挺一般，界面也一般 <code>我认识这个也真的是因为鬼畜调音，然后做了个垃圾（</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianying.com/web">剪映</a>（✅） : 来自字节跳动的强力作品。有很多好用的 AI 工具和实时性很强的素材和经典 meme 都能轻松找得到 <code>就是需要冲会员体验才好</code></li>
+<li><a target="_blank" rel="noopener" href="https://bcut.bilibili.cn/">必剪</a>（❌） : 一款由哔哩哔哩推出的<strong>唯一真屎</strong>剪辑软件，AI 功能没有剪映好用，素材库没有剪映好。剪辑体验不如 Adobe Premier Pro ，导出性能不如Adobe Premier Pro，最大投稿稿件大小不如自家网页端 <code>屎到家了</code></li>
+</ol>
+<h3 id="ai生成式内容"><a href="#ai生成式内容" class="headerlink" title="ai生成式内容"></a>ai生成式内容</h3><p><code>关于 AI 会接入的一些生产力工具</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/comfyanonymous/ComfyUI">ComfyUI</a>（✅） : 一个以节点控制为思路的生成图片、视频、模型的超级强大的 AIGC 工具</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shinnpuru/VoiceTransl">VoiceTransl</a>（✅） : 一款开源免费的一站式离线AI视频字幕生成和翻译软件，从视频下载，音频提取，听写打轴，字幕翻译，视频合成，字幕总结各个环节为翻译者提供便利的工具</li>
+</ol>
+<h1 id="android"><a href="#android" class="headerlink" title="android"></a>android</h1><h2 id="自动化小工具"><a href="#自动化小工具" class="headerlink" title="自动化小工具"></a>自动化小工具</h2><p><code>释放双手，体验看监控的乐趣</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/Nain57/Smart-AutoClicker">Smart-AutoClicker</a>（✅） : 一款开源免费的支持图片识别和工作流创建的自动点击的强大工具</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rongzhiy/LiTiaotiao">李跳跳</a>（✅） : 一款强大的开源免费基于应用的文字识别的自动点击实现快速跳过广告的工具</li>
+</ol>
+<h2 id="多媒体工具"><a href="#多媒体工具" class="headerlink" title="多媒体工具"></a>多媒体工具</h2><p><code>手机也是需要利用好这块屏幕和摄像头的</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.dev47apps.com/">DroidCam</a>（✅） : 一个可以在电脑端中的 OBS 通过这个插件和手机上安装这个软件实现电脑可以在局域网中调用手机摄像头，实现电脑免费扩展高清摄像头的一个途径 <code>免费版会有水印</code></li>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=video.player.videoplayer">XPlayer</a>（✅） : 一个基本可以播放所有主流视频格式的视频播放器， Youtube风格的播放器行为控制风格</li>
+<li><a target="_blank" rel="noopener" href="https://snapseed-app.com/">Snapseed</a>（✅） : 一款由谷歌推出的免费的图片处理软件，和 Adobe LightingRoom 的定位差不多的软件</li>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.iudesk.android.photo.editor">照片编辑器</a>（✅） : 一个免费的图片编辑器，一个简陋版本的 Adobe PhotoShop</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/moonlight-stream/moonlight-qt">MoonLight</a>（✅） : 一款开源免费的视频串流工具，只要作为服务器的一方机器性能好，服务器方和客户端方的网络情况好的情况下，该软件就是串流的最好工具。支持 Android、Windows、Linux、Mac OS 多平台</li>
+<li><a target="_blank" rel="noopener" href="https://www.spacedesk.net/">space desk</a>（✅） : 一款实用的投屏软件。支持使用 USB、WIFI&#x2F;LAN 进行视频传输，支持 Windows、Android、Mac OS <code>只支持使用 Windows 作为被投屏的方式</code></li>
+</ol>
+<h2 id="学习工具"><a href="#学习工具" class="headerlink" title="学习工具"></a>学习工具</h2><p><code>学习方面和效率方面的工具</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind">NotebookLM</a>（✅） : 一款由谷歌推出的私人知识库 AI 助手，有强大的根据用户主动提供的内容思维导图生成、电台生成、要点总结等各种实用性功能</li>
+<li><a target="_blank" rel="noopener" href="https://www.wakeup.fun/">WakeUp课程表</a>（✅） : 一款设计给大学生及以上的学生群体的课程表 APP，支持自定义课程表外观和在线分享课程表等实用功能</li>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.csst.ecdict">英汉词典</a>（✅） : 一款可离线快速查询英语单词、认识单词意思、练习单词拼写、根据中文辨别英文单词意思选择的的功能，与介入了 AI 对话帮助学习的的软件 <code>以前还有根据领域不同的专门使用哪个部分的单词呈现。然后那个接入的 AI 也其实没什么用，至少对我来说是这样</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.ejetsoft.com/wordsend_product.html">边走边听背单词</a>（✅） : 一款专门用于学习记忆英语单词的软件，从小学生到研究生都适用 <code>这个作者的其他软件其实也推荐试试</code></li>
+<li><a target="_blank" rel="noopener" href="https://shyyp.net/">羊羊粤语</a>（✅） : 属于广东人的新华字典</li>
+<li><a target="_blank" rel="noopener" href="https://obsidian.md/">Obsidian</a>（✅） : 一款 Markdown 笔记软件。启动速度很快、社区的第三方插件数量超多、界面好看、支持把本地的知识库部署到网页上、支持使用官方或自定义的笔记备份方案 <code>可探索程度非常高</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a>（✅） : 一个对于中国宝宝体质来说学习入门编程的绝佳地方 <code>APP 其实只是网页套壳，所以可以直接快速启动网页就可以了（</code></li>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.soundcorset.client.android">调音器，节拍器</a>（✅） : 一款免费的用于乐器练习、调音演奏的软件</li>
+</ol>
+<h2 id="实用小工具"><a href="#实用小工具" class="headerlink" title="实用小工具"></a>实用小工具</h2><p><code>用于提升手机使用体验的各种小工具</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://soutushenqi.com/home">搜图神器</a>（✅） : 集齐壁纸下载、图片识图、很多实用小工具于一体的应用 <code>界面还挺好看的</code></li>
+<li><a target="_blank" rel="noopener" href="https://hunhepan.com/">混合盘</a>（✅） : 一个免费的用于搜索网站规则引擎 <code>我主要用来当作一个网盘资源搜索器</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/localsend/localsend">LocalSend</a>（✅） : 一款开源的局域网内传输文件的工具，支持 Android、Windows、Linux、Mac OS 多平台之间的传输 <code>可满足日常琐碎的小文件传输需求，如果需要大文件传输，还是不要用这个了</code></li>
+<li><a target="_blank" rel="noopener" href="https://woobx.cn/">一个木函</a>（✅） : 一个实用的工具箱软件 <code>在保持软件强大性的同时，界面设计的也不错</code></li>
+<li><a href="">小米计算器</a>（✅） : 一个实用强大的手机计算器 <code>但是没找到官方的网站，只能自己去找资源了</code></li>
+</ol>
+<h2 id="极客与进阶工具"><a href="#极客与进阶工具" class="headerlink" title="极客与进阶工具"></a>极客与进阶工具</h2><p><code>此部分板块需要有一定的计算机知识作为支撑</code></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/termux/termux-app">Termux</a>（🧪） : 一个终端模拟器，可以实现容器化启动 Linux 实现一些 Android 无法实现的高级功能</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/topjohnwu/Magisk">Magisk</a>（🧪） : 一个用于搞机的软件，获取root、安装模块</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/LSPosed/LSPosed">LSPosed</a>（🧪） : 一个用于 hook 各种东西的框架</li>
+<li><a target="_blank" rel="noopener" href="http://vtools.omarea.com/#/">scene</a>（🧪） : 一个用于修改手机调度和查看各种硬件的工作信息的软件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vvb2060/MagiskDetector?tab=readme-ov-file">Mono</a>（⚠️） : 一个用于检查自己的 Android 设备环境是否异常的软件</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/" rel="prev" title="Windows终端美化">
+      <i class="fa fa-chevron-left"></i> Windows终端美化
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">索引目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#windows"><span class="nav-number"></span> <span class="nav-text">windows</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">浏览器插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">桌面应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ide"><span class="nav-number">2.2.</span> <span class="nav-text">ide</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%BD%91%E9%A1%B5%E5%89%8D%E5%90%8E%E7%AB%AF%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7"><span class="nav-number">2.3.</span> <span class="nav-text">开发网页前后端辅助工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode%E6%8F%92%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">vscode插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">2.5.</span> <span class="nav-text">各种小工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7"><span class="nav-number">2.6.</span> <span class="nav-text">网络代理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.7.</span> <span class="nav-text">平面设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7"><span class="nav-number">2.8.</span> <span class="nav-text">版本控制工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D%E6%A8%A1%E5%9E%8B%E9%A2%86%E5%9F%9F"><span class="nav-number">2.9.</span> <span class="nav-text">3D模型领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%88%B6%E4%BD%9C"><span class="nav-number">2.10.</span> <span class="nav-text">音频处理及制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91"><span class="nav-number">2.11.</span> <span class="nav-text">视频剪辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ai%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%85%E5%AE%B9"><span class="nav-number">2.12.</span> <span class="nav-text">ai生成式内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#android"><span class="nav-number"></span> <span class="nav-text">android</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">自动化小工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">多媒体工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">学习工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">实用小工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E5%AE%A2%E4%B8%8E%E8%BF%9B%E9%98%B6%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">极客与进阶工具</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ann"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Ann</p>
+  <div class="site-description" itemprop="description">♿哇袄！♿</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ann</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="100" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
