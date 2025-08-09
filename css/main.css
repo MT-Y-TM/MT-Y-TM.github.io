@@ -1248,7 +1248,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #757dff;
+  background: #e4ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1651,7 +1651,7 @@ pre .javascript .function {
   position: relative;
 }
 .posts-collapse .collection-title::before {
-  background: #999;
+  background: #e91e63;
   border: 1px solid #fff;
   border-radius: 50%;
   content: ' ';
@@ -1670,7 +1670,7 @@ pre .javascript .function {
   position: relative;
 }
 .posts-collapse .collection-year::before {
-  background: #bbb;
+  background: #e91e63;
   border-radius: 50%;
   content: ' ';
   height: 8px;
@@ -1700,7 +1700,7 @@ pre .javascript .function {
   transition-timing-function: ease-in-out;
 }
 .posts-collapse .post-header::before {
-  background: #bbb;
+  background: #e91e63;
   border: 1px solid #fff;
   border-radius: 50%;
   content: ' ';
@@ -1716,7 +1716,7 @@ pre .javascript .function {
   transition-timing-function: ease-in-out;
 }
 .posts-collapse .post-header:hover {
-  border-bottom-color: #666;
+  border-bottom-color: #e91e63;
 }
 .posts-collapse .post-header:hover::before {
   background: #c2185b;
@@ -1739,7 +1739,7 @@ pre .javascript .function {
   margin-left: 5px;
 }
 .posts-collapse::before {
-  background: #f5f5f5;
+  background: #f8bbd0;
   content: ' ';
   height: 100%;
   left: 0;
