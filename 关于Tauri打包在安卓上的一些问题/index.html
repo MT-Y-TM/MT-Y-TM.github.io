@@ -20,17 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-		<meta name="description" content="♿哇袄！♿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AnonTokyo">
-<meta property="og:url" content="http://example.com/categories/Linux/index.html">
+		<meta name="description" content="使用 Tauri 打包为 apk 的时候控制安装包体积的一些坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Tauri打包在安卓上的一些问题">
+<meta property="og:url" content="http://example.com/%E5%85%B3%E4%BA%8ETauri%E6%89%93%E5%8C%85%E5%9C%A8%E5%AE%89%E5%8D%93%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="AnonTokyo">
-<meta property="og:description" content="♿哇袄！♿">
+<meta property="og:description" content="使用 Tauri 打包为 apk 的时候控制安装包体积的一些坑">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-13T14:04:44.000Z">
+<meta property="article:modified_time" content="2025-08-13T14:13:17.726Z">
 <meta property="article:author" content="Ann">
+<meta property="article:tag" content="Tauri">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="踩坑">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/Linux/">
+<link rel="canonical" href="http://example.com/%E5%85%B3%E4%BA%8ETauri%E6%89%93%E5%8C%85%E5%9C%A8%E5%AE%89%E5%8D%93%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -38,13 +44,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
 		<title>
-			分类: Linux | AnonTokyo
+			关于Tauri打包在安卓上的一些问题 | AnonTokyo
 		</title>
 		
 
@@ -153,50 +159,114 @@
 					<div class="content-wrap">
 						
 
-						<div class="content category"> 
+						<div class="content post posts-expand"> 
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Linux
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%85%B3%E4%BA%8ETauri%E6%89%93%E5%8C%85%E5%9C%A8%E5%AE%89%E5%8D%93%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnonTokyo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于Tauri打包在安卓上的一些问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-08-13 22:04:44 / 修改时间：22:13:17" itemprop="dateCreated datePublished" datetime="2025-08-13T22:04:44+08:00">2025-08-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tauri/" itemprop="url" rel="index"><span itemprop="name">Tauri</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>564</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+            <div class="post-description">使用 Tauri 打包为 apk 的时候控制安装包体积的一些坑</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+        <h2 id="Tauri给出的打包办法"><a href="#Tauri给出的打包办法" class="headerlink" title="Tauri给出的打包办法"></a>Tauri给出的打包办法</h2><p>Tauri 自己给开发者提供的打包方法并没有写的很清楚 <a target="_blank" rel="noopener" href="https://v2.tauri.app/zh-cn/distribute/google-play/#build-apks">Tauri 给出的打包办法</a> </p>
+<p>具体内容：</p>
+<blockquote>
+<h2 id="Build-APKs"><a href="#Build-APKs" class="headerlink" title="Build APKs"></a>Build APKs</h2><p>The AAB format is the recommended bundle file to upload to Google Play, but it is also possible to generate APKs that can be used for testing or distribution outside the store. To compile APKs for your app you can use the argument:–apk</p>
+<p>npm<br><strong>npm run tauri android build – –apk</strong></p>
+<h2 id="Architecture-selection"><a href="#Architecture-selection" class="headerlink" title="Architecture selection"></a>Architecture selection</h2><p>By default Tauri builds your app for all supported architectures (aarch64, armv7, i686 and x86_64). To only compile for a subset of targets, you can use the argument:–target</p>
+<p>npm<br><strong>npm run tauri android build – –aab –target aarch64 –target armv7</strong></p>
+</blockquote>
+<p>是不是感觉无从下手？没错，主播也找了大半天文档中没给出任何信息，在网上搜索也没查到有什么人能给出解决方案</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-11-17T10:38:21+08:00"
-              content="2024-11-17">
-          11-17
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Tauri/" rel="tag"># Tauri</a>
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Rust/" rel="tag"># Rust</a>
+              <a href="/tags/%E8%B8%A9%E5%9D%91/" rel="tag"># 踩坑</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/%E5%85%B3%E4%BA%8E%E4%B8%80%E6%99%9A%E4%B8%8A%E5%AF%B9%E7%9D%80VMWare%E9%87%8CUbuntu%E5%80%92%E8%85%BE%E7%9A%84%E5%BF%83%E5%BE%97/" itemprop="url">
-            <span itemprop="name">关于一晚上对着VMWare里Ubuntu倒腾的心得</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E6%88%91%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" rel="prev" title="我使用的工具合集">
+      <i class="fa fa-chevron-left"></i> 我使用的工具合集
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -251,6 +321,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tauri%E7%BB%99%E5%87%BA%E7%9A%84%E6%89%93%E5%8C%85%E5%8A%9E%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Tauri给出的打包办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-APKs"><span class="nav-number">2.</span> <span class="nav-text">Build APKs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-selection"><span class="nav-number">3.</span> <span class="nav-text">Architecture selection</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
