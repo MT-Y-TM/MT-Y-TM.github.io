@@ -28,7 +28,7 @@
 <meta property="og:description" content="使用 Tauri 打包为 apk 的时候控制安装包体积的一些坑">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-13T14:04:44.000Z">
-<meta property="article:modified_time" content="2025-08-13T14:13:17.726Z">
+<meta property="article:modified_time" content="2025-08-13T14:46:46.148Z">
 <meta property="article:author" content="Ann">
 <meta property="article:tag" content="Tauri">
 <meta property="article:tag" content="Android">
@@ -189,7 +189,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-08-13 22:04:44 / 修改时间：22:13:17" itemprop="dateCreated datePublished" datetime="2025-08-13T22:04:44+08:00">2025-08-13</time>
+              <time title="创建时间：2025-08-13 22:04:44 / 修改时间：22:46:46" itemprop="dateCreated datePublished" datetime="2025-08-13T22:04:44+08:00">2025-08-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -207,14 +207,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>564</span>
+              <span>6.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>6 分钟</span>
             </span>
             <div class="post-description">使用 Tauri 打包为 apk 的时候控制安装包体积的一些坑</div>
 
@@ -227,15 +227,108 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Tauri给出的打包办法"><a href="#Tauri给出的打包办法" class="headerlink" title="Tauri给出的打包办法"></a>Tauri给出的打包办法</h2><p>Tauri 自己给开发者提供的打包方法并没有写的很清楚 <a target="_blank" rel="noopener" href="https://v2.tauri.app/zh-cn/distribute/google-play/#build-apks">Tauri 给出的打包办法</a> </p>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>这一天我在开发我的跨 Windows、Android 的剪贴板同步工具，我遇到了 .apk 文件过大的问题，于是想找解决方案。查出来我使用 <code>npm run tauri android build</code> 命令时会根据在 <code>src-tauri/gen/android/app/build.gradle.kts</code> 中的描述</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    compileSdk = <span class="number">36</span></span><br><span class="line">    namespace = <span class="string">&quot;com.yui.yzr_clipboard&quot;</span></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        manifestPlaceholders[<span class="string">&quot;usesCleartextTraffic&quot;</span>] = <span class="string">&quot;false&quot;</span></span><br><span class="line">        applicationId = <span class="string">&quot;com.yui.yzr_clipboard&quot;</span></span><br><span class="line">        minSdk = <span class="number">24</span></span><br><span class="line">        targetSdk = <span class="number">36</span></span><br><span class="line">        versionCode = tauriProperties.getProperty(<span class="string">&quot;tauri.android.versionCode&quot;</span>, <span class="string">&quot;1&quot;</span>).toInt()</span><br><span class="line">        versionName = tauriProperties.getProperty(<span class="string">&quot;tauri.android.versionName&quot;</span>, <span class="string">&quot;1.0&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        getByName(<span class="string">&quot;debug&quot;</span>) &#123;</span><br><span class="line">            manifestPlaceholders[<span class="string">&quot;usesCleartextTraffic&quot;</span>] = <span class="string">&quot;true&quot;</span></span><br><span class="line">            isDebuggable = <span class="literal">true</span></span><br><span class="line">            isJniDebuggable = <span class="literal">true</span></span><br><span class="line">            isMinifyEnabled = <span class="literal">false</span></span><br><span class="line">            packaging &#123;                jniLibs.keepDebugSymbols.add(<span class="string">&quot;*/arm64-v8a/*.so&quot;</span>)</span><br><span class="line">                jniLibs.keepDebugSymbols.add(<span class="string">&quot;*/armeabi-v7a/*.so&quot;</span>)</span><br><span class="line">                jniLibs.keepDebugSymbols.add(<span class="string">&quot;*/x86/*.so&quot;</span>)</span><br><span class="line">                jniLibs.keepDebugSymbols.add(<span class="string">&quot;*/x86_64/*.so&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        getByName(<span class="string">&quot;release&quot;</span>) &#123;</span><br><span class="line">            isMinifyEnabled = <span class="literal">true</span></span><br><span class="line">            proguardFiles(</span><br><span class="line">                *fileTree(<span class="string">&quot;.&quot;</span>) &#123; include(<span class="string">&quot;**/*.pro&quot;</span>) &#125;</span><br><span class="line">                    .plus(getDefaultProguardFile(<span class="string">&quot;proguard-android-optimize.txt&quot;</span>))</span><br><span class="line">                    .toList().toTypedArray()</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    kotlinOptions &#123;</span><br><span class="line">        jvmTarget = <span class="string">&quot;1.8&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildFeatures &#123;</span><br><span class="line">        buildConfig = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你是否注意到了在 buildTypes 下的一个 packaging 字段 里面藏着两个 <code>x86</code> 架构的字段？<br>我尝试过把这个删掉，然后再编译打包一遍，结果安装包体积依旧没有减小</p>
+<hr>
+<h1 id="Tauri给出的打包办法"><a href="#Tauri给出的打包办法" class="headerlink" title="Tauri给出的打包办法"></a>Tauri给出的打包办法</h1><p>Tauri 自己给开发者提供的打包方法并没有写的很清楚具体应该怎么在 apk 的打包上如何填写或修改参数来缩小安装包体积： <a target="_blank" rel="noopener" href="https://v2.tauri.app/zh-cn/distribute/google-play/#build-apks">Tauri 给出的打包办法</a> </p>
 <p>具体内容：</p>
 <blockquote>
 <h2 id="Build-APKs"><a href="#Build-APKs" class="headerlink" title="Build APKs"></a>Build APKs</h2><p>The AAB format is the recommended bundle file to upload to Google Play, but it is also possible to generate APKs that can be used for testing or distribution outside the store. To compile APKs for your app you can use the argument:–apk</p>
-<p>npm<br><strong>npm run tauri android build – –apk</strong></p>
+<p>npm<br><code>npm run tauri android build -- --apk</code></p>
 <h2 id="Architecture-selection"><a href="#Architecture-selection" class="headerlink" title="Architecture selection"></a>Architecture selection</h2><p>By default Tauri builds your app for all supported architectures (aarch64, armv7, i686 and x86_64). To only compile for a subset of targets, you can use the argument:–target</p>
-<p>npm<br><strong>npm run tauri android build – –aab –target aarch64 –target armv7</strong></p>
+<p>npm<br><code>npm run tauri android build -- --aab --target aarch64 --target armv7</code></p>
 </blockquote>
 <p>是不是感觉无从下手？没错，主播也找了大半天文档中没给出任何信息，在网上搜索也没查到有什么人能给出解决方案</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>相信点进这篇文章的你们肯定是为了这一部分内容而来的</p>
+<p>首先给出你们结论<br>直接用下面这一行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最后面的 armv7 替换陈你想要编译的目标架构</span></span><br><span class="line"><span class="comment"># 为了你们不用去查文档 窝在这里列举出来了</span></span><br><span class="line"><span class="comment"># armv7 - arm架构的32位</span></span><br><span class="line"><span class="comment"># aarch64 - arm架构的64位</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面这条命令就是让 tauri 构建一个目标平台位arm架构的32位的apk</span></span><br><span class="line">npm run tauri android build -- -- --target armv7</span><br></pre></td></tr></table></figure>
+
+<h1 id="关于这个解决办法是怎么来的"><a href="#关于这个解决办法是怎么来的" class="headerlink" title="关于这个解决办法是怎么来的"></a>关于这个解决办法是怎么来的</h1><p>这个解决办法找来也是稀奇，我最开始就是直接在 <a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tauri">Tauri 的 GitHub 项目</a> 上翻 Discussions 。翻了一圈，我还真的点过最后的答案贴里面看过，但是觉得没什么用就关掉了。<br>后面不想找了，直接让 ChatGPT 帮我找网上的解决内容。结果 ChatGPT 直接导回这篇帖子：<br><a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tauri/discussions/10511?utm_source=chatgpt.com#discussioncomment-10267392">Is it possible to as Tauri to build only to a specific architecture for android? #10511</a><br>我当时试了之后真的有用，从原本的39MB包体积降到了13MB<br>不要尝试 ChatGPT 给出的第二种方法，那个我试过，无法成功的按照预期分别输出安装包</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<h1 id="ChatGPT当时的回答是这样的："><a href="#ChatGPT当时的回答是这样的：" class="headerlink" title="ChatGPT当时的回答是这样的："></a>ChatGPT当时的回答是这样的：</h1><p>好——给你一套<strong>可马上动手</strong>的方案，目标是把 APK 里把 <code>x86/x86_64</code> 的本地库去掉，只留下 ARM（<code>armeabi-v7a</code> &#x2F; <code>arm64-v8a</code>），并把体积降到最小。</p>
+<p>我把实操步骤分成 <strong>“快速临时方案”</strong>（只在一次构建时只编译一个 ABI）和 <strong>“工程级长效方案”</strong>（修改 Gradle 配置，打包时不再携带 x86），外加几条常见的体积优化建议。下面直接贴命令和可粘贴的配置片段 —— 你按情况选用即可。</p>
+<hr>
+<h2 id="一、快速临时方案-——-只构建单个-Rust-目标（适合快速测试手机）"><a href="#一、快速临时方案-——-只构建单个-Rust-目标（适合快速测试手机）" class="headerlink" title="一、快速临时方案 —— 只构建单个 Rust 目标（适合快速测试手机）"></a>一、快速临时方案 —— 只构建单个 Rust 目标（适合快速测试手机）</h2><p>如果你只是想<strong>只为手机的 ARM 架构临时编译</strong>，可以在 tauri 命令后面多加一层 <code>--</code> 把 <code>--target</code> 传给 cargo。社区实测有效的用法是：</p>
+<ul>
+<li>armv7（32-bit）:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run tauri android build -- -- --target armv7</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>aarch64（arm64 64-bit）:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run tauri android build -- -- --target aarch64</span><br></pre></td></tr></table></figure>
+
+<p>（这条技巧来源于 tauri 社区讨论，效果是只编译指定的 android 目标，从而避免构建所有 ABI。）(<a target="_blank" rel="noopener" href="https://github.com/tauri-apps/tauri/discussions/10511?utm_source=chatgpt.com" title="Is it possible to as Tauri to build only to a specific architecture for ...">GitHub</a>)</p>
+<blockquote>
+<p>注意：这是“只编译一个目标”的快速办法，适合调试或在手机上试跑，但如果你的最终目的是发布到 Play，建议用下面的工程级方案或者直接生成 AAB（Google Play 会按设备分发）。</p>
+</blockquote>
+<hr>
+<h2 id="二、工程级方案（推荐）——-在-Gradle-层面只打包-ARM-ABI"><a href="#二、工程级方案（推荐）——-在-Gradle-层面只打包-ARM-ABI" class="headerlink" title="二、工程级方案（推荐）—— 在 Gradle 层面只打包 ARM ABI"></a>二、工程级方案（推荐）—— 在 Gradle 层面只打包 ARM ABI</h2><p>修改 Android 项目里的 Gradle 配置，<strong>明确告诉 Gradle 只 include ARM ABI</strong>，并启用按 ABI 拆分 APK（生成每个 ABI 的单独 APK），且不生成 universal APK。</p>
+<p>编辑项目里的 <code>src-tauri/gen/android/app/</code> 下的 <code>build.gradle</code>（Groovy）或 <code>build.gradle.kts</code>（Kotlin DSL），把下面的片段放到 <code>android &#123; ... &#125;</code> 里合适位置：</p>
+<p>Groovy（<code>build.gradle</code>）示例：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  defaultConfig &#123;</span><br><span class="line">    <span class="comment">// force packaging only these ABIs</span></span><br><span class="line">    ndk &#123;</span><br><span class="line">      abiFilters <span class="string">&quot;armeabi-v7a&quot;</span>, <span class="string">&quot;arm64-v8a&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 生成按 ABI 拆分的 APK（每个 ABI 一个 apk），并且不生成 universal apk</span></span><br><span class="line">  splits &#123;</span><br><span class="line">    abi &#123;</span><br><span class="line">      enable <span class="literal">true</span></span><br><span class="line">      reset()</span><br><span class="line">      include <span class="string">&#x27;armeabi-v7a&#x27;</span>, <span class="string">&#x27;arm64-v8a&#x27;</span></span><br><span class="line">      universalApk <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  buildTypes &#123;</span><br><span class="line">    release &#123;</span><br><span class="line">      minifyEnabled <span class="literal">true</span></span><br><span class="line">      shrinkResources <span class="literal">true</span></span><br><span class="line">      <span class="comment">// other signing / proguard rules...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Kotlin DSL（<code>build.gradle.kts</code>）示例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">  defaultConfig &#123;</span><br><span class="line">    ndk &#123;</span><br><span class="line">      abiFilters.addAll(listOf(<span class="string">&quot;armeabi-v7a&quot;</span>, <span class="string">&quot;arm64-v8a&quot;</span>))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  splits &#123;</span><br><span class="line">    abi &#123;</span><br><span class="line">      isEnable = <span class="literal">true</span></span><br><span class="line">      reset()</span><br><span class="line">      include(<span class="string">&quot;armeabi-v7a&quot;</span>, <span class="string">&quot;arm64-v8a&quot;</span>)</span><br><span class="line">      isUniversalApk = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  buildTypes &#123;</span><br><span class="line">    getByName(<span class="string">&quot;release&quot;</span>) &#123;</span><br><span class="line">      isMinifyEnabled = <span class="literal">true</span></span><br><span class="line">      isShrinkResources = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于 <code>splits</code> &#x2F; <code>abi</code> 的用法可参考 Android 官方文档（如何按 ABI 拆分 APK）。(<a target="_blank" rel="noopener" href="https://developer.android.com/build/configure-apk-splits?utm_source=chatgpt.com" title="Build multiple APKs | Android Studio">Android Developers</a>)</p>
+<p><strong>为什么要在 Gradle 层修改？</strong><br>即便你只编译了某些 Rust 目标，某些依赖或 build 脚本也可能向 <code>libs/</code> 或 <code>jniLibs/</code> 放入多 ABI 的 <code>.so</code>。在 Gradle 层明确指定 <code>abiFilters</code> &#x2F; <code>splits</code> 可以保证最终打包出的 APK 里只包含你想要的 ABI。</p>
+<hr>
+<h2 id="三、发布到-Play-的最佳做法：上传-AAB（App-Bundle）"><a href="#三、发布到-Play-的最佳做法：上传-AAB（App-Bundle）" class="headerlink" title="三、发布到 Play 的最佳做法：上传 AAB（App Bundle）"></a>三、发布到 Play 的最佳做法：上传 AAB（App Bundle）</h2><p>如果你要上 Play，<strong>直接生成 AAB（而不是一个包含所有 ABI 的 universal APK）</strong>，Play 会根据用户设备给出按 ABI 优化后的 APK，用户下载体积更小。Tauri 官方也建议可以用 <code>--aab</code> 来生成 app bundle。(<a target="_blank" rel="noopener" href="https://v2.tauri.app/distribute/sign/android/?utm_source=chatgpt.com" title="Android Code Signing | Tauri">Tauri</a>)</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run tauri android build -- --aab</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、额外体积优化建议（常见“APK-变大”的原因与解决）"><a href="#四、额外体积优化建议（常见“APK-变大”的原因与解决）" class="headerlink" title="四、额外体积优化建议（常见“APK 变大”的原因与解决）"></a>四、额外体积优化建议（常见“APK 变大”的原因与解决）</h2><ol>
+<li><p><strong>确认 native 库是否被正确 strip（去掉 debug 符号）</strong></p>
+<ul>
+<li>Release 构建通常会 strip 符号，但如果 AGP &#x2F; NDK 版本或配置不对可能没被剥离，导致 <code>.so</code> 很大。检查 <code>ndkVersion</code> 是否指定、以及构建日志里有没有 strip 的步骤。Android 文档讲了原理与如何上传符号文件以便崩溃符号化。(<a target="_blank" rel="noopener" href="https://developer.android.com/build/include-native-symbols?utm_source=chatgpt.com" title="Include native symbols in your release build | Android Studio">Android Developers</a>, <a target="_blank" rel="noopener" href="https://issuetracker.google.com/issues/237187538?utm_source=chatgpt.com" title="Debug symbols are not stripped when ndkVesion is not specified in ...">issuetracker.google.com</a>)</li>
+</ul>
+</li>
+<li><p><strong>资源与代码压缩</strong></p>
+<ul>
+<li>在 <code>release</code> 中启 <code>minifyEnabled true</code>（R8&#x2F;ProGuard）和 <code>shrinkResources true</code> 可以去掉未使用的资源 &amp; 代码（前端资源没用到也会占空间）。(<a target="_blank" rel="noopener" href="https://docs.mapbox.com/help/troubleshooting/android-apk-size/?utm_source=chatgpt.com" title="Understanding Android APK size | Help - Mapbox Documentation">Mapbox</a>)</li>
+</ul>
+</li>
+<li><p><strong>不要生成 universal APK</strong></p>
+<ul>
+<li>将 <code>universalApk false</code>（或在发布时只上传 AAB）避免把所有 ABI 的 <code>.so</code> 打包进一个 APK。</li>
+</ul>
+</li>
+<li><p><strong>检查第三方库</strong></p>
+<ul>
+<li>有些第三方 Android 库会自带所有 ABI 的 <code>.so</code>（包括 x86），需要在 Gradle 里用 <code>ndk.abiFilters</code> 剔除或用 productFlavors 定向。参考社区讨论。(<a target="_blank" rel="noopener" href="https://github.com/getsentry/sentry-dart/issues/1823?utm_source=chatgpt.com" title="Need to Remove ndk - abiFilters from the defaultConfig(build.gradle).">GitHub</a>, <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54476308/support-to-64-bit-gives-error-on-adding-ndk-abifilters-in-build-gradle?utm_source=chatgpt.com" title="Support to 64-bit gives error on adding ndk.abiFilters in build.gradle">Stack Overflow</a>)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="五、如何快速验证-APK-里到底打了哪些架构"><a href="#五、如何快速验证-APK-里到底打了哪些架构" class="headerlink" title="五、如何快速验证 APK 里到底打了哪些架构"></a>五、如何快速验证 APK 里到底打了哪些架构</h2><p>构建完成后（例如得到 <code>app-arm64-v8a-release.apk</code> 或 <code>app-release.apk</code>），在本地检查 lib 目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unzip -l app-release.apk | grep lib/</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">jar tf app-release.apk | grep lib/</span><br></pre></td></tr></table></figure>
+
+<p>如果看到 <code>lib/armeabi-v7a/...</code> &#x2F; <code>lib/arm64-v8a/...</code> 就是这些架构被打包进去了；如果还看到 <code>lib/x86/...</code> &#x2F; <code>lib/x86_64/...</code> 就说明 x86 仍然被包含，需要回去检查 Gradle 配置或依赖。Android 官方也建议用 APK Analyzer 检查。(<a target="_blank" rel="noopener" href="https://developer.android.com/topic/performance/reduce-apk-size?utm_source=chatgpt.com" title="Reduce your app size | App quality - Android Developers">Android Developers</a>)</p>
+<hr>
+<h2 id="六、常见坑（帮你省时间）"><a href="#六、常见坑（帮你省时间）" class="headerlink" title="六、常见坑（帮你省时间）"></a>六、常见坑（帮你省时间）</h2><ul>
+<li>Tauri 的 Android 构建流程会调用 gradle + cargo，各种 target&#x2F;ABI 可以在两个层面出问题：<strong>Cargo（Rust）层</strong>和<strong>Gradle（Android）层</strong>。要真正把 x86 移除，<strong>两边都可能需要调整</strong>（上面我给了两边的做法）。</li>
+<li>如果你使用的是 <code>build.gradle.kts</code>（Kotlin DSL），要用 <code>isEnable</code> &#x2F; <code>isUniversalApk</code> &#x2F; <code>abiFilters.add(...)</code> 之类语法，Groovy 写法与 Kotlin DSL 不同，别把两者混用导致配置无效。关于 tauri 生成的 Android 项目，配置文件通常在 <code>src-tauri/gen/android/app/</code> 下。(<a target="_blank" rel="noopener" href="https://git.nextgraph.org/NextGraph/nextgraph-rs/commit/852b7a9015c5032a95e795640822461d4f4969f8?style=split&whitespace=ignore-eol&utm_source=chatgpt.com" title="native apps scaffolding, based on Tauri · 852b7a9015 - nextgraph-rs">Gitea of NextGraph</a>)</li>
+</ul>
+<hr>
+<h2 id="七、把上面做法快速复述（可直接复制粘贴）"><a href="#七、把上面做法快速复述（可直接复制粘贴）" class="headerlink" title="七、把上面做法快速复述（可直接复制粘贴）"></a>七、把上面做法快速复述（可直接复制粘贴）</h2><ul>
+<li>临时只编译 armv7（测试机）：<br><code>npm run tauri android build -- -- --target armv7</code></li>
+<li>永久在 Gradle 中只打 ARM：把下面片段放到 <code>src-tauri/gen/android/app/build.gradle(.kts)</code> 的 <code>android &#123;&#125;</code> 里（根据你用的 DSL 选一份）——见上面的 Groovy &#x2F; Kotlin 示例（重复一遍就长，这里就不再重复）。</li>
+</ul>
+<hr>
+<p>如果你愿意，我可以：</p>
+<ul>
+<li>直接给你<strong>针对你项目里 <code>src-tauri/gen/android/app</code> 的完整 <code>build.gradle.kts</code> 或 <code>build.gradle</code> 可替换片段</strong>（我会同时给 Groovy &amp; Kotlin 版本，按你当前文件名直接替换即可），</li>
+<li>或者帮你检查一遍你打包后 APK 的 <code>unzip -l</code> 输出（你把那段 <code>unzip -l</code> 的输出粘过来我就能看），并告诉你哪条配置没有生效。</li>
+</ul>
+<p>要我先把 <strong>可直接粘贴的 Gradle 文件片段</strong> 给你吗？ (我会同时给 Groovy 与 Kotlin 两版，方便你直接替换)</p>
 
     </div>
 
@@ -321,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tauri%E7%BB%99%E5%87%BA%E7%9A%84%E6%89%93%E5%8C%85%E5%8A%9E%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Tauri给出的打包办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-APKs"><span class="nav-number">2.</span> <span class="nav-text">Build APKs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-selection"><span class="nav-number">3.</span> <span class="nav-text">Architecture selection</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tauri%E7%BB%99%E5%87%BA%E7%9A%84%E6%89%93%E5%8C%85%E5%8A%9E%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Tauri给出的打包办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-APKs"><span class="nav-number">2.1.</span> <span class="nav-text">Build APKs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-selection"><span class="nav-number">2.2.</span> <span class="nav-text">Architecture selection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E6%98%AF%E6%80%8E%E4%B9%88%E6%9D%A5%E7%9A%84"><span class="nav-number">4.</span> <span class="nav-text">关于这个解决办法是怎么来的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ChatGPT%E5%BD%93%E6%97%B6%E7%9A%84%E5%9B%9E%E7%AD%94%E6%98%AF%E8%BF%99%E6%A0%B7%E7%9A%84%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">ChatGPT当时的回答是这样的：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BF%AB%E9%80%9F%E4%B8%B4%E6%97%B6%E6%96%B9%E6%A1%88-%E2%80%94%E2%80%94-%E5%8F%AA%E6%9E%84%E5%BB%BA%E5%8D%95%E4%B8%AA-Rust-%E7%9B%AE%E6%A0%87%EF%BC%88%E9%80%82%E5%90%88%E5%BF%AB%E9%80%9F%E6%B5%8B%E8%AF%95%E6%89%8B%E6%9C%BA%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">一、快速临时方案 —— 只构建单个 Rust 目标（适合快速测试手机）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E7%A8%8B%E7%BA%A7%E6%96%B9%E6%A1%88%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89%E2%80%94%E2%80%94-%E5%9C%A8-Gradle-%E5%B1%82%E9%9D%A2%E5%8F%AA%E6%89%93%E5%8C%85-ARM-ABI"><span class="nav-number">5.2.</span> <span class="nav-text">二、工程级方案（推荐）—— 在 Gradle 层面只打包 ARM ABI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%91%E5%B8%83%E5%88%B0-Play-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%81%9A%E6%B3%95%EF%BC%9A%E4%B8%8A%E4%BC%A0-AAB%EF%BC%88App-Bundle%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">三、发布到 Play 的最佳做法：上传 AAB（App Bundle）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%A2%9D%E5%A4%96%E4%BD%93%E7%A7%AF%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE%EF%BC%88%E5%B8%B8%E8%A7%81%E2%80%9CAPK-%E5%8F%98%E5%A4%A7%E2%80%9D%E7%9A%84%E5%8E%9F%E5%9B%A0%E4%B8%8E%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">四、额外体积优化建议（常见“APK 变大”的原因与解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%AA%8C%E8%AF%81-APK-%E9%87%8C%E5%88%B0%E5%BA%95%E6%89%93%E4%BA%86%E5%93%AA%E4%BA%9B%E6%9E%B6%E6%9E%84"><span class="nav-number">5.5.</span> <span class="nav-text">五、如何快速验证 APK 里到底打了哪些架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E5%9D%91%EF%BC%88%E5%B8%AE%E4%BD%A0%E7%9C%81%E6%97%B6%E9%97%B4%EF%BC%89"><span class="nav-number">5.6.</span> <span class="nav-text">六、常见坑（帮你省时间）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%8A%8A%E4%B8%8A%E9%9D%A2%E5%81%9A%E6%B3%95%E5%BF%AB%E9%80%9F%E5%A4%8D%E8%BF%B0%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%EF%BC%89"><span class="nav-number">5.7.</span> <span class="nav-text">七、把上面做法快速复述（可直接复制粘贴）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -385,12 +478,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">20k</span>
+    <span title="站点总字数">26k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18 分钟</span>
+    <span title="站点阅读时长">24 分钟</span>
 </div>
 
 
