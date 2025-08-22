@@ -183,7 +183,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-08-22 22:29:32 / 修改时间：22:30:01" itemprop="dateCreated datePublished" datetime="2025-08-22T22:29:32+08:00">2025-08-22</time>
+              <time title="创建时间：2025-08-22 22:29:32 / 修改时间：22:38:48" itemprop="dateCreated datePublished" datetime="2025-08-22T22:29:32+08:00">2025-08-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tauri/" itemprop="url" rel="index"><span itemprop="name">Tauri</span></a>
+                </span>
             </span>
 
           <br>
@@ -211,179 +220,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><h3 id="1-核心功能需求"><a href="#1-核心功能需求" class="headerlink" title="1. 核心功能需求"></a>1. 核心功能需求</h3><ul>
-<li><strong>长篇文章处理能力</strong>：</li>
-</ul>
-<p>  - 支持用户输入、编辑和显示大量文本内容，性能需流畅，不能因文本量大而卡顿。</p>
-<p>  - 提供基础的文本编辑功能，如复制、粘贴、剪切、撤销、重做。</p>
-<ul>
-<li><strong>基础文字渲染与排版</strong>：</li>
-</ul>
-<p>  - 支持常见的字体选择、字号调整、颜色设置。</p>
-<p>  - 提供段落对齐（左对齐、右对齐、居中、两端对齐）、行距调整等基础排版功能。</p>
-<ul>
-<li><strong>可定制的文字形变</strong>：</li>
-</ul>
-<p>  - 用户能够<strong>选择文章中的任意文字或短语</strong>，并对其进行<strong>无损的、高度自由的矢量形变</strong>。</p>
-<p>  - 形变效果包括但不限于：<strong>横向拉伸、纵向拉长、整体扭曲、自由弯曲</strong>等，实现类似手绘或漫画中为了强调而进行的夸张形变。</p>
-<p>  - 形变操作应直观，最好能通过鼠标拖拽、控制点调整等方式进行。</p>
-<ul>
-<li><strong>SVG 涂鸦与形变文字的无缝集成</strong>：</li>
-</ul>
-<p>  - 支持用户上传和嵌入自定义的 SVG 图像（例如手绘涂鸦），这些 SVG 图像应和形变后的文字一样，<strong>支持无损放大</strong>。</p>
-<p>  - 嵌入的 SVG 和形变文字应能与普通文本在同一篇文章中和谐共存，并能进行位置调整。</p>
-<ul>
-<li><strong>内容保存与加载</strong>：</li>
-</ul>
-<p>  - 能够保存用户创建的文章内容，包括所有普通文本、形变文字（及其形变数据）和嵌入的 SVG 图像。</p>
-<p>  - 能够正确加载之前保存的文件，并恢复所有文字的原始排版和形变效果。</p>
-<h3 id="2-非功能性需求"><a href="#2-非功能性需求" class="headerlink" title="2. 非功能性需求"></a>2. 非功能性需求</h3><ul>
-<li><strong>卓越的性能</strong>：</li>
-</ul>
-<p>  - 处理长篇文章的基础渲染和编辑时，必须保持流畅的用户体验。</p>
-<p>  - 文字的矢量化和形变计算需要<strong>毫秒级响应</strong>，避免卡顿。</p>
-<p>  - 即使形变后的文字数量较多，整体性能也应保持高效。</p>
-<ul>
-<li><strong>高可扩展性</strong>：</li>
-</ul>
-<p>  - 软件架构应模块化，便于未来引入新的形变效果、图形工具或导出格式。</p>
-<p>  - 方便集成第三方字体库。</p>
-<ul>
-<li><strong>优秀的跨平台体验</strong>：</li>
-</ul>
-<p>  - 软件应在 <strong>Windows、macOS 和 Linux</strong> 三个主流操作系统上提供原生级别的性能和一致的用户界面。</p>
-<p>  - （可选，但考虑到你对 Android 开发的兴趣）未来可考虑向移动端（Android&#x2F;iOS）扩展的可能性。</p>
-<ul>
-<li>**直观的用户界面 (UI)**：</li>
-</ul>
-<p>  - 界面设计应简洁、现代，<strong>以内容为中心</strong>，避免过多干扰。</p>
-<p>  - 形变工具应易于理解和操作，降低学习成本。</p>
-<ul>
-<li><strong>数据完整性与可靠性</strong>：</li>
-</ul>
-<p>  - 确保保存和加载文件时数据的完整性和准确性，特别是形变数据和 SVG 内容。</p>
-<ul>
-<li><strong>离线可用性</strong>：作为桌面应用，应能在没有网络连接的情况下完整运行所有核心功能。</li>
-</ul>
-<hr>
-<h2 id="技术选型与架构设计"><a href="#技术选型与架构设计" class="headerlink" title="技术选型与架构设计"></a>技术选型与架构设计</h2><p>根据你的需求，特别是对性能、跨平台、可扩展性以及你对 Tauri 和前端技术的经验，我推荐以下技术栈和架构方案：</p>
-<h3 id="1-整体框架：Tauri-前端-Vue-js-后端-Rust"><a href="#1-整体框架：Tauri-前端-Vue-js-后端-Rust" class="headerlink" title="1. 整体框架：Tauri (前端 Vue.js + 后端 Rust)"></a>1. 整体框架：Tauri (前端 Vue.js + 后端 Rust)</h3><ul>
-<li><p><strong>选择理由</strong>：Tauri 结合了 Web 前端的开发效率和 Rust 后端的原生性能。它能将一个 Web 应用打包成一个轻量、高性能的原生桌面应用，完美满足你对<strong>跨平台</strong>和<strong>性能</strong>的需求。</p>
-</li>
-<li><p><strong>核心优势</strong>：</p>
-</li>
-</ul>
-<p>  - <strong>高性能后端</strong>：使用 Rust 编写核心逻辑，确保文字矢量化和形变计算的性能。</p>
-<p>  - <strong>丰富的生态</strong>：可以利用成熟的前端技术栈（Vue&#x2F;React）快速构建 UI。</p>
-<p>  - <strong>小巧的打包体积</strong>：Tauri 的打包文件远小于 Electron，减少了软件的发布和分发成本。</p>
-<h3 id="2-前端技术栈-Vue-js"><a href="#2-前端技术栈-Vue-js" class="headerlink" title="2. 前端技术栈 (Vue.js)"></a>2. 前端技术栈 (Vue.js)</h3><ul>
-<li><p><strong>职责</strong>：负责整个应用的用户界面、用户交互、普通文本的输入和显示、形变文字的<strong>占位符渲染</strong>以及 SVG 涂鸦的嵌入和显示。</p>
-</li>
-<li><p><strong>核心库</strong>：</p>
-</li>
-</ul>
-<p>  - <strong>Vue.js 3</strong>：作为 UI 框架，利用其响应式系统和组件化特性快速构建界面。</p>
-<p>  - <strong>富文本编辑器</strong>：选择 <strong>TipTap</strong> 或 <strong>Quill.js</strong>。</p>
-<p>    - 它们都支持自定义扩展，可以让你在编辑器中插入非标准内容，例如我们的形变文字（以 SVG 形式）和 SVG 涂鸦。</p>
-<p>    - 你可以创建一个自定义的 “Node” 或 “Embed” 类型，用于表示形变后的文字或 SVG 涂鸦，这样它们就能与普通文本一起在编辑器中显示和操作。</p>
-<p>  - <strong>UI 组件库</strong>：<strong>Element Plus</strong> 或 <strong>Ant Design Vue</strong>。用于构建工具栏、设置面板、文件管理器等，确保 UI 的美观和一致性。</p>
-<p>  - <strong>CSS 框架</strong>：<strong>Tailwind CSS</strong>。简化样式编写，提供响应式设计能力。</p>
-<ul>
-<li><strong>交互设计思考</strong>：</li>
-</ul>
-<p>  - 当用户选择一段文字进行形变时，前端将这段文字、当前使用的字体信息以及形变操作参数（例如，鼠标拖拽的起始点和结束点，或一个形变类型）作为参数，通过 Tauri 的 <code>invoke</code> API 发送给 Rust 后端。</p>
-<p>  - 后端返回形变后的 SVG 字符串后，前端将其动态替换掉原有的文本，并以 <code>&lt;svg&gt;</code> 标签的形式插入到富文本编辑器中。</p>
-<p>  - 嵌入的 SVG 涂鸦也直接作为 <code>&lt;svg&gt;</code> 标签或 <code>&lt;img&gt;</code> 标签（<code>src</code> 为 <code>data:image/svg+xml;base64,...</code>）插入。</p>
-<h3 id="3-后端技术栈-Rust"><a href="#3-后端技术栈-Rust" class="headerlink" title="3. 后端技术栈 (Rust)"></a>3. 后端技术栈 (Rust)</h3><ul>
-<li><p><strong>职责</strong>：处理所有计算密集型任务，包括<strong>文字的矢量化、形变计算、SVG 生成</strong>以及文件内容的读写（复杂格式）。</p>
-</li>
-<li><p><strong>核心库</strong>：</p>
-</li>
-</ul>
-<p>  - <strong>字体解析与矢量化</strong>：</p>
-<p>    - <strong><code>rusttype</code><strong>：一个纯 Rust 的 TrueType 字体解析和光栅化库。它能读取字体文件，并提供每个字符的</strong>矢量轮廓数据</strong>（路径、锚点、控制点）。这是实现文字形变的基础。</p>
-<p>    - （可选）**<code>fontdue</code>**：另一个高性能字体渲染引擎，提供更多字体处理功能，可以作为 <code>rusttype</code> 的替代或补充。</p>
-<p>  - <strong>几何变换与矢量图形操作</strong>：</p>
-<p>    - <strong><code>lyon</code><strong>：一个强大的 2D 几何处理和路径构建库。它能让你轻松地对矢量路径进行各种数学变换（平移、缩放、旋转、</strong>扭曲</strong>），并进行路径操作（如合并、裁剪）。</p>
-<p>    - <strong>自定义形变算法</strong>：你需要自己编写 Rust 代码来实现具体的形变逻辑。例如，基于贝塞尔曲线的扭曲算法、网格变形算法等。</p>
-<p>  - <strong>SVG 生成</strong>：</p>
-<p>    - <code>std::fmt::Write</code> 和字符串拼接：Rust 原生字符串处理能力可以高效地构建 SVG 字符串。</p>
-<p>    - （可选）**<code>resvg</code>** 或其他 SVG 库：如果需要更复杂的 SVG 输出控制，可以考虑。但对于形变文字，直接拼接 SVG <code>&lt;path&gt;</code> 数据通常更高效。</p>
-<p>  - <strong>文件系统操作</strong>：Rust 标准库提供了强大的文件 I&#x2F;O 能力，用于保存和加载文章数据。</p>
-<hr>
-<h3 id="4-数据存储与性能优化方案"><a href="#4-数据存储与性能优化方案" class="headerlink" title="4. 数据存储与性能优化方案"></a>4. 数据存储与性能优化方案</h3><p>针对长篇文章可能带来的大文件和性能问题，采用以下优化策略：</p>
-<h4 id="4-1-本地数据存储：SQLite-数据库"><a href="#4-1-本地数据存储：SQLite-数据库" class="headerlink" title="4.1 本地数据存储：SQLite 数据库"></a>4.1 本地数据存储：SQLite 数据库</h4><ul>
-<li><p><strong>理由</strong>：对于包含大量内容块（普通文本、形变文本、嵌入 SVG）的长篇文章，将所有数据存储在一个巨大的 JSON 文件中会显著影响读写性能和内存占用。使用<strong>嵌入式本地数据库 SQLite</strong> 是更专业、高效且可扩展的方案。</p>
-</li>
-<li><p><strong>实现方式</strong>：</p>
-</li>
-</ul>
-<p>  - <strong>数据模型</strong>：</p>
-<p>    - 创建一个主表 (<code>articles</code>) 存储文章的元数据（如 ID, 标题, 创建日期, 最后修改日期）。</p>
-<p>    - 创建一个 <code>blocks</code> 表存储文章的内容块。每行代表一个内容块，包含字段如：<code>block_id</code> (唯一标识), <code>article_id</code> (关联到哪篇文章), <code>type</code> (块类型：<code>paragraph</code>, <code>transformed_text</code>, <code>svg_embed</code>), <code>order</code> (在文章中的顺序), <code>content</code> (存储具体数据)。</p>
-<p>  - <strong>内容存储</strong>：</p>
-<p>    - 对于<strong>普通文本</strong> (<code>paragraph</code>)，<code>content</code> 字段直接存储文本字符串。</p>
-<p>    - 对于<strong>形变文字</strong> (<code>transformed_text</code>) 和<strong>嵌入 SVG</strong> (<code>svg_embed</code>)，<code>content</code> 字段可以存储其原始文本、形变参数和最终的 SVG 字符串。这些数据可以序列化为<strong>二进制数据（BLOB）</strong>存储，以提高效率。</p>
-<ul>
-<li><strong>优点</strong>：</li>
-</ul>
-<p>  - <strong>按需加载</strong>：后端可以只查询和加载当前视图所需的内容块，显著降低内存占用和渲染延迟。</p>
-<p>  - <strong>高效的数据管理</strong>：支持快速地对特定内容块进行增、删、改、查操作。</p>
-<p>  - <strong>数据可靠性</strong>：SQLite 提供事务支持和数据完整性保障。</p>
-<ul>
-<li><strong>Rust 库</strong>：使用 <code>rusqlite</code> 等 Rust 库来与 SQLite 数据库交互。</li>
-</ul>
-<h4 id="4-2-数据序列化：二进制格式"><a href="#4-2-数据序列化：二进制格式" class="headerlink" title="4.2 数据序列化：二进制格式"></a>4.2 数据序列化：二进制格式</h4><ul>
-<li><p><strong>理由</strong>：虽然 SQLite 解决了大文件的管理问题，但在数据库内部，对于形变数据 (<code>transformData</code>) 和完整的 SVG 字符串 (<code>svgContent</code>)，如果直接存储为文本，仍会占用较大空间并影响读写效率。</p>
-</li>
-<li><p><strong>实现方式</strong>：</p>
-</li>
-</ul>
-<p>  - 在将形变文字的形变数据和 SVG 字符串存储到 SQLite 的 <code>BLOB</code> 字段之前，使用<strong>高效的二进制序列化库</strong>将其转换为紧凑的字节数组。</p>
-<p>  - 推荐库：**<code>bincode</code>** 或 **<code>prost</code> (用于 Protobuf)**。它们能将复杂的 Rust 结构体序列化为非常紧凑的二进制格式。</p>
-<ul>
-<li><strong>优点</strong>：</li>
-</ul>
-<p>  - 进一步<strong>减小存储体积</strong>，特别是对于重复或结构复杂的 SVG 数据。</p>
-<p>  - <strong>加快数据的序列化和反序列化速度</strong>，提升数据库读写效率。</p>
-<h4 id="4-3-文件压缩"><a href="#4-3-文件压缩" class="headerlink" title="4.3 文件压缩"></a>4.3 文件压缩</h4><ul>
-<li><p><strong>理由</strong>：无论最终选择何种存储方式（JSON 或是 SQLite），对最终保存的文件进行<strong>压缩</strong>，可以在磁盘存储和网络传输（如果未来考虑同步）方面带来额外收益。</p>
-</li>
-<li><p><strong>实现方式</strong>：</p>
-</li>
-</ul>
-<p>  - 在 Rust 后端，保存 SQLite 数据库文件到磁盘时，可以考虑对其进行<strong>整体压缩</strong>（例如，使用 <code>zstd</code> 或 <code>flate2</code> 库进行 Gzip 压缩）。</p>
-<p>  - 读取文件时，先解压缩，再进行数据库操作。</p>
-<ul>
-<li><strong>优点</strong>：显著减少磁盘占用，降低文件传输时间。</li>
-</ul>
-<h4 id="4-4-前端渲染优化：内容虚拟化-懒加载"><a href="#4-4-前端渲染优化：内容虚拟化-懒加载" class="headerlink" title="4.4 前端渲染优化：内容虚拟化&#x2F;懒加载"></a>4.4 前端渲染优化：内容虚拟化&#x2F;懒加载</h4><ul>
-<li><p><strong>理由</strong>：即使后端能高效加载数据，前端也不能一次性渲染整篇文章的所有 DOM 元素，这会导致性能下降。</p>
-</li>
-<li><p><strong>实现方式</strong>：</p>
-</li>
-</ul>
-<p>  - 在前端富文本编辑器中集成<strong>虚拟滚动（Virtual Scrolling）或内容虚拟化</strong>技术。</p>
-<p>  - 这意味着编辑器只渲染当前用户可见区域（或稍微超出部分）的内容块。当用户滚动时，动态地加载新内容块并卸载屏幕外的旧内容块。</p>
-<ul>
-<li><strong>优点</strong>：</li>
-</ul>
-<p>  - 大幅减少前端 DOM 节点的数量，提高渲染性能和交互流畅性。</p>
-<p>  - 降低前端内存占用。</p>
-<ul>
-<li><strong>TipTap&#x2F;Quill 集成</strong>：这两个编辑器都支持插件化和自定义渲染，可以让你实现自己的虚拟化渲染逻辑。</li>
-</ul>
-<hr>
-<h3 id="5-架构示意图"><a href="#5-架构示意图" class="headerlink" title="5. 架构示意图"></a>5. 架构示意图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+---------------------+           Tauri Bridge            +----------------------+</span><br><span class="line"></span><br><span class="line">|       前端 (Vue.js)     |-------------------------------&gt;|        后端 (Rust)       |</span><br><span class="line"></span><br><span class="line">|  - 用户交互 / UI 界面  |                               |  - 文字矢量化        |</span><br><span class="line"></span><br><span class="line">|  - 富文本编辑器 (TipTap/Quill)  |                               |  - 几何形变计算      |</span><br><span class="line"></span><br><span class="line">|  - 普通文本渲染     |                               |  - SVG 字符串生成    |</span><br><span class="line"></span><br><span class="line">|  - 形变文字占位符渲染 |                               |  - 数据序列化/反序列化 |</span><br><span class="line"></span><br><span class="line">|  - SVG 涂鸦嵌入     |                               |  - SQLite 数据库操作 |</span><br><span class="line"></span><br><span class="line">|  - 内容虚拟化渲染   |&lt;-------------------------------|  - 文件压缩/解压缩   |</span><br><span class="line"></span><br><span class="line">+---------------------+    (invoke 命令 / emit 事件)    +----------------------+</span><br><span class="line"></span><br><span class="line">                                      |</span><br><span class="line"></span><br><span class="line">                                      |</span><br><span class="line"></span><br><span class="line">                            +-------------------+</span><br><span class="line"></span><br><span class="line">                            |  文件系统 (加密 SQLite DB / 压缩文件)  |</span><br><span class="line"></span><br><span class="line">                            +-------------------+</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>对话来源：<a target="_blank" rel="noopener" href="https://g.co/gemini/share/7cc4d62ee800">gemeni</a></p>
-<hr>
-<p>预期的实现效果</p>
-<p><img src="https://iamge.mtytmfile.xyz/file/AgACAgUAAyEGAASfI0qJAAMFaKh59C33ogfcNRUSZXpevD2K5roAArvFMRtxHkFVBEVza5xsR3EBAAMCAAN3AAM2BA.jpg" alt="image"></p>
-
+          <p>一个关于我自己设想的文字排版工具的分析报告</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A5%9E%E5%A5%87%E6%9E%84%E6%83%B3%E4%BD%86%E5%BE%88%E6%9C%89%E5%8F%AF%E8%83%BD%E4%B8%80%E7%9B%B4%E6%97%A0%E6%B3%95%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B9%8B%E6%96%87%E5%AD%97%E6%8E%92%E7%89%88%E8%BD%AF%E4%BB%B6/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1338,7 +1183,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
