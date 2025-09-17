@@ -20,21 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-		<meta name="description" content="一篇记录我给 zzp 的 华为 Mate 14 D 2022 装 Windows ，最后面卖给〇转卖了 1800 的日记，还要祭奠我死去的一块U盘。祷管、作哀">
+		<meta name="description" content="第一次在 GitHub 上进行 pull request 的尝试的笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于安装系统(Windows)">
-<meta property="og:url" content="http://example.com/%E5%85%B3%E4%BA%8E%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F-Windows/index.html">
+<meta property="og:title" content="关于git的代码协作规范的学习笔记">
+<meta property="og:url" content="http://example.com/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="AnonTokyo">
-<meta property="og:description" content="一篇记录我给 zzp 的 华为 Mate 14 D 2022 装 Windows ，最后面卖给〇转卖了 1800 的日记，还要祭奠我死去的一块U盘。祷管、作哀">
+<meta property="og:description" content="第一次在 GitHub 上进行 pull request 的尝试的笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-05T08:06:33.000Z">
-<meta property="article:modified_time" content="2025-09-05T08:54:31.281Z">
+<meta property="article:published_time" content="2025-09-17T14:52:12.000Z">
+<meta property="article:modified_time" content="2025-09-17T15:32:55.961Z">
 <meta property="article:author" content="Ann">
-<meta property="article:tag" content="Windows">
-<meta property="article:tag" content="WinPE">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="开源">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/%E5%85%B3%E4%BA%8E%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F-Windows/">
+<link rel="canonical" href="http://example.com/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -48,7 +50,7 @@
 </script>
 
 		<title>
-			关于安装系统(Windows) | AnonTokyo
+			关于git的代码协作规范的学习笔记 | AnonTokyo
 		</title>
 		
 
@@ -163,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%85%B3%E4%BA%8E%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F-Windows/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -176,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          关于安装系统(Windows)
+          关于git的代码协作规范的学习笔记
         </h1>
 
         <div class="post-meta">
@@ -187,7 +189,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-09-05 16:06:33 / 修改时间：16:54:31" itemprop="dateCreated datePublished" datetime="2025-09-05T16:06:33+08:00">2025-09-05</time>
+              <time title="创建时间：2025-09-17 22:52:12 / 修改时间：23:32:55" itemprop="dateCreated datePublished" datetime="2025-09-17T22:52:12+08:00">2025-09-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -195,7 +197,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
                 </span>
             </span>
 
@@ -205,7 +207,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>867</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -214,7 +216,7 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>1 分钟</span>
             </span>
-            <div class="post-description">一篇记录我给 zzp 的 华为 Mate 14 D 2022 装 Windows ，最后面卖给〇转卖了 1800 的日记，还要祭奠我死去的一块U盘。祷管、作哀</div>
+            <div class="post-description">第一次在 GitHub 上进行 pull request 的尝试的笔记</div>
 
         </div>
       </header>
@@ -225,27 +227,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.wepe.com.cn/">微 PE</a></li>
-<li><del>一块</del> 在并夕夕上买的 8G U 盘</li>
-<li>一台起码能正常开机的电脑</li>
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最近在写简历，不想搞那么花里胡哨的 Word 文档之类的编写方式，于是我把目光转向了利用 markdown 编写简历的模板框架，于是找到了这个项目 <a target="_blank" rel="noopener" href="https://github.com/BingyanStudio/LapisCV">LapisCV</a><br>一看就很棒啊！不太算简陋，也不至于太花里胡哨的<br>在我编写完我的简历之后，导出 PDF ，发现超链接的字段是无法选中和点击的<br>经过上次 tauri 的教训之后 （<a target="_blank" rel="noopener" href="https://mt-y-tm.github.io/%E5%85%B3%E4%BA%8ETauri%E6%89%93%E5%8C%85%E5%9C%A8%E5%AE%89%E5%8D%93%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">关于 Tauri 打包在安卓上的一些问题</a> ），那我当然是在 issue 里面找找有没有相关的解决方案了<br>找到了，有的兄弟有的，<a target="_blank" rel="noopener" href="https://github.com/BingyanStudio/LapisCV/issues/35#issuecomment-2890328037">issue-35</a> 中给出的解决方案<br>弄完之后用 MSYS2 重新构建看了一下好没好，答案是肯定的，<del>不然我也不会写这篇博客了</del><br>于是我弄完了之后想着：“这个项目貌似也很久没人更新了诶，里面也写着欢迎 pr ，那我来提交一下吧”。就有了这一次的第一次在 Github 上面提交 pr 的尝试了<br>由于我只熟悉自己一个人的 Git 仓库，所以我还是先去请教了一下 AI 怎么样 pr 比较规范一点</p>
+<h2 id="规范的提交-pr-操作"><a href="#规范的提交-pr-操作" class="headerlink" title="规范的提交 pr 操作"></a>规范的提交 pr 操作</h2><ol>
+<li>先 Fork 想要 pr 的仓库到自己账号下，再下载到自己的工作环境下</li>
+<li>为了保证原本的 main&#x2F;origin 分支不被污染，因此我们需要创建一个新的分支来进行修改，分支的命名也需要规范、明确的指示出此分支是用于干什么的<br><code>git checkout -b fork-name，此命令为创建一个新的分支并切换到新的分支</code></li>
+<li>在此分支下进行代码的修改工作。确认需要改进的功能实现后，可以开始着手进行对自己副本仓库的提交了<br><code>git status，查看被修改的文件；git add .，暂存所有的修改；git commit &#39;commit connect&#39;，编写提交信息；git push main/origin fork-name，在自己账户下的副本仓库对应分支提交代码</code></li>
+<li>到自己的 GitHub 的副本仓库下能够看到一个绿色的 “Compare &amp; pull request” 按钮，点击它，然后再次规范的填写标题和修改内容</li>
+<li>最后就是等待仓库维护者的审查代码确认拒绝或确认合并分支</li>
 </ol>
-<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><p><code>本文章建立在想要在一块完全没有任何数据的硬盘上安装 Windows 系统为前提</code></p>
-<ol>
-<li>先下载 <a target="_blank" rel="noopener" href="https://www.wepe.com.cn/">微 PE</a> ，往你的 U盘 里面安装好 PE 系统</li>
-<li>去微软的官网下载 <a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows11">Windows系统ISO镜像</a> <code>这里放的是 Windows 11 的下载地址</code></li>
-<li>下载完 Windows系统ISO镜像 后，往你在 <code>此电脑/我的电脑</code> 中找到一个你的 U盘 的盘符，点进去，把你下载好的 ISO 复制进去</li>
-<li>先安全的退出你的 U盘 ，再插到你想要安装系统的电脑的 USB插口 上。在开机的时候，进入 BIOS （自己查自己的主板应该如何进 BIOS ），在里面找到 <code>允许通过USB设备启动</code> ，保存退出。</li>
-<li>重启电脑时会自动进入到 PE系统 里面。启动 PE系统 自带的 DiskGenius（分区精灵）</li>
-<li>在硬盘上右键，选择 <code>快速分区</code> （这里就可以跳过一系列繁琐的配置）</li>
-<li>再根据自己的情况决定要不要把整块硬盘作为单独的 C盘（系统盘） 或切出一些空间用来作为其他盘符</li>
-<li>回到 PE系统 的桌面上，有一个是 <code>Windows 安装器</code>，启动它</li>
-<li>在里面选择安装文件。在之前上文让你下载的 Windows系统ISO镜像 ，选择它</li>
-<li>选择安装位置。这里是让你选择系统要安装在哪个盘符里面，按照默认来说就是直接装在 C盘 上</li>
-<li>等待安装完成，完成后会提示重启电脑。在完全关机好后，拔出 U盘 。</li>
-<li>此时进入到电脑后就是<br><code>您正在成功！ ‌头抬起，全新的窗11来了！您可以在窗11中做完全一样的事，如轰、嚓嚓嚓、推推。您可以和家人分享美妙的内存，分了又分。全新的界面和分屏功能使Windows Tablet使用便捷。升级到窗11完全免费花分文，您只需要在内部集线器中找到预览体验计划，并点击升级，电脑会自动滚回功率。坐和放宽。 ‌好东西就要来了！ ‌欢迎使用窗11，你可以保存物料清单，可以给50%充电，以得到100%完全收费的电池我们新增了更多个性化选项，比如你可以更改触摸键盘的密钥文本颜色，不过你可能要活动窗才能更改k多个性化设置</code></li>
-</ol>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">         U盘                                       U盘</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">祷                  管                  作                  哀</span><br><span class="line">( ′ 3`) sigh~</span><br></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>在我提交完这个 pr 之后，我看了一下这个原仓库的持有者居然是 华中科技大学的一个组织 <code>冰焰作坊</code><br>看了一下他们的其他项目，<del>为什么我的学校没有这种组织呢</del></p>
+<p>这个由其他人提出来的解决方案也是我一个第一次见到的 css 设置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">brightness</span>(<span class="number">1.3</span>) <span class="built_in">hue-rotate</span>(-<span class="number">10deg</span>);</span><br></pre></td></tr></table></figure>
+<p>查了一下，这是一个在 css3 中的新特性，用来给一些元素添加滤镜效果，可以用来<strong>模糊、调亮、改变色相</strong>的操作，看上去还挺好玩的</p>
+
     </div>
 
     
@@ -254,8 +248,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Windows/" rel="tag"># Windows</a>
-              <a href="/tags/WinPE/" rel="tag"># WinPE</a>
+              <a href="/tags/Git/" rel="tag"># Git</a>
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/%E5%BC%80%E6%BA%90/" rel="tag"># 开源</a>
           </div>
 
         
@@ -264,13 +260,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/%E6%B0%B4-%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%81%AB%E7%8B%90%E8%B4%A6%E5%8F%B7%E6%B3%A8%E5%86%8C%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="(水)查看自己的火狐账号注册时间的方法">
-      <i class="fa fa-chevron-left"></i> (水)查看自己的火狐账号注册时间的方法
+    <a href="/%E5%85%B3%E4%BA%8E%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F-Windows/" rel="prev" title="关于安装系统(Windows)">
+      <i class="fa fa-chevron-left"></i> 关于安装系统(Windows)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="关于git的代码协作规范的学习笔记">
-      关于git的代码协作规范的学习笔记 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -331,7 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">使用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">2.</span> <span class="nav-text">最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E8%8C%83%E7%9A%84%E6%8F%90%E4%BA%A4-pr-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">规范的提交 pr 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
