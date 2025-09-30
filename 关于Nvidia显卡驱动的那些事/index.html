@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+		<meta name="description" content="我的一次在排查显卡驱动问题上面的实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Nvidia显卡驱动的那些事">
+<meta property="og:url" content="http://example.com/%E5%85%B3%E4%BA%8ENvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html">
+<meta property="og:site_name" content="AnonTokyo">
+<meta property="og:description" content="我的一次在排查显卡驱动问题上面的实践">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-29T06:36:37.000Z">
+<meta property="article:modified_time" content="2025-09-30T12:52:20.428Z">
+<meta property="article:author" content="Ann">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Nvidia">
+<meta property="article:tag" content="驱动">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%85%B3%E4%BA%8ENvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+		<title>
+			关于Nvidia显卡驱动的那些事 | AnonTokyo
+		</title>
+		
+
+
+
+
+
+
+		<noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+	</head>
+
+	<body itemscope itemtype="http://schema.org/WebPage">
+		<div class="container use-motion">
+			<div class="headband"></div>
+
+			<header class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AnonTokyo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+			</header>
+
+			
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+			<main class="main">
+				<div class="main-inner">
+					<div class="content-wrap">
+						
+
+						<div class="content post posts-expand"> 
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%85%B3%E4%BA%8ENvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnonTokyo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于Nvidia显卡驱动的那些事
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-09-29 14:36:37" itemprop="dateCreated datePublished" datetime="2025-09-29T14:36:37+08:00">2025-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-09-30 20:52:20" itemprop="dateModified" datetime="2025-09-30T20:52:20+08:00">2025-09-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+            <div class="post-description">我的一次在排查显卡驱动问题上面的实践</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前因"><a href="#前因" class="headerlink" title="前因"></a>前因</h2><p>在暑假的时候，我突然对 CUDA 开发有点感兴趣，于是我去下载了一下 CUDA 组件开发包<br>但是把玩了几个小时，觉得有点无聊，就当场用 <a target="_blank" rel="noopener" href="https://geekuninstaller.com/">GeekUninstaller</a> 卸载它。我也看着他一条一条的注册表条目被删掉，但是就在这里留下了隐患 <code>我会在后文提及原因</code><br>九月份开学了，我也有点手痒了，到处拍了些照片，想着回 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> 里面修一下，没想到它居然出问题了。我当时还没什么察觉到是前面我干的那个 CUDA 组件开发包的问题。于是我选择删掉 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> 在下一个新版本，正好我也想用一下新功能<br>但是下载新版本依旧会出现问题，并且出现两种不同形式的崩溃闪退问题<br>第一种的软件行为路径为：启动 -&gt; 展示启动页面 -&gt; CPU、内存、硬盘读取正常调用 -&gt; 即将打开 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> 时的某一个瞬间，<a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> 的 CPU 占用率清零 -&gt; 软件崩溃闪退<br>第二种软件行为路径为：启动 -&gt; 展示启动页面 -&gt; CPU、内存、硬盘读取正常调用 -&gt; 正常打开软件，使用所有基础功能不会出现闪退问题 -&gt; 使用图形加速的功能会出现后面的问题 -&gt; CPU 的负载突然满负荷、任务管理器中出现尝试调用我的 Nvidia 显卡的 Graphic 引擎 -&gt; 几秒后 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> 的 CPU 占用率清零 -&gt; 软件崩溃闪退</p>
+<p>以上两种软件行为均可以在 <strong>事件查看器</strong> 中看到同一种类型的报错</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">错误应用程序名称: Photoshop.exe，版本: 26.7.0.15，时间戳: 0x6823a019</span><br><span class="line">错误模块名称: nvcuda64.dll，版本: 32.0.15.8097，时间戳: 0x68952109 异常代码: 0xc0000005</span><br><span class="line">错误偏移量: 0x00000000001baadb</span><br><span class="line">错误进程 ID: 0x0x54F8</span><br><span class="line">错误应用程序启动时间: 0x0x1DC20C153BA8E17</span><br><span class="line">错误应用程序路径: H:\Ps2025\Adobe Photoshop 2025\Photoshop.exe</span><br><span class="line">错误模块路径: C:\WINDOWS\System32\DriverStore\FileRepository\nvdmsi.inf_amd64_d0190b602da31125\nvcuda64.dll</span><br><span class="line">报告 ID: 4e21a6b6-781b-4664-b997-8ec333281b7d</span><br><span class="line">错误程序包全名: 错误程序包相对应用程序 ID:</span><br></pre></td></tr></table></figure>
+
+<p>在这之后，我带着这个报错在网上找了很多的答案，大家都在说使用 <a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/display-driver-uninstaller-ddu">DDU</a> 来完全卸载显卡驱动<br>我尝试过不同摆列组合的卸载安装驱动（以下均为执行清洁安装）</p>
+<ol>
+<li>只卸载 Nvidia、安装 Game Ready（576.88）</li>
+<li>只卸载 Nvidia、安装 Studio（577.00）</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Intel、再安装 Studio</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Studio、再安装 Intel</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Game Ready、再安装 Intel</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Nvidia app 获取最新版本的 Studio、再安装 Intel</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Nvidia app 获取最新版本的 Game Ready、再安装 Intel</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Nvidia app 获取最新版本的 Studio、再安装 Intel、安装 CUDA 开发组件</li>
+<li>同时卸载 Nvidia &amp; Intel 、先安装 Nvidia app 获取最新版本的 Studio、安装 CUDA 开发组件、安装 Intel</li>
+<li>同时卸载 Nvidia &amp; Intel、先安装 Intel、再安装 Game Ready</li>
+<li>同时卸载 Nvidia &amp; Intel、先安装 Intel、再安装 Nvidia app 获取最新版本的 Studio</li>
+</ol>
+<p>无一例外的，以上均为失败，<del>不然我也不会写这一篇文章了（</del></p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li><del>重装系统</del><br>↑ 这是极端办法，也是我用了之后我才找到的原因</li>
+<li>在 Windows 设置 - 系统 - 系统信息 - 高级系统设置 - 环境变量 - 系统变量 - Path，在这里面，找到所有包含 Nvidia 字段的相关条目，删除。这个让人头大的问题就解决了<br>你的这里面可能会出现一些类似于</li>
+</ol>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 删掉这些条目</span><br><span class="line">C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common</span><br><span class="line">C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR</span><br><span class="line">C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于我是如何定位到问题的"><a href="#关于我是如何定位到问题的" class="headerlink" title="关于我是如何定位到问题的"></a>关于我是如何定位到问题的</h2><p>我先重装了一遍系统，我的 C 盘 也快爆炸了，于是选择重装系统也是一个不错的选择。在重装前，我当然要做好相关的环境、数据备份<br>在这里我提供一点备份的思路：把需要重点备份的数据分为两大块。一块为开发环境的备份，一块为娱乐环境的备份。</p>
+<p>但是这个肯定只能算是一个笼统的分类，我自己当然是稍微改变了一下需要备份的组织架构清单</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 重装系统后的待办事项</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 开发环境</span></span><br><span class="line"></span><br><span class="line">// 和我学习开发任何东西的一切内容都放在这一块 （包括环境变量的备份，后续可以直接一键导入，不需要一条条的输入）</span><br><span class="line"></span><br><span class="line"><span class="section">## 娱乐环境</span></span><br><span class="line"></span><br><span class="line">// 见名知意</span><br><span class="line"></span><br><span class="line"><span class="section">## 系统开机启动项</span></span><br><span class="line"></span><br><span class="line">// 一些启动服务放在这里，比如我的后台要挂 LocalSend、ShareX、mihomo party、power toys、everything 这些能明显提升使用体验和效率的工具，不需要每次开机都去多点击几次</span><br><span class="line"></span><br><span class="line"><span class="section">## 微软输入法</span></span><br><span class="line"></span><br><span class="line">// 最重要的是学习词库的备份，用了很久不希望重装系统再次让输入法重学一边</span><br></pre></td></tr></table></figure>
+
+<p>上面的都准备好了之后，我使用了 <a target="_blank" rel="noopener" href="https://www.wepe.com.cn/">微 PE</a> 装上了 Windows 24H2 专业工作站版本，在用微软自己提供的激活工具 <a target="_blank" rel="noopener" href="https://github.com/massgravel/Microsoft-Activation-Scripts">Microsoft-Activation-Scripts</a> 激活</p>
+<p>到了验证环境的时候，重装好系统的第一件时间，安装 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> ，正常工作<br>让 Windows 自动下载所有需要的驱动，再次打开 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> ，正常工作<br>自己主动安装 Nvidia 最新的 Studio 版本，启动 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a>，正常工作<br>中间我做了其他软件的恢复工作就省略掉吧<br>轮到我备份的几份关键文件：<code>regedit.reg(重装系统前的整个系统注册表，足足有 800 MB 大)</code>、<code>系统环境变量.reg（32 KB）</code>、<code>用户环境变量.reg（11 KB）</code>、<code>输入法完整环境变量.reg（6 KB）</code>、<code>ChsPinyinUDL.dat（88 KB）</code></p>
+<p>再进行了上面的操作之后，我没想着再去验证 <a target="_blank" rel="noopener" href="https://www.adobe.com/tw/products/photoshop/free-trial-download.html">PhotoShop</a> 到底还能不能正常使用，<del>先接着回去打游戏了（这天还没上班）</del></p>
+<p>第二天，想着修点图片，结果好家伙，发现有没法使用了。然后左思右想<del>我也没碰什么啊</del>。但是我突然想到上面说到的使用 <code>.reg</code> 文件的恢复变量的操作，于是我去翻变量里面的条目，发现了几条和 Nvidia 相关的条目，全部删掉了之后。居然就好了！没错，居然就是这样神奇的东西<del>把我搞崩溃了一个月</del></p>
+<p>不过幸好最后面我得到了一个系统排查错误的经验，我的 C盘 也大瘦身了，多出来了很多空间接着给我整新东西，我也会做一个新的自己专用的系统镜像，给自己做一个最低保底的系统快照使用，后面环境再怎么崩溃我都可以随便恢复了，把他们上（版本管理）市！</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>貌似这篇文章不需要什么后记，<del>那我再重复一下上面的吧</del></p>
+<blockquote>
+<p>不过幸好最后面我得到了一个系统排查错误的经验，我的 C盘 也大瘦身了，多出来了很多空间接着给我整新东西，我也会做一个新的自己专用的系统镜像，给自己做一个最低保底的系统快照使用，后面环境再怎么崩溃我都可以随便恢复了，把他们上（版本管理）市！</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/Nvidia/" rel="tag"># Nvidia</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8/" rel="tag"># 驱动</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E5%85%B3%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="关于git的代码协作规范的学习笔记">
+      <i class="fa fa-chevron-left"></i> 关于git的代码协作规范的学习笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+							</div>
+							
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+						<script src="https://giscus.app/client.js" data-repo="MT-Y-TM/MT-Y-TM.github.io-discussions" data-repo-id="R_kgDOPaljdg" data-category="Announcements" data-category-id="DIC_kwDOPaljds4Ct8Kk" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script>
+
+						</div>
+							
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">前因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E5%88%B0%E9%97%AE%E9%A2%98%E7%9A%84"><span class="nav-number">3.</span> <span class="nav-text">关于我是如何定位到问题的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ann"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Ann</p>
+  <div class="site-description" itemprop="description">♿哇袄！♿</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+					</div>
+				</main>
+
+				<footer class="footer">
+					<div class="footer-inner">
+						
+
+						
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ann</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">41k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">38 分钟</span>
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+						
+
+
+
+
+
+
+
+
+					</div>
+				</footer>
+			</div>
+
+			
+  <script size="100" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+				
+
+		</body>
+	</html>
