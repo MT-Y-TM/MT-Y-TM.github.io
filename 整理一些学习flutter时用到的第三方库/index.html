@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+		<meta name="description" content="整理一些学习flutter时用到的第三方库，用来做速查工具表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整理一些学习flutter时用到的第三方库">
+<meta property="og:url" content="http://example.com/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0flutter%E6%97%B6%E7%94%A8%E5%88%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/index.html">
+<meta property="og:site_name" content="AnonTokyo">
+<meta property="og:description" content="整理一些学习flutter时用到的第三方库，用来做速查工具表">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-25T12:37:22.000Z">
+<meta property="article:modified_time" content="2026-01-25T15:44:25.803Z">
+<meta property="article:author" content="Ann">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0flutter%E6%97%B6%E7%94%A8%E5%88%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+		<title>
+			整理一些学习flutter时用到的第三方库 | AnonTokyo
+		</title>
+		
+
+
+
+
+
+
+		<noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+	</head>
+
+	<body itemscope itemtype="http://schema.org/WebPage">
+		<div class="container use-motion">
+			<div class="headband"></div>
+
+			<header class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AnonTokyo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+			</header>
+
+			
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+			<main class="main">
+				<div class="main-inner">
+					<div class="content-wrap">
+						
+
+						<div class="content post posts-expand"> 
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0flutter%E6%97%B6%E7%94%A8%E5%88%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnonTokyo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          整理一些学习flutter时用到的第三方库
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-01-25 20:37:22 / 修改时间：23:44:25" itemprop="dateCreated datePublished" datetime="2026-01-25T20:37:22+08:00">2026-01-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">整理一些学习flutter时用到的第三方库，用来做速查工具表</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>因为开发 Flutter 多端时引用已经做好的第三方库可以大大降低开发难度和提升开发速度，故需要作此整理。</p>
+<hr>
+<h2 id="一、-官方库与核心框架"><a href="#一、-官方库与核心框架" class="headerlink" title="一、 官方库与核心框架"></a>一、 官方库与核心框架</h2><p>由 Flutter 团队或 Dart 团队维护，是项目开发和静态分析的基础。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>Flutter SDK</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>Flutter 本身</td>
+    </tr>
+    <tr>
+        <td>flutter_lints</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个 Flutter 官方用于 Dart 语言静态分析检查的库</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<h2 id="二、-社区常用库"><a href="#二、-社区常用库" class="headerlink" title="二、 社区常用库"></a>二、 社区常用库</h2><h3 id="1-状态管理-State-Management"><a href="#1-状态管理-State-Management" class="headerlink" title="1. 状态管理 (State Management)"></a>1. 状态管理 (State Management)</h3><p>负责跨组件的数据共享与 UI 自动刷新。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>provider</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>官方推荐的状态管理库。通过观察者模式实现数据与 UI 的解耦，避免深层嵌套传参。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-本地存储-Storage-Persistence"><a href="#2-本地存储-Storage-Persistence" class="headerlink" title="2. 本地存储 (Storage &amp; Persistence)"></a>2. 本地存储 (Storage &amp; Persistence)</h3><p>处理数据库、轻量级键值对以及不同平台的 SQLite 适配。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>sqflite</td>
+        <td>❌</td>
+        <td>❌</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>移动端专用，调用原生 SQLite 接口，非常稳定。<b>仅支持异步操作</b></td>
+    </tr>
+    <tr>
+         <td>sqflite_common_ffi</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>基于 FFI 的实现，基于sqlite3的实现。多用于移动端与桌面端的同时开发使用</td>
+    </tr>
+    <tr>
+        <td>sqlite3</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>作为 FFI  的底层依赖实现，可以单独的使用 Dart 进行 sqlite 的数据库操作</td>
+    </tr>
+    <tr>
+        <td>shared_preferences</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个用于数据持久化的库</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-网络与通信-Networking"><a href="#3-网络与通信-Networking" class="headerlink" title="3. 网络与通信 (Networking)"></a>3. 网络与通信 (Networking)</h3><p>处理 API 请求、文件上传下载及拦截器配置。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>Dio</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>支持全局配置、拦截器、请求取消、上传/下载文件、超时等</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="4-文件系统与路径处理-Filesystem"><a href="#4-文件系统与路径处理-Filesystem" class="headerlink" title="4. 文件系统与路径处理 (Filesystem)"></a>4. 文件系统与路径处理 (Filesystem)</h3><p>负责定位安全目录、处理路径字符串及用户文件选择。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>path</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个全面的跨平台路径处理库，可以与 path_provider 进行合作处理</td>
+    </tr>
+    <tr>
+        <td>path_provider</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>一个用于对设备文件系统进行读写操作提供便捷使用的库，可以与 path 进行合作处理</td>
+    </tr>
+    <tr>
+        <td>file_picker</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个允许使用原生文件资源管理器选择单个或多个文件，扩展名支持过滤</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="5-UI-强化与视觉资源-UI-Assets"><a href="#5-UI-强化与视觉资源-UI-Assets" class="headerlink" title="5. UI 强化与视觉资源 (UI &amp; Assets)"></a>5. UI 强化与视觉资源 (UI &amp; Assets)</h3><p>负责字体、动画、图标以及 App 品牌资源配置。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>google_fonts</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个可以快速调用 Google Fonts 中的字体的库</td>
+    </tr>
+    <tr>
+        <td>flutter_spinkit</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个内置了一些有趣的加载动画的库</td>
+    </tr>
+    <tr>
+        <td>cupertino_icons</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个内置更偏向于 iOS 风格图标的库</td>
+    </tr>
+    <tr>
+        <td>flutter_launcher_icons</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个用于简单配置多端 App 启动图标的库</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="6-系统工具与权限-Utilities"><a href="#6-系统工具与权限-Utilities" class="headerlink" title="6. 系统工具与权限 (Utilities)"></a>6. 系统工具与权限 (Utilities)</h3><p>提供权限状态检查、唯一 ID 生成及日期&#x2F;语言格式化服务。</p>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">库名称</th>
+      <th colspan="6">支持平台</th>
+      <th rowspan="2">作用</th>
+    </tr>
+    <tr>
+      <th>Windows</th>
+      <th>Linux</th>
+      <th>MacOS</th>
+      <th>Android</th>
+      <th>iOS</th>
+      <th>Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>permission_handler</td>
+        <td>✅</td>
+        <td>❌</td>
+        <td>❌</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个用于提供跨平台权限状态检查的库</td>
+    </tr>
+    <tr>
+        <td>uuid</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>一个用于简单快速生成RFC4122和RFC9562 UUID的库</td>
+    </tr>
+    <tr>
+        <td>intl</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>提供国际化和本地化服务， 包括信息翻译、复数和性别、日期/数字格式 以及解析和双向文本</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><ul>
+<li>我对于 Flutter 是相见恨晚的感觉，最开始对于多端开发只听说过最成熟的 Electron ，但是 Electron 的开发理念我自己也不是很喜欢，把整个 Chrome 内核塞了进去。</li>
+<li>后面了解到了 Tauri ，这个的开发理念我很喜欢，最强的性能加上最强的前端可拓展性。于是我学过了一小会，后面觉得兼容性又让我有点缺步，但我依旧看到它的发展，希望后续可以与 Flutter 掰掰手腕。</li>
+<li>再到后面，我无意间看到了 Flutter 这个框架，一了解下，这就是我一直想要的那种多端开发的最终解：接近原生的性能，拥有不错的跨端能力，社区支持还算比较强大与活跃，并且拥有这么多成熟的公司用 Flutter 起步开发或把 Flutter 融入他们的大产品中，让我有信心学习这款框架作为谋生的手段。</li>
+<li>另：本人 css 不是很过关，加上没有什么平面设计的水平，所以前端三剑客的页面我写的不太好。所以我不太想选择 Electron 和 Tauri 而选择 Flutter 的原因一个是这个。但现在有 AI 的加持，也不太成问题。</li>
+</ul>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  
+  table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+  table th, table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 8px;
+    border: 1px solid #dfe2e5;
+  }
+
+  table tr td:last-child {
+    text-align: left !important;
+    padding-left: 15px;
+  }
+
+  h3 {
+    border-left: 5px solid #42b983;
+    padding-left: 10px;
+    margin-top: 2rem;
+  }
+</style>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/IOS/" rel="tag"># IOS</a>
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E5%85%B3%E4%BA%8ENvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" rel="prev" title="关于Nvidia显卡驱动的那些事">
+      <i class="fa fa-chevron-left"></i> 关于Nvidia显卡驱动的那些事
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+							</div>
+							
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+						<script src="https://giscus.app/client.js" data-repo="MT-Y-TM/MT-Y-TM.github.io-discussions" data-repo-id="R_kgDOPaljdg" data-category="Announcements" data-category-id="DIC_kwDOPaljds4Ct8Kk" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script>
+
+						</div>
+							
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E5%AE%98%E6%96%B9%E5%BA%93%E4%B8%8E%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">一、 官方库与核心框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E7%A4%BE%E5%8C%BA%E5%B8%B8%E7%94%A8%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">二、 社区常用库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86-State-Management"><span class="nav-number">3.1.</span> <span class="nav-text">1. 状态管理 (State Management)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8-Storage-Persistence"><span class="nav-number">3.2.</span> <span class="nav-text">2. 本地存储 (Storage &amp; Persistence)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1-Networking"><span class="nav-number">3.3.</span> <span class="nav-text">3. 网络与通信 (Networking)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%B7%AF%E5%BE%84%E5%A4%84%E7%90%86-Filesystem"><span class="nav-number">3.4.</span> <span class="nav-text">4. 文件系统与路径处理 (Filesystem)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-UI-%E5%BC%BA%E5%8C%96%E4%B8%8E%E8%A7%86%E8%A7%89%E8%B5%84%E6%BA%90-UI-Assets"><span class="nav-number">3.5.</span> <span class="nav-text">5. UI 强化与视觉资源 (UI &amp; Assets)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%9D%83%E9%99%90-Utilities"><span class="nav-number">3.6.</span> <span class="nav-text">6. 系统工具与权限 (Utilities)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ann"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Ann</p>
+  <div class="site-description" itemprop="description">♿哇袄！♿</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+					</div>
+				</main>
+
+				<footer class="footer">
+					<div class="footer-inner">
+						
+
+						
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ann</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">44k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">40 分钟</span>
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+						
+
+
+
+
+
+
+
+
+					</div>
+				</footer>
+			</div>
+
+			
+  <script size="100" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+				
+
+		</body>
+	</html>
