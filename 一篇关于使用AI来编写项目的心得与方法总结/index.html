@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+		<meta name="description" content="这是一篇我用来描述在这个时间节点下，我利用 AI 如何提高自己编写毕业设计的一篇心得与方法总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇关于使用AI来编写项目的心得与方法总结">
+<meta property="og:url" content="http://example.com/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8AI%E6%9D%A5%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97%E4%B8%8E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="AnonTokyo">
+<meta property="og:description" content="这是一篇我用来描述在这个时间节点下，我利用 AI 如何提高自己编写毕业设计的一篇心得与方法总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-07T06:19:06.000Z">
+<meta property="article:modified_time" content="2026-03-07T16:01:22.265Z">
+<meta property="article:author" content="Ann">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="Trae">
+<meta property="article:tag" content="Skill">
+<meta property="article:tag" content="文档规范">
+<meta property="article:tag" content="NodeJS">
+<meta property="article:tag" content="Gemini">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8AI%E6%9D%A5%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97%E4%B8%8E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+		<title>
+			一篇关于使用AI来编写项目的心得与方法总结 | AnonTokyo
+		</title>
+		
+
+
+
+
+
+
+		<noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+	</head>
+
+	<body itemscope itemtype="http://schema.org/WebPage">
+		<div class="container use-motion">
+			<div class="headband"></div>
+
+			<header class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AnonTokyo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+			</header>
+
+			
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+			<main class="main">
+				<div class="main-inner">
+					<div class="content-wrap">
+						
+
+						<div class="content post posts-expand"> 
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8AI%E6%9D%A5%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97%E4%B8%8E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnonTokyo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一篇关于使用AI来编写项目的心得与方法总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-03-07 14:19:06" itemprop="dateCreated datePublished" datetime="2026-03-07T14:19:06+08:00">2026-03-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-03-08 00:01:22" itemprop="dateModified" datetime="2026-03-08T00:01:22+08:00">2026-03-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>16 分钟</span>
+            </span>
+            <div class="post-description">这是一篇我用来描述在这个时间节点下，我利用 AI 如何提高自己编写毕业设计的一篇心得与方法总结</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>因为我想在自己的每次实践中都获得最高效的学习结果，所以我经常会尝试用不同的东西来尝试做同一件事情。本次就是轮到了利用 AI 来进行本项目几乎全编写</p>
+<blockquote>
+<p>其实还有一点是我自己做毕业设计前需要提交一份毕业设计题目</p>
+</blockquote>
+<p>如果你想跳过过程直接看结论的话可以直接移步到 <code>第二次尝试开发</code> 的章节中 <code>审核计划书(plan)</code> 的部分</p>
+<h2 id="关于项目的开头"><a href="#关于项目的开头" class="headerlink" title="关于项目的开头"></a>关于项目的开头</h2><h3 id="一、想法"><a href="#一、想法" class="headerlink" title="一、想法"></a>一、想法</h3><p>在思考毕设题目的时候，我就已经有一个想法了： <code>先做好一个比较完善的需求报告分析和系统设计规划</code><br>抱着这个的前提下，我现在指导老师提供的题库中选择了一个我觉得最可行的题目 <code>在线考试平台的设计与实现</code> ， 确定下来整个系统需要做什么之后，我就进入到了 <code>需求分析</code> 和 <code>系统的设计与规划</code></p>
+<h3 id="二、关于系统的设计与规划"><a href="#二、关于系统的设计与规划" class="headerlink" title="二、关于系统的设计与规划"></a>二、关于系统的设计与规划</h3><ul>
+<li>在这里我其实经历过一次技术选型的更改，原本指导老师给出的是 利用 <code>Python</code> 的 <code>Fast API</code> 来做后端实现，但是这个框架我并不是很了解，因此我向指导老师进行了询问是否可以更换题目，指导老师给予了我肯定的回答。</li>
+<li>此时我面临一次选择的问题，一边是 <code>Springboot</code> 技术栈做后端，一边是 Node JS 做后端。思考了这个系统应改不会做的特别高难度的并发操作、且项目的功能需求也没有需要如此高规格的性能来支撑。在权衡了开发效率与性能之间，我选择了开发效率更高的 Node JS 来进行本次的开发。</li>
+<li>来到了 Node JS 的后端选型后，其实本项目已经没有任何需要思考的地方了。因为我本人也只学习过 <code>Express</code> 与 <code>Koa</code> 这两款框架，根据我自己的学习经历我选择了开箱即用的 <code>Express</code> 。因为在 AI 开发时我比较敏感的事情就是让 <code>AI</code> 引入额外的依赖，我希望一个框架（依赖）可以解决 90% 的基本需求，剩下的特效需求我才会选择引入额外的依赖。</li>
+<li>而前端我也是毫不犹豫的选择了 <code>Vue3</code> ，无他，原因只有是我觉得用的顺手，且我熟悉这里面的需要依赖、能做什么。</li>
+</ul>
+<p>以上的技术选型都结束了，接下来就是我需要思考具体的项目的大致规划中项目结构、必须使用的依赖等等有哪一些。<br>但这一步我交给了 <code>Gemini</code> 来帮我编写，如：</p>
+<h4 id="项目的工程目录"><a href="#项目的工程目录" class="headerlink" title="项目的工程目录"></a>项目的工程目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/online-exam-system/</span><br><span class="line">|</span><br><span class="line">|-- /backend/                   (Node.js Express 项目)</span><br><span class="line">|   |-- /config/                (配置文件，如数据库连接、JWT密钥)</span><br><span class="line">|   |-- /controllers/           (路由处理函数，处理请求和响应，e.g., userController.js)</span><br><span class="line">|   |-- /middlewares/           (Express 中间件，如JWT验证、权限RBAC, e.g., auth.js)</span><br><span class="line">|   |-- /models/                (Sequelize 数据表模型, e.g., User.js, Question.js)</span><br><span class="line">|   |-- /routes/                (API路由定义, e.g., auth.js, question.js)</span><br><span class="line">|   |-- /services/              (业务逻辑服务层, e.g., examService.js, gradingService.js)</span><br><span class="line">|   |-- /seeders/               (数据库初始数据脚本)</span><br><span class="line">|   |-- server.js               (Express 应用主入口)</span><br><span class="line">|   |-- package.json            (NPM 依赖)</span><br><span class="line">|   |-- .env                    (环境变量, 如数据库URL, JWT_SECRET)</span><br><span class="line">|</span><br><span class="line">|-- /frontend/                  (Vue3 + Vite 项目)</span><br><span class="line">|   |-- /public/</span><br><span class="line">|   |-- /src/</span><br><span class="line">|   |   |-- /api/               (封装 Axios 请求)</span><br><span class="line">|   |   |-- /assets/</span><br><span class="line">|   |   |-- /components/        (可复用组件)</span><br><span class="line">|   |   |-- /router/            (Vue Router 配置)</span><br><span class="line">|   |   |-- /store/             (Pinia stores)</span><br><span class="line">|   |   |-- /utils/</span><br><span class="line">|   |   |-- /views/             (页面级组件)</span><br><span class="line">|   |   |-- App.vue</span><br><span class="line">|   |   |-- main.js</span><br><span class="line">|   |-- index.html</span><br><span class="line">|   |-- package.json</span><br><span class="line">|   |-- vite.config.js</span><br></pre></td></tr></table></figure>
+
+<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><p><strong>Express 后端 (Node.js)</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>库 (Library)</strong></th>
+<th><strong>作用 (Purpose)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>express</code></td>
+<td>核心Web框架，用于构建API。</td>
+</tr>
+<tr>
+<td><code>mysql2</code></td>
+<td>MySQL 数据库驱动（对应 <code>Sequelize</code> 的方言）。</td>
+</tr>
+<tr>
+<td><code>sequelize</code></td>
+<td>ORM (对象关系映射)，用于与数据库交互（定义模型、执行CRUD）。</td>
+</tr>
+<tr>
+<td><code>jsonwebtoken</code></td>
+<td>用于生成和验证JWT (JSON Web Tokens)。</td>
+</tr>
+<tr>
+<td><code>bcryptjs</code></td>
+<td>用于密码的哈希加密和验证（存储密码时使用）。</td>
+</tr>
+<tr>
+<td><code>dotenv</code></td>
+<td>加载 <code>.env</code> 文件中的环境变量。</td>
+</tr>
+<tr>
+<td><code>body-parser</code></td>
+<td>解析 HTTP 请求体（Middleware）。</td>
+</tr>
+<tr>
+<td><code>cors</code></td>
+<td>处理跨域资源共享（Middleware）。</td>
+</tr>
+</tbody></table>
+<p><strong>Vue3 前端 (JavaScript&#x2F;TypeScript) - 保持不变</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>库 (Library)</strong></th>
+<th><strong>作用 (Purpose)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vue@^3</code></td>
+<td>核心前端框架。</td>
+</tr>
+<tr>
+<td><code>vue-router@^4</code></td>
+<td>官方路由，用于管理前端页面跳转（SPA的核心）。</td>
+</tr>
+<tr>
+<td><code>pinia</code></td>
+<td>官方状态管理库，用于全局管理状态。</td>
+</tr>
+<tr>
+<td><code>axios</code></td>
+<td>HTTP客户端，用于向Express后端发起Ajax请求。</td>
+</tr>
+<tr>
+<td><code>element-plus</code></td>
+<td>UI组件库，提供丰富的即用型组件，加速开发。</td>
+</tr>
+<tr>
+<td><code>vite</code></td>
+<td>前端构建工具，提供极速的开发服务器和打包功能。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>虽然从目前我已经开发完了整个项目来看，这里面还是缺了一些我现在新引入的一些依赖，但这些基础性的依赖确实支撑着我所有的基础功能的开发需求，且用的顺手</p>
+</blockquote>
+<h4 id="系统规划"><a href="#系统规划" class="headerlink" title="系统规划"></a>系统规划</h4><h5 id="用户角色的定义"><a href="#用户角色的定义" class="headerlink" title="用户角色的定义"></a>用户角色的定义</h5><p><code>这个是必须自己手写的最重要的一部分（之一）</code><br>这里我也不废话这么多，以下就是我最初版的角色设计，现在看起来特别简陋，但是能够覆盖了我后期的一些特殊需求的<br>这里的内容也是我与 <code>Gemini</code> 的对话中产出的，我让他思考在我编写的角色中，是否还有一些需要考虑的功能，他给我补全到了这样的程度我就停手了。因为我觉得再加功能我可能就做不过来了</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> <span class="strong">**学生 (Student)**</span></span><br><span class="line"><span class="bullet">   -</span> <span class="strong">**核心需求：**</span> 参加考试、查看成绩。</span><br><span class="line"><span class="bullet">   -</span> <span class="strong">**功能：**</span></span><br><span class="line"><span class="bullet">     -</span> 注册、登录、修改个人信息（如密码）。</span><br><span class="line"><span class="bullet">     -</span> 浏览“待参加”的考试列表。</span><br><span class="line"><span class="bullet">     -</span> 在规定时间内进入考试、答题、提交试卷。</span><br><span class="line"><span class="bullet">     -</span> 查看已完成考试的成绩、排名（可选）和错题分析。</span><br><span class="line"><span class="bullet">2.</span> <span class="strong">**教师 (Teacher)**</span></span><br><span class="line"><span class="bullet">   -</span> <span class="strong">**核心需求：**</span> 管理教学资源、组织考试、分析学情。</span><br><span class="line"><span class="bullet">   -</span> <span class="strong">**功能：**</span></span><br><span class="line"><span class="bullet">     -</span> 登录。</span><br><span class="line"><span class="bullet">     -</span> <span class="strong">**题库管理：**</span> 对题目（按科目）进行增、删、改、查（CRUD）。</span><br><span class="line"><span class="bullet">     -</span> <span class="strong">**试卷管理：**</span></span><br><span class="line"><span class="bullet">       -</span> 手动组卷：从题库中选择题目，设置分值，组成试卷。</span><br><span class="line"><span class="bullet">       -</span> 随机组卷（选择开发）：设定规则（如科目、题型、难度、数量），系统自动抽题组卷。</span><br><span class="line"><span class="bullet">     -</span> <span class="strong">**考试管理：**</span> 发布考试（关联试卷，设定起止时间、考试时长、可见班级等）、查看学生考试情况（如谁未提交）。</span><br><span class="line"><span class="bullet">     -</span> <span class="strong">**成绩管理：**</span> 自动阅卷（客观题）、查看成绩统计（平均分、最高/低分、分数分布）、查看错题分析。</span><br><span class="line"><span class="bullet">3.</span> <span class="strong">**管理员 (Admin)**</span></span><br><span class="line"><span class="bullet">   -</span> <span class="strong">**核心需求：**</span> 维护系统稳定和用户数据。</span><br><span class="line"><span class="bullet">   -</span> <span class="strong">**功能：**</span></span><br><span class="line"><span class="bullet">     -</span> 登录。</span><br><span class="line"><span class="bullet">     -</span> <span class="strong">**用户管理：**</span> 增、删、改、查自己创建的部门下的用户（包括重置教师或学生密码）。</span><br><span class="line"><span class="bullet">     -</span> <span class="strong">**角色分配：**</span> 设置用户为“教师”或“学生”。</span><br><span class="line"><span class="bullet">     -</span> 系统配置：如管理科目分类、全局公告。</span><br></pre></td></tr></table></figure>
+
+<h5 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h5><p><code>这个是必须自己手写的最重要的一部分（之二）</code><br>众所周知，每一个大型的项目的运行都离不开一个设计的足够好的数据库，在我这里也是同理。因为以前吃过开发的过程中老是修改数据库字段的麻烦，所以我吃了两次错了之后每一次做新的软件时我都会先把数据库设计的尽量扩展性足够高、尽量把一些核心的字段在前期就规划出来<br>然后我就把自己的上述的角色设计丢给了 <code>Gemini</code> 让他先给我出一版数据库，然后我再接着改成我所需要的样子。我自己改的差不多了再把内容丢回去让 <code>Gemini</code> 细化字段要求、外键、约束等等。<br>经过一番的编写后我得到了一份在前期来看是完全可用的设计的相对合理的数据库设计草稿</p>
+<blockquote>
+<p>当然，我做到后面发现我的需求还是有一点高了，因此我对这个数据库进行过几次的改造，按照目前的阶段来说，这个数据库并不支持一些比较复杂的 N-M 的多对多的模型需求，所以在后面的开发我只有在对数据库重构的时候才会在与此同时的重构后端的内容，按照我自己的实践经历，还没有试过前后端没法实现我对需求的时候，项目需要重构都是数据库设计不足导致的。</p>
+</blockquote>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#### A. 核心模块数据库表结构 (Sequelize Models)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> <span class="strong">**User (用户表 `Users`)**</span>：<span class="code">`id`</span>, <span class="code">`username`</span>, <span class="code">`hashed_password`</span>, <span class="code">`full_name`</span>, <span class="code">`role`</span> (Enum: &#x27;student&#x27;, &#x27;teacher&#x27;, &#x27;admin&#x27;), <span class="code">`createdAt`</span>, <span class="code">`organization_id`</span> (FK), <span class="code">`subUnit_id`</span>(FK), <span class="code">`jion_date`</span>。</span><br><span class="line"><span class="bullet">2.</span> <span class="strong">**Subject (科目表 `Subjects`)**</span>：<span class="code">`id`</span>, <span class="code">`name`</span>。</span><br><span class="line"><span class="bullet">3.</span> <span class="strong">**Question (试题表 `Questions`)**</span>：<span class="code">`id`</span>, <span class="code">`question_text`</span>, <span class="code">`question_type`</span>, <span class="code">`options`</span> (JSON), <span class="code">`answer`</span> (JSON), <span class="code">`analysis`</span>, <span class="code">`difficulty`</span>, <span class="code">`subject_id`</span> (FK), <span class="code">`creator_id`</span> (FK), <span class="code">`is_active`</span>。</span><br><span class="line"><span class="bullet">4.</span> <span class="strong">**Paper (试卷模板表 `Papers`)**</span>：<span class="code">`id`</span>, <span class="code">`title`</span>, <span class="code">`creator_id`</span> (FK), <span class="code">`total_score`</span>。</span><br><span class="line"><span class="bullet">5.</span> <span class="strong">**PaperQuestion (试卷-试题关联表 `PaperQuestions`)**</span>：<span class="code">`id`</span>, <span class="code">`paper_id`</span> (FK), <span class="code">`question_id`</span> (FK), <span class="code">`score`</span>, <span class="code">`order`</span>。</span><br><span class="line"><span class="bullet">6.</span> <span class="strong">**Exam (考试表 `Exams`)**</span>：<span class="code">`id`</span>, <span class="code">`title`</span>, <span class="code">`paper_id`</span> (FK), <span class="code">`start_time`</span>, <span class="code">`end_time`</span>, <span class="code">`duration_minutes`</span>, <span class="code">`creator_id`</span> (FK), <span class="code">`is_published`</span>, <span class="code">`visible_to`</span>。</span><br><span class="line"><span class="bullet">7.</span> <span class="strong">**ExamRecord (考试记录表 `ExamRecords`)**</span>：<span class="code">`id`</span>, <span class="code">`student_id`</span> (FK), <span class="code">`exam_id`</span> (FK), <span class="code">`status`</span> (Enum: &#x27;pending&#x27;, &#x27;ongoing&#x27;, &#x27;submitted&#x27;, &#x27;graded&#x27;), <span class="code">`actual_start_time`</span>, <span class="code">`submit_time`</span>, <span class="code">`score`</span>。</span><br><span class="line"><span class="bullet">8.</span> <span class="strong">**AnswerRecord (答题记录表 `AnswerRecords`)**</span>：<span class="code">`id`</span>, <span class="code">`exam_record_id`</span> (FK), <span class="code">`question_id`</span> (FK), <span class="code">`student_answer`</span> (JSON), <span class="code">`is_correct`</span>, <span class="code">`score_obtained`</span>。</span><br><span class="line"><span class="bullet">9.</span> <span class="strong">**Organization (归属单位表 `Organizations`)**</span>: <span class="code">`id`</span>, <span class="code">`name`</span>, <span class="code">`code`</span>, <span class="code">`type`</span>, <span class="code">`join_date`</span>。</span><br><span class="line"><span class="bullet">10.</span> <span class="strong">**SubUnit (归属子单位表`SubUnits`)**</span>: <span class="code">`id`</span>, <span class="code">`name`</span>, <span class="code">`parent_id`</span> (FK), <span class="code">`type`</span>, <span class="code">`create_date`</span>。</span><br><span class="line"><span class="bullet">11.</span> <span class="strong">**Notice (公告表 `Notices`)**</span>: <span class="code">`id`</span>, <span class="code">`title`</span>, <span class="code">`content`</span>, <span class="code">`creator_id`</span> (FK), <span class="code">`organization_id`</span> (FK), <span class="code">`sub_unit_id`</span>, <span class="code">`created_at`</span>, <span class="code">`subject_id`</span>(FK)。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">#### B. 核心模块数据库表结构 (Sequelize Models)</span></span><br><span class="line"></span><br><span class="line">|  序号  | 表名 (<span class="code">`Model`</span>)                       | 字段名              | 数据类型 (Sequelize/SQL) | 约束/关系                  | 备注                                              |</span><br><span class="line">| :----: | :----------------------------------- | :------------------ | :----------------------- | :------------------------- | :------------------------------------------------ |</span><br><span class="line">| <span class="strong">**1**</span>  | <span class="strong">**Users (用户表)**</span>                   | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 用户唯一标识                                      |</span><br><span class="line">|        |                                      | <span class="code">`username`</span>          | <span class="code">`VARCHAR(100)`</span>           | <span class="code">`UNIQUE, NOT NULL`</span>         | 登录账号                                          |</span><br><span class="line">|        |                                      | <span class="code">`hashed_password`</span>   | <span class="code">`VARCHAR(255)`</span>           | <span class="code">`NOT NULL`</span>                 | 加密后的密码                                      |</span><br><span class="line">|        |                                      | <span class="code">`full_name`</span>         | <span class="code">`VARCHAR(100)`</span>           |                            | 用户全名/昵称                                     |</span><br><span class="line">|        |                                      | <span class="code">`role`</span>              | <span class="code">`ENUM`</span>                   | <span class="code">`NOT NULL`</span>                 | 角色：&#x27;student&#x27;, &#x27;teacher&#x27;, &#x27;admin&#x27;               |</span><br><span class="line">|        |                                      | <span class="code">`createdAt`</span>         | <span class="code">`DATETIME`</span>               | <span class="code">`NOT NULL`</span>                 | 创建时间                                          |</span><br><span class="line">|        |                                      | <span class="code">`organization_id`</span>   | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Organizations`</span>    | 归属单位（学校/公司）                             |</span><br><span class="line">|        |                                      | <span class="code">`subUnit_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`SubUnits`</span>         | 归属子单位（班级/部门）                           |</span><br><span class="line">|        |                                      | <span class="code">`join_date`</span>         | <span class="code">`DATE`</span>                   |                            | 加入组织日期                                      |</span><br><span class="line">| <span class="strong">**2**</span>  | <span class="strong">**Subjects (科目表)**</span>                | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 科目唯一标识                                      |</span><br><span class="line">|        |                                      | <span class="code">`name`</span>              | <span class="code">`VARCHAR(100)`</span>           | <span class="code">`UNIQUE, NOT NULL`</span>         | 科目名称（如：高数、C++）                         |</span><br><span class="line">| <span class="strong">**3**</span>  | <span class="strong">**Questions (试题表)**</span>               | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 试题唯一标识                                      |</span><br><span class="line">|        |                                      | <span class="code">`question_text`</span>     | <span class="code">`TEXT`</span>                   | <span class="code">`NOT NULL`</span>                 | 试题内容                                          |</span><br><span class="line">|        |                                      | <span class="code">`question_type`</span>     | <span class="code">`VARCHAR(50)`</span>            | <span class="code">`NOT NULL`</span>                 | 题型（如：&#x27;single<span class="emphasis">_choice&#x27;, &#x27;multiple_</span>choice&#x27;）    |</span><br><span class="line">|        |                                      | <span class="code">`options`</span>           | <span class="code">`JSON/TEXT`</span>              |                            | 选项列表 (JSON 格式存储)                          |</span><br><span class="line">|        |                                      | <span class="code">`answer`</span>            | <span class="code">`JSON/TEXT`</span>              | <span class="code">`NOT NULL`</span>                 | 标准答案 (JSON 格式存储)                          |</span><br><span class="line">|        |                                      | <span class="code">`analysis`</span>          | <span class="code">`TEXT`</span>                   |                            | 试题解析                                          |</span><br><span class="line">|        |                                      | <span class="code">`difficulty`</span>        | <span class="code">`ENUM`</span>                   |                            | 难度等级（如：&#x27;easy&#x27;, &#x27;medium&#x27;, &#x27;hard&#x27;）          |</span><br><span class="line">|        |                                      | <span class="code">`subject_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Subjects`</span>         | 所属科目                                          |</span><br><span class="line">|        |                                      | <span class="code">`creator_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Users`</span>            | 试题创建者（教师/管理员）                         |</span><br><span class="line">|        |                                      | <span class="code">`is_active`</span>         | <span class="code">`BOOLEAN`</span>                | <span class="code">`NOT NULL, DEFAULT(TRUE)`</span>  | 逻辑删除标志，用于历史试卷数据完整性              |</span><br><span class="line">| <span class="strong">**4**</span>  | <span class="strong">**Papers (试卷模板表)**</span>              | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 试卷模板唯一标识                                  |</span><br><span class="line">|        |                                      | <span class="code">`title`</span>             | <span class="code">`VARCHAR(255)`</span>           | <span class="code">`NOT NULL`</span>                 | 试卷模板标题                                      |</span><br><span class="line">|        |                                      | <span class="code">`creator_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Users`</span>            | 试卷创建者（教师/管理员）                         |</span><br><span class="line">|        |                                      | <span class="code">`total_score`</span>       | <span class="code">`FLOAT`</span>                  |                            | 试卷总分                                          |</span><br><span class="line">| <span class="strong">**5**</span>  | <span class="strong">**PaperQuestions (试卷-试题关联表)**</span> | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 关联记录唯一标识                                  |</span><br><span class="line">|        |                                      | <span class="code">`paper_id`</span>          | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Papers`</span>           | 试卷模板 ID                                       |</span><br><span class="line">|        |                                      | <span class="code">`question_id`</span>       | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Questions`</span>        | 试题 ID                                           |</span><br><span class="line">|        |                                      | <span class="code">`score`</span>             | <span class="code">`FLOAT`</span>                  | <span class="code">`NOT NULL`</span>                 | 该试题在本次试卷中的分值                          |</span><br><span class="line">|        |                                      | <span class="code">`order`</span>             | <span class="code">`INTEGER`</span>                |                            | 试题在试卷中的顺序                                |</span><br><span class="line">| <span class="strong">**6**</span>  | <span class="strong">**Exams (考试表)**</span>                   | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 考试实例唯一标识                                  |</span><br><span class="line">|        |                                      | <span class="code">`title`</span>             | <span class="code">`VARCHAR(255)`</span>           | <span class="code">`NOT NULL`</span>                 | 考试名称                                          |</span><br><span class="line">|        |                                      | <span class="code">`paper_id`</span>          | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Papers`</span>           | 关联的试卷模板                                    |</span><br><span class="line">|        |                                      | <span class="code">`start_time`</span>        | <span class="code">`DATETIME`</span>               | <span class="code">`NOT NULL`</span>                 | 考试开始时间                                      |</span><br><span class="line">|        |                                      | <span class="code">`end_time`</span>          | <span class="code">`DATETIME`</span>               | <span class="code">`NOT NULL`</span>                 | 考试结束时间                                      |</span><br><span class="line">|        |                                      | <span class="code">`duration_minutes`</span>  | <span class="code">`INTEGER`</span>                | <span class="code">`NOT NULL`</span>                 | 考试时长（分钟）                                  |</span><br><span class="line">|        |                                      | <span class="code">`creator_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Users`</span>            | 考试发布者                                        |</span><br><span class="line">|        |                                      | <span class="code">`is_published`</span>      | <span class="code">`BOOLEAN`</span>                | <span class="code">`NOT NULL, DEFAULT(FALSE)`</span> | 是否已发布（草稿/正式）                           |</span><br><span class="line">|        |                                      | <span class="code">`visible_to`</span>        | <span class="code">`JSON/TEXT`</span>              |                            | 可见单位/子单位列表 (JSON 格式存储)               |</span><br><span class="line">| <span class="strong">**7**</span>  | <span class="strong">**ExamRecords (考试记录表)**</span>         | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 考试记录唯一标识                                  |</span><br><span class="line">|        |                                      | <span class="code">`student_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Users`</span>            | 参加考试的学生 ID                                 |</span><br><span class="line">|        |                                      | <span class="code">`exam_id`</span>           | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Exams`</span>            | 关联的考试实例 ID                                 |</span><br><span class="line">|        |                                      | <span class="code">`status`</span>            | <span class="code">`ENUM`</span>                   | <span class="code">`NOT NULL`</span>                 | 状态：&#x27;pending&#x27;, &#x27;ongoing&#x27;, &#x27;submitted&#x27;, &#x27;graded&#x27; |</span><br><span class="line">|        |                                      | <span class="code">`actual_start_time`</span> | <span class="code">`DATETIME`</span>               |                            | 实际开始答题时间                                  |</span><br><span class="line">|        |                                      | <span class="code">`submit_time`</span>       | <span class="code">`DATETIME`</span>               |                            | 提交试卷时间                                      |</span><br><span class="line">|        |                                      | <span class="code">`score`</span>             | <span class="code">`FLOAT`</span>                  |                            | 最终得分                                          |</span><br><span class="line">| <span class="strong">**8**</span>  | <span class="strong">**AnswerRecords (答题记录表)**</span>       | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 答题记录唯一标识                                  |</span><br><span class="line">|        |                                      | <span class="code">`exam_record_id`</span>    | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`ExamRecords`</span>      | 关联的考试记录 ID                                 |</span><br><span class="line">|        |                                      | <span class="code">`question_id`</span>       | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Questions`</span>        | 关联的试题 ID                                     |</span><br><span class="line">|        |                                      | <span class="code">`student_answer`</span>    | <span class="code">`JSON/TEXT`</span>              |                            | 学生提交的答案 (JSON 格式存储)                    |</span><br><span class="line">|        |                                      | <span class="code">`is_correct`</span>        | <span class="code">`BOOLEAN`</span>                |                            | 客观题是否正确                                    |</span><br><span class="line">|        |                                      | <span class="code">`score_obtained`</span>    | <span class="code">`FLOAT`</span>                  |                            | 本题得分                                          |</span><br><span class="line">| <span class="strong">**9**</span>  | <span class="strong">**Organizations (归属单位表)**</span>       | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 单位唯一标识                                      |</span><br><span class="line">|        |                                      | <span class="code">`name`</span>              | <span class="code">`VARCHAR(255)`</span>           | <span class="code">`NOT NULL`</span>                 | 单位名称（如：学校名称）                          |</span><br><span class="line">|        |                                      | <span class="code">`code`</span>              | <span class="code">`VARCHAR(50)`</span>            | <span class="code">`UNIQUE`</span>                   | 单位编码                                          |</span><br><span class="line">|        |                                      | <span class="code">`type`</span>              | <span class="code">`VARCHAR(50)`</span>            |                            | 单位类型                                          |</span><br><span class="line">|        |                                      | <span class="code">`create_date`</span>       | <span class="code">`DATE`</span>                   |                            | 创建日期                                          |</span><br><span class="line">| <span class="strong">**10**</span> | <span class="strong">**SubUnits (归属子单位表)**</span>          | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 子单位唯一标识                                    |</span><br><span class="line">|        |                                      | <span class="code">`name`</span>              | <span class="code">`VARCHAR(255)`</span>           | <span class="code">`NOT NULL`</span>                 | 子单位名称（如：班级/部门名称）                   |</span><br><span class="line">|        |                                      | <span class="code">`parent_id`</span>         | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Organizations`</span>    | 归属的父单位 ID                                   |</span><br><span class="line">|        |                                      | <span class="code">`type`</span>              | <span class="code">`VARCHAR(50)`</span>            |                            | 子单位类型                                        |</span><br><span class="line">|        |                                      | <span class="code">`create_date`</span>       | <span class="code">`DATE`</span>                   |                            | 创建日期                                          |</span><br><span class="line">| <span class="strong">**11**</span> | <span class="strong">**Notices (公告表)**</span>                 | <span class="code">`id`</span>                | <span class="code">`INTEGER`</span>                | <span class="code">`PK, AUTO_INCREMENT`</span>       | 公告唯一标识                                      |</span><br><span class="line">|        |                                      | <span class="code">`title`</span>             | <span class="code">`VARCHAR(255)`</span>           | <span class="code">`NOT NULL`</span>                 | 公告标题                                          |</span><br><span class="line">|        |                                      | <span class="code">`content`</span>           | <span class="code">`TEXT`</span>                   | <span class="code">`NOT NULL`</span>                 | 公告内容                                          |</span><br><span class="line">|        |                                      | <span class="code">`creator_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Users`</span>            | 公告发布者                                        |</span><br><span class="line">|        |                                      | <span class="code">`organization_id`</span>   | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Organizations`</span>    | 公告可见的单位 ID                                 |</span><br><span class="line">|        |                                      | <span class="code">`sub_unit_id`</span>       | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`SubUnits`</span>         | 公告可见的子单位 ID                               |</span><br><span class="line">|        |                                      | <span class="code">`created_at`</span>        | <span class="code">`DATETIME`</span>               | <span class="code">`NOT NULL`</span>                 | 发布时间                                          |</span><br><span class="line">|        |                                      | <span class="code">`subject_id`</span>        | <span class="code">`INTEGER`</span>                | <span class="code">`FK`</span> to <span class="code">`Subjects`</span>         | 关联的科目（可选）                                |</span><br></pre></td></tr></table></figure>
+
+<h5 id="API的约定"><a href="#API的约定" class="headerlink" title="API的约定"></a>API的约定</h5><p>关于 API 其实没有什么好说的，<strong>但是接口的规范使用也很重要</strong><br>这个我直接采用了目前最广为人接受的 RESTful API 来进行本项目的开发。并且我也写了一个指导规范，接口应该长什么样子。我就在这一份设计文档中，简单的写下了这几行的 API 接口规范<br>(API 基础路径为 <code>/api/v1</code>)</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>路径</strong></th>
+<th align="left"><strong>方法</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>权限</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>/questions/</code></td>
+<td align="left"><code>POST</code></td>
+<td align="left">创建新试题</td>
+<td align="left">Teacher, Admin</td>
+</tr>
+<tr>
+<td align="left"><code>/questions/</code></td>
+<td align="left"><code>GET</code></td>
+<td align="left">获取试题列表（支持分页、搜索）</td>
+<td align="left">Teacher, Admin</td>
+</tr>
+<tr>
+<td align="left"><code>/questions/&#123;id&#125;</code></td>
+<td align="left"><code>GET</code></td>
+<td align="left">获取单个试题详情</td>
+<td align="left">Teacher, Admin</td>
+</tr>
+<tr>
+<td align="left"><code>/questions/&#123;id&#125;</code></td>
+<td align="left"><code>PUT</code></td>
+<td align="left">更新试题</td>
+<td align="left">Teacher (限自己), Admin</td>
+</tr>
+<tr>
+<td align="left"><code>/questions/&#123;id&#125;</code></td>
+<td align="left"><code>DELETE</code></td>
+<td align="left">删除试题（逻辑删除：设置 <code>is_active=FALSE</code>）</td>
+<td align="left">Teacher (限自己), Admin</td>
+</tr>
+</tbody></table>
+<h5 id="功能模块的简单描述"><a href="#功能模块的简单描述" class="headerlink" title="功能模块的简单描述"></a>功能模块的简单描述</h5><p>这一块其实可以不用这么深入的去聊，因为现在连项目的实际情况都还不太清楚，所以我们可以先写上这个项目应该要有些什么功能，还有一些预想的、未来的、可能会开发的功能。<br>你只需要简单的写一写像下面这样的框架内容，然后丢给 AI ，让 AI 帮你细化规则内容，之后你再进行边界的约束。</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## (5) 考试管理模块：资源组织与发布</span></span><br><span class="line"></span><br><span class="line">该模块的核心在于<span class="strong">**试卷（Template）**</span>与<span class="strong">**考试（Instance）**</span>的解耦设计。</span><br><span class="line"></span><br><span class="line"><span class="section">### A. 试卷生成策略</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**手动组卷：**</span> 精确控制。后端需处理 <span class="code">`Paper`</span> 与 <span class="code">`Question`</span> 的多对多关联映射（<span class="code">`PaperQuestion`</span> 中间表），并同步计算总分。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**随机组卷（动态抽取）：**</span> 灵活性。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**设计要点：**</span> 基于规则引擎（题型、学科、难度、数量）。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**技术实现：**</span> 利用数据库随机排序函数（如 <span class="code">`ORDER BY RAND()`</span>）实现非重复抽样。</span><br><span class="line"></span><br><span class="line"><span class="section">### B. 考试发布与分发</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**规则解耦：**</span> 考试对象（<span class="code">`Exams`</span>）引用试卷模板，并附加时间维度属性（开始/结束时间、限时）。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**权限过滤：**</span> 学生端接口需实现状态过滤逻辑（仅展示 <span class="code">`is_visible`</span> 且处于活动时间段内的记录）。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## (6) 考试答题界面：高可靠性前端交互</span></span><br><span class="line"></span><br><span class="line">该模块的设计重点在于<span class="strong">**状态持久化**</span>与<span class="strong">**异常容错**</span>。</span><br><span class="line"></span><br><span class="line"><span class="section">### A. 前端架构 (Vue3 + Pinia)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**组件化拆分：**</span> 将计时器、导航器、题目卡片解耦，提升复用性。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**集中式状态：**</span> <span class="code">`examStore`</span> 作为唯一事实来源，管理考试实时数据流。</span><br><span class="line"></span><br><span class="line"><span class="section">### B. 核心可靠性机制</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**双端计时同步：**</span> 以服务器 <span class="code">`actual_start_time`</span> 为基准计算绝对截止点，规避前端本地时间篡改。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**数据防丢（自动保存）：**</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**策略：**</span> <span class="code">`watch`</span> 侦听答案变化 + <span class="strong">**防抖 (Debounce)**</span> 处理。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**逻辑：**</span> 减少高频请求压力，实现静默背景提交。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**灾难恢复（断网重连）：**</span> 挂载阶段主动轮询“进行中”状态，实现状态闭环恢复。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## (7) 成绩统计与查询：自动阅卷与数据聚合</span></span><br><span class="line"></span><br><span class="line">该模块负责从“原始答项”到“结构化分数”的转化。</span><br><span class="line"></span><br><span class="line"><span class="section">### A. 自动阅卷引擎 (Grading Service)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**触发机制：**</span> 提交动作立即触发。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**比对算法：**</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**单选/判断：**</span> 简单相等。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**多选：**</span> 需执行<span class="strong">**排序后匹配**</span>，确保逻辑严谨。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**填空：**</span> 字符串模糊或精确匹配。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**数据更新：**</span> 采用事务操作，同步更新 <span class="code">`AnswerRecord`</span>（单题状态）与 <span class="code">`ExamRecord`</span>（总分与完成状态）。</span><br><span class="line"></span><br><span class="line"><span class="section">### B. 多维度数据展示</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**学生维度（反馈）：**</span> 侧重于“错题分析”与“解析查看”。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**教师维度（统计）：**</span></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**聚合计算：**</span> 平均分、及格率等基础指标。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**分布分析：**</span> 提取分数区间分布。</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**质量回溯：**</span> 识别高频错题，辅助后续教学调整。</span><br></pre></td></tr></table></figure>
+
+<h4 id="章节结束"><a href="#章节结束" class="headerlink" title="章节结束"></a>章节结束</h4><p>至此，本章结束了，我在这里完成了整个系统的规划与设计的全部内容。<br>我做了以下的事情</p>
+<ul>
+<li>工程的规范化（目录、技术选型）</li>
+<li>数据库的设计</li>
+<li>API的约定</li>
+<li>大致功能模块的描述<br>你看到这里是否觉得这是任务都很眼熟？对的，这就是在 2025年12月 突然在国内火起来的一个名为 <code>Skill</code> 的概念。2025年10月，我在做毕业设计选题的时候为了给自己打一个底，我就这样阴差阳错的做了一个项目的 <code>&quot;Skill&quot;</code>。在大致的规划上，我已经让这个系统拥有了一个相对可描述的雏形。</li>
+</ul>
+<h2 id="第一次尝试的开发"><a href="#第一次尝试的开发" class="headerlink" title="第一次尝试的开发"></a>第一次尝试的开发</h2><p>这一次其实是一个失败的经历，在 2025年11月 的时候，我开始尝试使用 <code>Trae CN</code> 中的 <code>Builder</code> ，来构建我的系统。但这一次很失败，原因我在后续会讲。<br>在这一次我比以前的任何一次开发都做得准备更加的充足</p>
+<blockquote>
+<p>毕竟是毕设，不是课设，我必须要认真对待</p>
+</blockquote>
+<h3 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h3><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>在最开始我就拿着先前准备好的数据库设计文档，回去找了 Gemini 。让他给我写出这个数据库的 sql 脚本 <del><code>其实主要是我懒</code></del>，它给我写好脚本之后我就马上导入数据到对应的数据库，并且留了一份 sql 文件放在了项目的根目录中，供 AI 阅读当前数据库是什么样子。</p>
+<h4 id="项目的初始化"><a href="#项目的初始化" class="headerlink" title="项目的初始化"></a>项目的初始化</h4><p>这个时候的我其实还不太会指挥 AI 来进行工作，所以我直接理所应当的跟 AI 说了一句</p>
+<blockquote>
+<p>请你根据设计文档中的内容进行项目的初始化</p>
+</blockquote>
+<p>但是 AI 行为有点超出我的预料，它的创建逻辑是先根据设计文档中写出的工程目录创建了文件夹，然后再通过脚手架来进行项目的初始化，这种和常识不太一样的操作我第一次看到还是挺震惊的。<br>但是现在的我来看其实也不奇怪， AI 确实在预期内的完成了该做的工作，并且没有做没写的东西，这一点是我的前期工作准备的疏忽。<br>并且为了项目的代码不会被 AI 该崩溃又无法回溯代码，我依旧保持了进行版本管理的最佳实践。每完成一个目标我就提交一次 git。</p>
+<h3 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h3><p>在这里我给 AI 说了这么一段话：</p>
+<blockquote>
+<p>请你根据设计文档的内容，编写完成整个项目，如果你有对数据库不动的地方，你可以查看项目根目录下的 sql 文件，该文件是当前数据库的情况。</p>
+</blockquote>
+<p>我就在一边等了二十多分钟，运行好了之后，启动虽然不报错。但是到处都充满了报错提示，无论是前端还是后端的控制台。<br>然后我让 AI 进行修复项目，又过了两轮的对话，总算是可以注册账号、登录进去了。然而一进去依旧是充满了各种报错提示。</p>
+<p>现在的我归纳总结这里犯的错误有着一些：</p>
+<ol>
+<li>步子迈的太大了，让 AI 一次性做了这么多的工作，它的上下文必然爆炸，即使我并没有 token 用量的焦虑，我也不能这么使唤</li>
+<li>指令并不够清晰，并没有明确的让 AI 去准确的做一件事情</li>
+</ol>
+<h3 id="戛然而止"><a href="#戛然而止" class="headerlink" title="戛然而止"></a>戛然而止</h3><p>对的，这次的尝试在这里就戛然而止了，因为我出门旅游了一趟，回来 <del>忘了这件事情</del><br>虽然后面新年前我抽了一天回来接着补这个项目，但也没做什么进展特别大的工作。可以约等于我没有做过。<br>但我为了榨干这一次的价值，我让 Trae CN 的 Builder 把目前项目中已有的所有 API 接口都整理出来，形成一份类似 Swagger 作用的 API 文档，这份文件为后续的帮助也很大。</p>
+<h2 id="第二次尝试开发"><a href="#第二次尝试开发" class="headerlink" title="第二次尝试开发"></a>第二次尝试开发</h2><h3 id="引言-1"><a href="#引言-1" class="headerlink" title="引言"></a>引言</h3><p>到了四个月后，也就是在编写这篇博客的一个星期前。我开起了本次的开发。这几个月内我也在持续的观察AI圈子。AI 圈子里面又涌现出来了很多的新概念，很多模型继续取得了各种性能指标上的突破。<br>其中我最关注的到的几个概念有：</p>
+<ul>
+<li>蜂群</li>
+<li>Skill<br>我发现这几个都是模拟了现实中，软件工程这一门工程学问的执行过程，并且我此时发觉我最初写的设计文档的作用和他们所提及的 <code>Skill</code> 本质上不就是同一个东西吗？<br>在这之前我也一直在尝试如何用更高效、精准的提示次给 AI 进行指导方向，过了一段时间，我认为时机成熟了。<br>于是我做出了一个决定，我决定使用一下顶级的模型来进行辅助我的开发。此前我一直用的都是免费的 Coding 助手，没有用过任何一个付费的 Coding 助手。我在结合了自己的经济情况，去找了一个相对稳定提供的 <code>Codex</code> 三方中转 API 提供商。</li>
+</ul>
+<h3 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h3><p>有了上一次的经验，我最开始其实没想着用他来进行这么快速的开发，但是随着我使用了两三次，我发现之前我的方法一直都是走在了正确的道路了，瓶颈其实出现在了模型的能力上。<br>并且我把先前的代码全部都删除了，只留下 <code>设计文档</code>、<code>接口文档</code>、<code>sql文件</code><br>接着我还没有死心，我接着利用这些文档，用Trae CN 的 Builder 进行再一次的重构开发，写了个项目的雏形。发现效果还不催。因为我的提示词变得更加准确了。我在这两天一直在接着尝试如何控制我的提示词让 AI 进行更好的输出。</p>
+<blockquote>
+<p>这里完成了异界比较基础的路由、前后端连接的配置、后端与数据库的基础交互<br>接着，我购买了 CodeX 的当天，我给 Codex 5.3(超高推理) 说的第一句提示词并不是任何的 <code>“请你帮我生成这个项目”</code> 之类的话，而是：<br>请你阅读项目根目录下的<code>设计文档</code>、<code>接口文档</code>、<code>sql文件</code>，请你理解后告诉我你对项目有把握了。然后我们再进行开发。</p>
+</blockquote>
+<p>Codex 很快的给出了理解的回答。于是我让他开始搭建初始化项目，他也会自己通过脚手架自动化的初始化项目，虽然选项还是我自己来选择，但至少聪明了一点。<br>然后我注意到了下面有一个 <code>plan mode</code> ，于是我尝试打开了这个开关，我仿佛进入到了一扇新世界的大门，<del>编程体验、AI 提示词体验从未如此酣畅淋漓过</del>。<br>总的来说这个模式会根据你给出的提示词进行更多的思考，并在过程中为了实现你的提示词中的内容，有不懂的边界问题他基本都会多询问你几次，这点我觉得做的很不错。在最初我体验的一款 Coding 助手（Fitten Code）中也有一个计划模式，但是它的模型能力太弱了，所以我更多的是把它动作一个代码补全的一个强化工具。</p>
+<blockquote>
+<p>请你根据设计文档、接口文档、sql 文件 中的内容进行该系统的个人信息页中修改密码的天下、登录框时的回车支持</p>
+</blockquote>
+<p>过程他问了几个边界问题，我都回答了我需要的样子，然后他经过了几分钟的工作，我来验收一次发现居然还很不错，我一时间没法找到任何毛病。</p>
+<h3 id="提示词的进化"><a href="#提示词的进化" class="headerlink" title="提示词的进化"></a>提示词的进化</h3><p>但我觉得它老是问我问题可能<strong>有点太过麻烦了</strong>，于是我对自己的提示词再一次的进化。因为我用的是 Trae CN 这个 IDE ，因此我在提交 git 的时候能自动生成本次的提交信息。于是我开始尝试学习 git 提交信息的风格进行输入提示词，我得到了一个完全不同的、更加高效的 AI 输出。</p>
+<blockquote>
+<p>feat:<br>在所有用户下：</p>
+<ol>
+<li>添加与【归属单位】【归属子单位】的联系</li>
+<li>实现前端【归属子单位】的展示页面</li>
+<li>新增后端中【归属单位】、【归属子单位】的实体类<br>docs：</li>
+<li>在你完成了所有的事情后去更新接口文档、系统设计文档</li>
+</ol>
+</blockquote>
+<p>然后就这样的一次阴差阳错的尝试下，我体会到了更加高效的开发速度，这种提示词的方式帮助我迫使自己思考提出的内容属于什么、它应该怎么做、预期应该是如何的。换言之，这其实是我每次在提需求的时候都是一次的小型设计文档。<br>但是我依旧觉得这种效率也许还是太低了，我再次回到了 <code>Gemini</code> 上。这一次我先尝试自己打出上面的 <code>第二版本</code> 的提示词，丢给 <code>Gemini</code> ，让它帮我细化我的提示词边界、要求。<br>不出所料，利用 <code>Gemini</code> 输出的提示词质量更加的好，并且通常可以取得更好的系统控制与严谨性的设计。</p>
+<h3 id="审核计划书-plan"><a href="#审核计划书-plan" class="headerlink" title="审核计划书(plan)"></a>审核计划书(plan)</h3><p>随着我的项目的不断编写代码，每一次编写的量比起之前越来越多，不只是 Codex 的上下文每工作四五次就要进行一次上下文压缩，我在审核他每次提出的 <code>plan</code> 时也都感觉越来越费劲了，于是在这里我也引入了 <code>Gemini</code>。<br>此时我的流程做法为：</p>
+<ol>
+<li>自己先思考到需要的feat、fix之类的需求</li>
+<li>丢给 <code>Gemini</code> 进行提示词的细化</li>
+<li>把 <code>Gemini</code> 输出的细化过后的提示词，再次丢给 <code>Codex</code></li>
+<li><code>Codex</code> 产出 <strong><code>plan</code></strong></li>
+<li>我把 <strong><code>plan</code></strong> 丢回给 <code>Gemini</code> ，让它阅读的同时我自己先读一遍 <code>Gemini</code> 给出的精简版内容，带着这些内容我再回去看详细的 <strong><code>plan</code></strong></li>
+<li>此时我可能还会有一个步骤。因为在上一步把 <strong><code>plan</code></strong> 丢给了 <code>Gemini</code>，因此它也会给出自己更多的基于这份 <strong><code>plan</code></strong> 的建议，我会自行决定是否要把 <code>Gemini</code> 给出的建议丢回给 <code>Codex</code></li>
+<li>此时 <strong><code>plan</code></strong> 的产出内容到我满意了，我按下实施按钮，静候它的完成。</li>
+<li>让 <code>Codex</code> 编写本次的内容到<code>设计文档</code>、<code>接口文档</code>中。</li>
+<li>这一步可以不用这么频繁的做。新启新的会话，让另一个 <code>Codex</code> 对当前项目进行一次审计评估，并编写一份报告</li>
+<li>我来阅读文档（在这个过程中我可能也会把文档丢给 <code>Gemini</code> 进行阅读审核）</li>
+<li>验收、测试bug、提出feat、bug等需求。</li>
+<li>利用 Trae CN 的自动生成 git 信息提交新的 git （在这个步骤同时可以指导另外一个 AI 对于此项目的监控情况如何）</li>
+<li>完成了这一工作流的闭环</li>
+</ol>
+<h3 id="对于这种工作流的看法"><a href="#对于这种工作流的看法" class="headerlink" title="对于这种工作流的看法"></a>对于这种工作流的看法</h3><p>一个方案的出现必然带有好的与坏的一面，基本不存在完美的解决方案，我们永远都是选择自己能够接受的最便捷、不良后果最小的方案</p>
+<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ol>
+<li>同时利用了几个不同的 AI,他们各司其职，高效的完成自己的工作（已经类似于前文所提及的 <code>蜂群</code> 概念，只不过是我本人来担当的主编排 Agent 这个位置）</li>
+<li>我能够把控项目的细节与质量</li>
+<li>git 提交很方便（虽然这个可以交给 Codex 来完成，但是它没法在这个前面做到这么多的测试保证本次提交的内容是接近更完美的水平）</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>我的大部分时间都浪费在了：等待、阅读文档、测试bug等比较无聊、低效率，但不得不做的事情</li>
+<li>工作过程中需要不断的在不同的浏览器窗口、系统角色、AI会话、开发软件窗口中不断的切换查看，比较耗神（心累）</li>
+<li>没有引入测试自动化的 MCP 工具，导致的测试效率低下</li>
+</ol>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h3 id="开发周期"><a href="#开发周期" class="headerlink" title="开发周期"></a>开发周期</h3><p>如果不算上前面的第一次开发与第二次开发的前面重构的时间，那么这个项目的开发时间则是<strong>六天</strong>，如果我在中间没有被 Open AI 限制请求的话我可能开发周期可以在缩短一天，其中有一天因为 Open AI 的 <code>429</code> 强制停止了我的实验。</p>
+<h3 id="交付成果"><a href="#交付成果" class="headerlink" title="交付成果"></a>交付成果</h3><ol>
+<li>交付了一个具有一下功能模块的系统：</li>
+</ol>
+<ul>
+<li>N-M 的组织管理模块<ul>
+<li>任意一个角色可被管理员赋予属于多个【归属单位】、【归属子单位】</li>
+<li>靠一张【归属子单位】表实现多层级的【归属子单位】表达</li>
+<li>带有约束检查的【归属子单位】支持删除该树下的所有子单位（级联删除），并将所有归属的用户进入一个【虚状态】，需要管理员进行处理</li>
+</ul>
+</li>
+<li>带有四级角色权限并保证纵向、横向权限不泄露的 RBAC 设计<ul>
+<li>超级管理员<ul>
+<li>管理系统中的所有内容（除了不用考试）</li>
+</ul>
+</li>
+<li>普通管理员<ul>
+<li>管理自己被超级管理员所被赋予的【归属单位】下的所有内容（普通管理员无法 CURD 到自己未被授予的【归属单位】中的内容）</li>
+</ul>
+</li>
+<li>老师<ul>
+<li>管理自己被管理员所赋予的【归属子单位】下的除用户管理外的全部内容（无法 CURD 到自己未被授予的【归属子单位】中的内容）</li>
+</ul>
+</li>
+<li>学生<ul>
+<li>考试、接受公告、查看考试成绩、修改个人信息（无法 CURD 到自己违背收与的【归属子单位】中的内容）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>考试模块<ul>
+<li>带有题目（需要设置难度、建议分数）</li>
+<li>试卷（支持自动与手动组卷、难度调节、本张试卷中实际分数）</li>
+<li>考试场次（可控制是否允许学生进行粘贴的行为、考试时长）</li>
+<li>学生端考试（支持自动同步当前答案到服务器端可供恢复记录与本地缓存、支持意外退出考试后重新进入考试）</li>
+<li>阅卷（支持快捷键的人性化操作阅卷）</li>
+<li>重考（若学生端发生了什么异常，可向老师汇报，老师向管理员汇报，可申请进行重考）</li>
+<li>自动评分（客观题可以全自动评分，填空题支持模糊对比内容进行评分，简答题仍需人工阅卷）</li>
+</ul>
+</li>
+<li>登录注册模块<ul>
+<li>支持手机号、邮箱、账号 + 密码的方式登录</li>
+<li>支持邮箱 + 邮箱验证码的方式登录</li>
+<li>支持通过【忘记密码】中的接受邮箱验证码方式重置新密码</li>
+<li>注册时检查账号无法与手机号、邮箱号重复，各个账号保证自己的各字段的唯一性</li>
+</ul>
+</li>
+<li>公告模块<ul>
+<li>支持关键词查询</li>
+<li>支持已读标记</li>
+<li>支持弹窗公告提醒、查看</li>
+<li>超级管理员管理所有的公告</li>
+<li>管理员角色支持批量选择已读、一键全部已读</li>
+<li>老师能对被管理员所赋予的【归属子单位】中进行单一班级、自己所有的班级，进行公告管理自己所拥有的</li>
+<li>学生端只能查看到被发送到的公告内容，且无法查看到比自己注册更早的公告</li>
+</ul>
+</li>
+<li>日志模块<ul>
+<li>记录每份考卷的打分日志</li>
+<li>答题记录（同时作为业务的一部分）</li>
+<li>考试记录（同时作为业务的一部分）</li>
+</ul>
+</li>
+<li>验证码模块<ul>
+<li>拥有 Gmail 与 QQ邮箱，两条线路进行主线与备线的验证码的发送方案</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>项目推进过程中的各个版本中变更所写出的接口文档、设计文档、审计文档、sql迁移脚本、sql全量数据脚本</li>
+<li>一个代码统计脚本与产出的统计数量</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">=== 项目代码资产分类统计（模块 × 语言）===</span><br><span class="line">扫描文件数: 181</span><br><span class="line">有效代码总行: 42,931</span><br><span class="line"></span><br><span class="line">【按模块汇总】</span><br><span class="line">module   | files | total  | effective | comment | blank | bytes</span><br><span class="line">---------|-------|--------|-----------|---------|-------|--------</span><br><span class="line">backend  | 65    | 14,568 | 12,555    | 341     | 1,672 | 455,163</span><br><span class="line">frontend | 63    | 13,864 | 12,005    | 148     | 1,711 | 494,104</span><br><span class="line">docs     | 24    | 11,490 | 9,338     | 0       | 2,152 | 292,384</span><br><span class="line">sql      | 23    | 8,653  | 6,860     | 1,261   | 532   | 647,049</span><br><span class="line">root     | 5     | 2,655  | 1,887     | 635     | 133   | 78,470</span><br><span class="line">other    | 1     | 354    | 286       | 0       | 68    | 8,967</span><br><span class="line"></span><br><span class="line">【按语言汇总】</span><br><span class="line">language   | files | total  | effective | comment | blank | bytes</span><br><span class="line">-----------|-------|--------|-----------|---------|-------|--------</span><br><span class="line">js_like    | 70    | 14,822 | 12,049    | 1,008   | 1,765 | 448,487</span><br><span class="line">ts_like    | 3     | 35     | 26        | 2       | 7     | 780</span><br><span class="line">vue_html   | 203   | 1,131  | 772       | 4       | 355   | 39,540</span><br><span class="line">vue_css    | 41    | 1,883  | 1,501     | 0       | 382   | 24,374</span><br><span class="line">vue_js     | 41    | 7,567  | 6,599     | 110     | 858   | 200,843</span><br><span class="line">html       | 1     | 14     | 13        | 0       | 1     | 355</span><br><span class="line">css_like   | 1     | 80     | 70        | 0       | 10    | 1,269</span><br><span class="line">sql        | 23    | 8,653  | 6,860     | 1,261   | 532   | 647,049</span><br><span class="line">json       | 8     | 4,155  | 4,144     | 0       | 11    | 142,875</span><br><span class="line">markdown   | 28    | 13,169 | 10,834    | 0       | 2,335 | 347,195</span><br><span class="line">other_text | 6     | 75     | 63        | 0       | 12    | 3,466</span><br><span class="line"></span><br><span class="line">【模块 × 语言交叉表（effective_lines）】</span><br><span class="line">module   | js_like | ts_like | vue_html | vue_css | vue_js | html | css_like | sql   | json  | markdown | other_text | row_total</span><br><span class="line">---------|---------|---------|----------|---------|--------|------|----------|-------|-------|----------|------------|----------</span><br><span class="line">backend  | 11,171  | 0       | 0        | 0       | 0      | 0    | 0        | 0     | 1,348 | 0        | 36         | 12,555</span><br><span class="line">frontend | 744     | 26      | 772      | 1,501   | 6,599  | 13   | 70       | 0     | 2,251 | 3        | 26         | 12,005</span><br><span class="line">docs     | 0       | 0       | 0        | 0       | 0      | 0    | 0        | 0     | 0     | 9,338    | 0          | 9,338</span><br><span class="line">sql      | 0       | 0       | 0        | 0       | 0      | 0    | 0        | 6,860 | 0     | 0        | 0          | 6,860</span><br><span class="line">root     | 134     | 0       | 0        | 0       | 0      | 0    | 0        | 0     | 545   | 1,207    | 1          | 1,887</span><br><span class="line">other    | 0       | 0       | 0        | 0       | 0      | 0    | 0        | 0     | 0     | 286      | 0          | 286</span><br></pre></td></tr></table></figure>
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本篇博客编写一方面是为了给以后的人看到这篇博客时看到再现时代的普通人是如何利用 AI 进行代码编写效率上的提升，一方面也是为了让我自己有一个梳理这个项目内容的机会。<br>如你所视，本项目中的代码里光是前端与后端的代码加起来 2.4W 行的代码，以我一个普通人是完全无法再这么短期的时间内消化的了这么多的代码。同时我还阅读很多的 Codex 的 plan 、各种报告，Gemini 的对话内容。短时间内阅读这么多的内容，对人脑的负担来说非常的大。<br>因此，我需要有一个输出的地方让我来进行一次消化理解这个内容。这篇博客的编写就是这个契机。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Git/" rel="tag"># Git</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/tags/Codex/" rel="tag"># Codex</a>
+              <a href="/tags/Trae/" rel="tag"># Trae</a>
+              <a href="/tags/Skill/" rel="tag"># Skill</a>
+              <a href="/tags/%E6%96%87%E6%A1%A3%E8%A7%84%E8%8C%83/" rel="tag"># 文档规范</a>
+              <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+              <a href="/tags/Gemini/" rel="tag"># Gemini</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0flutter%E6%97%B6%E7%94%A8%E5%88%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/" rel="prev" title="整理一些学习flutter时用到的第三方库">
+      <i class="fa fa-chevron-left"></i> 整理一些学习flutter时用到的第三方库
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+							</div>
+							
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+						<script src="https://giscus.app/client.js" data-repo="MT-Y-TM/MT-Y-TM.github.io-discussions" data-repo-id="R_kgDOPaljdg" data-category="Announcements" data-category-id="DIC_kwDOPaljds4Ct8Kk" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script>
+
+						</div>
+							
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BC%80%E5%A4%B4"><span class="nav-number">2.</span> <span class="nav-text">关于项目的开头</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%83%B3%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">一、想法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E4%BA%8E%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%A7%84%E5%88%92"><span class="nav-number">2.2.</span> <span class="nav-text">二、关于系统的设计与规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">项目的工程目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92"><span class="nav-number">2.2.3.</span> <span class="nav-text">系统规划</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">用户角色的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">数据库的设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#API%E7%9A%84%E7%BA%A6%E5%AE%9A"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">API的约定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E7%9A%84%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">功能模块的简单描述</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%A0%E8%8A%82%E7%BB%93%E6%9D%9F"><span class="nav-number">2.2.4.</span> <span class="nav-text">章节结束</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95%E7%9A%84%E5%BC%80%E5%8F%91"><span class="nav-number">3.</span> <span class="nav-text">第一次尝试的开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA"><span class="nav-number">3.1.</span> <span class="nav-text">搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.2.</span> <span class="nav-text">项目的初始化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99"><span class="nav-number">3.2.</span> <span class="nav-text">代码编写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%9B%E7%84%B6%E8%80%8C%E6%AD%A2"><span class="nav-number">3.3.</span> <span class="nav-text">戛然而止</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%B0%9D%E8%AF%95%E5%BC%80%E5%8F%91"><span class="nav-number">4.</span> <span class="nav-text">第二次尝试开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%9A%84%E8%BF%9B%E5%8C%96"><span class="nav-number">4.3.</span> <span class="nav-text">提示词的进化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A1%E6%A0%B8%E8%AE%A1%E5%88%92%E4%B9%A6-plan"><span class="nav-number">4.4.</span> <span class="nav-text">审核计划书(plan)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E8%BF%99%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E7%9C%8B%E6%B3%95"><span class="nav-number">4.5.</span> <span class="nav-text">对于这种工作流的看法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.5.1.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">4.5.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">5.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%91%A8%E6%9C%9F"><span class="nav-number">5.1.</span> <span class="nav-text">开发周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BB%98%E6%88%90%E6%9E%9C"><span class="nav-number">5.2.</span> <span class="nav-text">交付成果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ann"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Ann</p>
+  <div class="site-description" itemprop="description">♿哇袄！♿</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+					</div>
+				</main>
+
+				<footer class="footer">
+					<div class="footer-inner">
+						
+
+						
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ann</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">61k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">55 分钟</span>
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+						
+
+
+
+
+
+
+
+
+					</div>
+				</footer>
+			</div>
+
+			
+  <script size="100" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+				
+
+		</body>
+	</html>
