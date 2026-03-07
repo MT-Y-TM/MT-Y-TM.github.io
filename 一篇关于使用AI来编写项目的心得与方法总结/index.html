@@ -28,7 +28,7 @@
 <meta property="og:description" content="这是一篇我用来描述在这个时间节点下，我利用 AI 如何提高自己编写毕业设计的一篇心得与方法总结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-07T06:19:06.000Z">
-<meta property="article:modified_time" content="2026-03-07T16:01:22.265Z">
+<meta property="article:modified_time" content="2026-03-07T16:18:43.043Z">
 <meta property="article:author" content="Ann">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="AI">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-03-08 00:01:22" itemprop="dateModified" datetime="2026-03-08T00:01:22+08:00">2026-03-08</time>
+                <time title="修改时间：2026-03-08 00:18:43" itemprop="dateModified" datetime="2026-03-08T00:18:43+08:00">2026-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -416,7 +416,7 @@
 <li>蜂群</li>
 <li>Skill<br>我发现这几个都是模拟了现实中，软件工程这一门工程学问的执行过程，并且我此时发觉我最初写的设计文档的作用和他们所提及的 <code>Skill</code> 本质上不就是同一个东西吗？<br>在这之前我也一直在尝试如何用更高效、精准的提示次给 AI 进行指导方向，过了一段时间，我认为时机成熟了。<br>于是我做出了一个决定，我决定使用一下顶级的模型来进行辅助我的开发。此前我一直用的都是免费的 Coding 助手，没有用过任何一个付费的 Coding 助手。我在结合了自己的经济情况，去找了一个相对稳定提供的 <code>Codex</code> 三方中转 API 提供商。</li>
 </ul>
-<h3 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h3><p>有了上一次的经验，我最开始其实没想着用他来进行这么快速的开发，但是随着我使用了两三次，我发现之前我的方法一直都是走在了正确的道路了，瓶颈其实出现在了模型的能力上。<br>并且我把先前的代码全部都删除了，只留下 <code>设计文档</code>、<code>接口文档</code>、<code>sql文件</code><br>接着我还没有死心，我接着利用这些文档，用Trae CN 的 Builder 进行再一次的重构开发，写了个项目的雏形。发现效果还不催。因为我的提示词变得更加准确了。我在这两天一直在接着尝试如何控制我的提示词让 AI 进行更好的输出。</p>
+<h3 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h3><p>有了上一次的经验，我最开始其实没想着用他来进行这么快速的开发，但是随着我使用了两三次，我发现之前我的方法一直都是走在了正确的道路了，瓶颈其实出现在了模型的能力上。<br>并且我把先前的代码全部都删除了，只留下 <code>设计文档</code>、<code>接口文档</code>、<code>sql文件</code><br>接着，我还没有死心，我接着利用这些现有的文档，用Trae CN 的 Builder 进行再一次的重构开发。这次不同的是我引入了一个 Express 框架的 <code>Skill</code><br>写了个项目的雏形，发现效果还不催。因为我的提示词变得更加准确了，也有一个 <code>Skill</code> 对 AI 的规范指导。我在这两天一直在接着尝试如何控制我的提示词让 AI 进行更好的输出。</p>
 <blockquote>
 <p>这里完成了异界比较基础的路由、前后端连接的配置、后端与数据库的基础交互<br>接着，我购买了 CodeX 的当天，我给 Codex 5.3(超高推理) 说的第一句提示词并不是任何的 <code>“请你帮我生成这个项目”</code> 之类的话，而是：<br>请你阅读项目根目录下的<code>设计文档</code>、<code>接口文档</code>、<code>sql文件</code>，请你理解后告诉我你对项目有把握了。然后我们再进行开发。</p>
 </blockquote>
