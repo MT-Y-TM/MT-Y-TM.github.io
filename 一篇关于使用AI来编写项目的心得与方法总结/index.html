@@ -28,7 +28,7 @@
 <meta property="og:description" content="这是一篇我用来描述在这个时间节点下，我利用 AI 如何提高自己编写毕业设计的一篇心得与方法总结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-07T06:19:06.000Z">
-<meta property="article:modified_time" content="2026-03-08T15:52:58.176Z">
+<meta property="article:modified_time" content="2026-03-18T12:41:58.238Z">
 <meta property="article:author" content="Ann">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="AI">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-03-08 23:52:58" itemprop="dateModified" datetime="2026-03-08T23:52:58+08:00">2026-03-08</time>
+                <time title="修改时间：2026-03-18 20:41:58" itemprop="dateModified" datetime="2026-03-18T20:41:58+08:00">2026-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -402,10 +402,10 @@
 <p>但是 AI 行为有点超出我的预料，它的创建逻辑是先根据设计文档中写出的工程目录创建了文件夹，然后再通过脚手架来进行项目的初始化，这种和常识不太一样的操作我第一次看到还是挺震惊的。<br>但是现在的我来看其实也不奇怪， AI 确实在预期内的完成了该做的工作，并且没有做没写的东西，这一点是我的前期工作准备的疏忽。<br>并且为了项目的代码不会被 AI 改崩溃又无法回溯代码，我依旧保持了进行版本管理的最佳实践。每完成一个目标我就提交一次 git。</p>
 <h3 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h3><p>在这里我给 AI 说了这么一段话：</p>
 <blockquote>
-<p>请你根据设计文档的内容，编写完成整个项目，如果你有对数据库不动的地方，你可以查看项目根目录下的 sql 文件，该文件是当前数据库的情况。</p>
+<p>请你根据设计文档的内容，编写完成整个项目，如果你有对数据库不懂的地方，你可以查看项目根目录下的 sql 文件，该文件是当前数据库的情况。</p>
 </blockquote>
 <p>我就在一边等了二十多分钟，运行好了之后，启动虽然不报错。但是到处都充满了报错提示，无论是前端还是后端的控制台。<br>然后我让 AI 进行修复项目，又过了两轮的对话，总算是可以注册账号、登录进去了。然而一进去依旧是充满了各种报错提示。</p>
-<p>现在的我归纳总结这里犯的错误有着一些：</p>
+<p>现在的我归纳总结这里犯的错误有这一些：</p>
 <ol>
 <li>步子迈的太大了，让 AI 一次性做了这么多的工作，它的上下文必然爆炸，即使我并没有 token 用量的焦虑，我也不能这么使唤</li>
 <li>指令并不够清晰，并没有明确的让 AI 去准确的做一件事情</li>
@@ -463,7 +463,7 @@
 <li>工作过程中需要不断的在不同的浏览器窗口、系统角色、AI会话、开发软件窗口中不断的切换查看，比较耗神（心累）</li>
 <li>没有引入测试自动化的 MCP 工具，导致的测试效率低下</li>
 </ol>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h3 id="开发周期"><a href="#开发周期" class="headerlink" title="开发周期"></a>开发周期</h3><p>如果不算上前面的第一次开发与第二次开发的前面重构的时间，那么这个项目的开发时间则是<strong>三天</strong>，如果我在中间没有被 Open AI 限制请求的话我可能开发周期可以在缩短一天，其中有一天因为 Open AI 的 <code>429</code> 强制停止了我的实验。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h3 id="开发周期"><a href="#开发周期" class="headerlink" title="开发周期"></a>开发周期</h3><p>如果不算上前面的第一次开发与第二次开发的前面重构的时间，那么这个项目的开发时间则是<strong>三天</strong>，如果我在中间没有被 Open AI 限制请求的话我可能开发周期可以再缩短一天，其中有一天因为 Open AI 的 <code>429</code> 强制停止了我的实验。</p>
 <blockquote>
 <p>如果算上的话那就是<br>第一次尝试–1天<br>第二次重构到使用 Codex 前–4天<br>那么项目一共是–8天 的开发周期<br>后面又用了半天学习了一下 playwright 这个工具，让 CodeX 写了一个全自动化的黑盒测试脚本，一共124个测试用例，全部通过。<br>严格的来说现在开发的周期是约等于–9天<br>不过我能学到一个自动化测试框架也不错，这个框架确实好用，我的另外一个项目也在用这个框架来开发一个个人的 QQ空间说说爬取+内容分析（RAG）+大模型对话。是一个可以称之为的另一个自己、了解过去的自己的项目</p>
 </blockquote>
@@ -491,7 +491,7 @@
 </ul>
 </li>
 <li>学生<ul>
-<li>考试、接受公告、查看考试成绩、修改个人信息（无法 CURD 到自己未被授予的【归属子单位】中的内容）</li>
+<li>考试、接收公告、查看考试成绩、修改个人信息（无法 CURD 到自己未被授予的【归属子单位】中的内容）</li>
 </ul>
 </li>
 </ul>
