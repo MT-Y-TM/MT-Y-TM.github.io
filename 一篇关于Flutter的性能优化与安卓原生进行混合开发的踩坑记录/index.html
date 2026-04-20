@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+		<meta name="description" content="这是一篇记录了我在开发的一个 RFID 的项目中遇到的一些性能上的踩坑问题与解决方案的博客文章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇关于Flutter的性能优化与安卓原生进行混合开发的踩坑记录">
+<meta property="og:url" content="http://example.com/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8EFlutter%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%8E%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E8%BF%9B%E8%A1%8C%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="AnonTokyo">
+<meta property="og:description" content="这是一篇记录了我在开发的一个 RFID 的项目中遇到的一些性能上的踩坑问题与解决方案的博客文章">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-20T15:32:59.000Z">
+<meta property="article:modified_time" content="2026-04-20T16:58:41.726Z">
+<meta property="article:author" content="Ann">
+<meta property="article:tag" content="Flutter">
+<meta property="article:tag" content="Kotlin">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="RFID">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="Claude">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8EFlutter%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%8E%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E8%BF%9B%E8%A1%8C%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+		<title>
+			一篇关于Flutter的性能优化与安卓原生进行混合开发的踩坑记录 | AnonTokyo
+		</title>
+		
+
+
+
+
+
+
+		<noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+	</head>
+
+	<body itemscope itemtype="http://schema.org/WebPage">
+		<div class="container use-motion">
+			<div class="headband"></div>
+
+			<header class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AnonTokyo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+			</header>
+
+			
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+			<main class="main">
+				<div class="main-inner">
+					<div class="content-wrap">
+						
+
+						<div class="content post posts-expand"> 
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8EFlutter%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%8E%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E8%BF%9B%E8%A1%8C%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ann">
+      <meta itemprop="description" content="♿哇袄！♿">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AnonTokyo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一篇关于Flutter的性能优化与安卓原生进行混合开发的踩坑记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-20 23:32:59" itemprop="dateCreated datePublished" datetime="2026-04-20T23:32:59+08:00">2026-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-04-21 00:58:41" itemprop="dateModified" datetime="2026-04-21T00:58:41+08:00">2026-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FLutter/" itemprop="url" rel="index"><span itemprop="name">FLutter</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+            <div class="post-description">这是一篇记录了我在开发的一个 RFID 的项目中遇到的一些性能上的踩坑问题与解决方案的博客文章</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这个项目的背景是一个给用户提供一个利用 RFID 来寻找特定标签绑定的物体的功能开发，其中遇到了 Flutter 端的性能瓶颈、Android 端的性能瓶颈</p>
+<hr>
+<h1 id="性能瓶颈"><a href="#性能瓶颈" class="headerlink" title="性能瓶颈"></a>性能瓶颈</h1><h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><p>Flutter 端的性能瓶颈很多，其中 UI 的渲染瓶颈是我们在开发中最常见的问题。<br>当时我遇到的问题是：当我不断的让设备扫描 RFID 时，持续了半分钟后，软件就会直接卡住，虽说还是可以进行一定的按钮交互与列表拖动，但是他们几乎不会有任何的响应，只有我先前写好的展示切换过程的中间态提示。且获取 RFID 的信号强度很不稳定，因为用于提示用户的提示音效是根据 RFID 的 RSSI 信号强度来判定的，所以音效非常不稳定。</p>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>Android 端的性能瓶颈来源也很多，但 Android 性能瓶颈的场景和 Flutter 端是同时出现的。<br>表现为：当我不断的让设备扫描 RFID 时，持续了半分钟后，软件就会直接卡住，RFID 的扫描速度大大降低。</p>
+<h2 id="整体"><a href="#整体" class="headerlink" title="整体"></a>整体</h2><p>这个项目中的功能其实主要有两个，一个是利用扫描头的能力扫描 RFID 标签，一个是利用摄像头的能力扫描条形码。启动摄像头扫描条形码的能力很快，处理速度也很快。<br>但问题就出现在扫描 RFID 的扫描头上，为了省电，我们需要给扫描头进行 <code>上电</code> 、 <code>开启扫描</code> 的两次广播，才能开始我们的扫描工作。在实际使用中，在这两个功能之间进行高频切换其实是有较高需求的，但是目前的切换速度没法满足实际的需求。</p>
+<hr>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><h2 id="Flutter-1"><a href="#Flutter-1" class="headerlink" title="Flutter"></a>Flutter</h2><p>首先，我们从 Flutter 的底层入手，首先它是一个单线程的框架，但可以自己手动开启后台线程来达到性能优化的目的。<br>而此时我的整个应用的 Flutter 端的 UI 、处理 Android 端发送来的数据，全都是塞在了同一个主线程中，这种每获取一次数据就进行整个 UI 页面的刷新，导致了该瓶颈的出现。<br>问题分析出来了，为以下几点：</p>
+<ol>
+<li>将我们的 UI 渲染线程与处理数据的线程放在了同一个线程中，而 FLutter 框架被处理数据、渲染 UI 这两件事情大量的、重复的进行事件处理，导致的进程近乎阻塞了</li>
+<li>该场景下 RFID 在现实中其实会更加堆叠的、重复的出现，我们并没有做屏蔽其他其实并不被需要更新的 RFID 标签的处理。</li>
+<li>我们用了列表组件来渲染出我们所能够扫描到的所有 RFID 标签，但这个列表组件它并没有被进行更细致的拆分里面具体的每一个小组件</li>
+<li>数据过于的原始了，并没有做任何的处理</li>
+</ol>
+<h2 id="Android-1"><a href="#Android-1" class="headerlink" title="Android"></a>Android</h2><p>在 Android 端，我们的任务只有：调用别人开发好的提供调用扫描头的能力的 jar 包，并将这些数据都通过 Flutter 的 MethondChannel 通道注入，将方法传回给 Flutter 进行调用。<br>并且在开发文档中，有写到 <code>能够让扫描头只扫描特定的 RFID 标签</code> 与 <code>可调整扫描的功率</code>。<br>而在我当时的代码是这样的：</p>
+<ol>
+<li>全量扫描能够扫描到的 RFID 标签</li>
+<li>扫描 RFID 标签的方法与回传数据的方法全部也都是放在同一个进程内</li>
+</ol>
+<h2 id="整体-1"><a href="#整体-1" class="headerlink" title="整体"></a>整体</h2><p>进入这个小项目时是作为另一个项目中的子功能的其中一个页面进入的。因此如何设计一个比较无感的启动环境、保持 UI 主进程流畅同时保证功能能够正常的运行，就是我们需要进行的目标。<br>而此时我们的各个事件实则为按需加载，没点到时就完全不调用，但我们其实可以利用一个更取巧的办法来“欺骗”用户这个启动速度特别快。</p>
+<hr>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h2 id="Flutter-2"><a href="#Flutter-2" class="headerlink" title="Flutter"></a>Flutter</h2><p>针对问题一，我们可以这样：<br>在 Flutter 端给接收从 Android 端传来的数据单独开启一个后台线程进行处理，将 UI 渲染的主线程与处理数据的后台线程进行隔离。以达到 UI 线程始终保持顺畅的能力，把所有的重活都放在用户无法感知的后台线程中。</p>
+<ul>
+<li>好处：简单的解决了这一个 UI 性能上的问题</li>
+<li>坏处：实际上性能的问题并没有真正的被解决，只是被隐藏或推迟了</li>
+</ul>
+<p>针对问题二，我们可以这样：<br>在列表组件中，本身需要展示的、需要的其实目标其实只有目标 RFID 标签一个。因此我们可以直接过滤掉不需要的列表部分<br>好处：直接把 UI 压力从原本的 O(n) 降低到了 O(1)<br>坏处：这个行为是一个保留目标 RFID 的操作，当用户退出寻找特定 RFID 的时候，列表中只剩下这一个，如果用户想要找另外的，就需要进行重新扫描一遍 RFID 标签 <del>但其实在功能的设计上，这个没有问题，因为到时候的数据源是从云端传到这个页面中的，而不是用户自己扫描再指定</del></p>
+<p>针对问题三，我们可以这样做：<br>再列表组件中，细化到每一个列表组件，其实我们需要更新的内容并不多，只有一个 RSSI 信号强度与一个类似于 WIFI 信号强度的图标，其他的 RFID 的 EPC 值和 TID 值其实是不需要更新的。那我们就再把需要更新的组件拆出来，让他们单独进行 UI 的局部更新，减少更多的 UI 重绘事件。<br>好处：极大的降低 FLutter 引擎的渲染压力，同样的把一个 O(n) 的压力降低为了 O(1) 的压力<br>坏处：<del>貌似没有，最多也就是代码变得更加复杂了一点</del></p>
+<p>针对问题四，我们可以这样做：<br>在我查阅了一下资料后，得知了一个叫做 <code>指数加权算法</code>，对 Android 端传来的 RSSI 信号数据做预处理，因为用户本身在寻找某一个不确定的物体时，是缓慢的行动的，而不是发了疯一样的到处乱晃设备。因此这个场景下利用这个算法就能够很好的解决在现实世界中 RSSI 信号并非如距离与扫描头的发射功率不成正比的异常情况。<br>好处：信号更加平滑稳定了<br>坏处：其实并没有从硬件上根源性的解决问题，性能开销更大了</p>
+<h2 id="Android-2"><a href="#Android-2" class="headerlink" title="Android"></a>Android</h2><p>针对问题一，我们可以这样做：<br>既然提供的 jar 包已经提供了能够让扫描头只扫描特定的 RFID 标签，那我们就调用它的这个能力就好了。<br>好处：更加省电、数据获取的压力更小了<br>坏处：<del>在这个应用场景下貌似也没有坏处</del></p>
+<p>针对问题二，我们可以这样做：<br>根据实际使用时，我们的用户在操作时获取数据和回传数据应该是同时进行的，那我们只要把这两个类型的事件进行隔离与加入异步的方式，来调整它的性能在同一个进行可能会导致的事件阻塞的性能问题，与开启异步的方式，让后台不会被一个事件执行而卡住。<br>好处：使用体验大大提升，能够处理更多复杂的任务<br>缺点：对于设备的本身性能要求变高了 <del>虽然本身就是这样这么高，只是全部塞进同一个线程导致的他不会去过多的消耗其他的资源而已。但本身就是专门的在自己的专用设备上进行开发，所以开发环境就可以预测到生产环境中实际的性能表现，因此我可以随时调整该软件的性能需求</del></p>
+<h2 id="整体-2"><a href="#整体-2" class="headerlink" title="整体"></a>整体</h2><p>这个其实才是困扰了我最久，思考了很久的东西。这里涉及到了状态机的设计，很有挑战性我也很喜欢。于是我设计了这么一个状态机：<br>整体下的状态机：</p>
+<blockquote>
+<p>Off（第一次为初始化，第二次为真的关闭）：后台悄悄启动 RFID 的扫描头，但都禁止扫描头与摄像头的实际调用；第二次进入时，关闭扫描头与摄像头的所有能力（包括断电）<br>Scanner：关闭 RFID 扫描能力，保留 RFID 在后台中的初始化状况。初始化并启动摄像头，等待用户按下实体按键激活摄像头进行扫描条形码<br>RFID：关闭 Scanner 扫描能力，保留 Scanner 在后台中的初始化状况。给扫描头上电并初始化，等待用户按下实体按键激活扫描头进行 RFID 标签的扫描。<br>以上的三种状态可以随意切换</p>
+</blockquote>
+<p>进入到寻找某一个特定 RFID 标签时的寻物状态机：</p>
+<blockquote>
+<p>NotFound：未找到目标 RFID 标签。播放 NotFound 的音效。扫描间隔时间为 700ms<br>Found：寻找到了目标 RFID 标签，播放 Found 的音效，并随着 RSSI 信号强度越大，但 RSSI 信号强度小于 95 ，音效的音量与播放频率会变得更高。扫描间隔时间为 50ms<br>Found_high：寻找到了目标且目标标签的 RSSI 信号强度大于等于 95，音效的音量与播放频率变得更高。扫描间隔时间为 50ms<br>以上的三种状态可以随意切换</p>
+</blockquote>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>其实这里还有点小缺陷，提示音效的频率上限其实取决于我提供的音效文件的音频时长。<br>这个项目的两个小功能花了一个星期来实现，有很多东西都是我第一次遇到，很爽。真的有挑战性的工作，做完了之后的成就感就是不一样。<br>原本对于 Flutter 性能优化懵懵懂懂的概念，在这一个项目里面几乎全都给我遇上并解决了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"># 性能优化</a>
+              <a href="/tags/RFID/" rel="tag"># RFID</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Codex/" rel="tag"># Codex</a>
+              <a href="/tags/Claude/" rel="tag"># Claude</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8AI%E6%9D%A5%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BF%83%E5%BE%97%E4%B8%8E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" rel="prev" title="一篇关于使用AI来编写项目的心得与方法总结">
+      <i class="fa fa-chevron-left"></i> 一篇关于使用AI来编写项目的心得与方法总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+							</div>
+							
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+						<script src="https://giscus.app/client.js" data-repo="MT-Y-TM/MT-Y-TM.github.io-discussions" data-repo-id="R_kgDOPaljdg" data-category="Announcements" data-category-id="DIC_kwDOPaljds4Ct8Kk" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script>
+
+						</div>
+							
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88"><span class="nav-number">2.</span> <span class="nav-text">性能瓶颈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter"><span class="nav-number">2.1.</span> <span class="nav-text">Flutter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android"><span class="nav-number">2.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93"><span class="nav-number">2.3.</span> <span class="nav-text">整体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter-1"><span class="nav-number">3.1.</span> <span class="nav-text">Flutter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-1"><span class="nav-number">3.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93-1"><span class="nav-number">3.3.</span> <span class="nav-text">整体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter-2"><span class="nav-number">4.1.</span> <span class="nav-text">Flutter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-2"><span class="nav-number">4.2.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93-2"><span class="nav-number">4.3.</span> <span class="nav-text">整体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ann"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Ann</p>
+  <div class="site-description" itemprop="description">♿哇袄！♿</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+					</div>
+				</main>
+
+				<footer class="footer">
+					<div class="footer-inner">
+						
+
+						
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ann</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">67k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:01</span>
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+						
+
+
+
+
+
+
+
+
+					</div>
+				</footer>
+			</div>
+
+			
+  <script size="100" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+				
+
+		</body>
+	</html>
